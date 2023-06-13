@@ -1,0 +1,101 @@
+CREATE TABLE busniess_details (
+  busniess_id INT AUTO_INCREMENT PRIMARY KEY,
+  register_id VARCHAR(100),
+  name VARCHAR(100),
+  busniess_type VARCHAR(100),
+  contact_number VARCHAR(100),
+  email VARCHAR(100),
+  address VARCHAR(200),
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES user (user_id)
+);
+
+
+CREATE TABLE user (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100),
+  password VARCHAR(100),
+  email VARCHAR(100),
+  user_type VARCHAR(100)
+);
+
+
+ALTER TABLE `user` ADD COLUMN `busniess_type` VARCHAR(255) DEFAULT NULL;
+
+CREATE TABLE products (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  price DECIMAL(10, 2) NOT NULL,
+  image VARCHAR(255),
+  shop_id INT,
+  FOREIGN KEY (shop_id) REFERENCES pet_shop(shop_id)
+);
+
+CREATE TABLE pet_shop (
+  shop_id INT PRIMARY KEY AUTO_INCREMENT,
+  shop_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  contact_number VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  website VARCHAR(255),
+  description TEXT,
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  busniess_id INT,
+FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
+);
+
+CREATE TABLE pet_groomer (
+  groomer_id INT PRIMARY KEY AUTO_INCREMENT,
+  groomer_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  contact_number VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  website VARCHAR(255),
+  description TEXT,
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+busniess_id INT,
+FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
+);
+
+
+CREATE TABLE veterinarian (
+  vet_id INT PRIMARY KEY AUTO_INCREMENT,
+  vet_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  contact_number VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  website VARCHAR(255),
+  description TEXT,
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+busniess_id INT,
+FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
+);
+
+
+CREATE TABLE pharmacist (
+  pharmacist_id INT PRIMARY KEY AUTO_INCREMENT,
+  pharmacist_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  contact_number VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  website VARCHAR(255),
+  description TEXT,
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+busniess_id INT,
+FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
+);
+
+

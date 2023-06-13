@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #ffffff;
+  background-color: #f6f6f6; /* Set a light background color for the body section */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
+  /* border-radius: 2rem; */
+}
+.logo-container {
+  order: 1;
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  order: 2;
+  margin-right: 15px;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #9f2485;
+  font-size: large;
+  font-weight: 700;
+}
+
+.buttons {
+  margin-left: 500px;
+  gap: 40px;
+}
+
+/* Add your own styling for the logo, navbar links, and buttons */
+/* main open*/
+
+.first-main {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+
+  background-image: url(images/bgpattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 2px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-main {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+
+  background-image: url(images/bgpattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 2px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-main::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%);
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+
+  opacity: 0.9;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #9f2485;
+}
+.glass-1 h1 {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  /* margin-left: 10px; */
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* main close */
+.line {
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.line1 {
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+footer {
+  background-color: #ffffff;
+  min-height: 20vh;
+  color: #9f2485;
+}
+.footer {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.row {
+  margin-top: 5px;
+  display: flex;
+}
+
+.col-1 {
+  margin-left: 30px;
+}
+
+.col-2 {
+  margin-left: 200px;
+}
+
+.col-3 {
+  margin-left: 650px;
+}
+
+.colo-3list {
+  margin-top: 20px;
+}
+
+.copyright {
+  padding-top: 5px;
+  text-align: center;
+}
+
+table {
+  width: 650px;
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+th,
+td {
+  height: 40px;
+  vertical-align: center;
+  border: 1px solid black;
+  text-align: center;
+  background-color: #d8d2d2;
+}
+
+.clear-button {
+  display: inline-block;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4d4b4b;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  margin-top: 10px;
+}
+
+.clear-button:hover {
+  background-color: #898d89;
+}
+
+.clear-button:active {
+  background-color: #acb3ac;
+}
+
+.loginbtn:hover {
+  background-color: #e442c1;
+}
+
+.loginbtn:active {
+  background-color: #e77fd1;
+}
+
+.explore-btn {
+  display: inline-block;
+  padding: 8px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+
+  text-decoration: none;
+  color: #fff;
+  background-color: #9f2485;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  margin-top: 5px;
+}
+
+.explore-btn:hover {
+  background-color: #e442c1;
+}
+
+.explore-btn:active {
+  background-color: #e77fd1;
+}
+
+/* register page */

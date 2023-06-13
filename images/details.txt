@@ -1,0 +1,25 @@
+<form name="myform" method="POST" onsubmit="return validate()" action="function.php" >
+     
+			
+
+				<label>Username:</label>
+				<input name="username" type="text" id="inputusername" class="form-control" placeholder="Username" required autofocus><br>
+				<label>Password:</label>
+				<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required><br>
+                <label>Re-Password:</label>
+				<input name="con_passsword" type="password" id="confirmPassword" class="form-control" placeholder="Re-Password" required autofocus><br>
+				<label>Email:</label>
+				<input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required><br>
+               
+                
+				<label>User Type:</label>
+				<select name="user_type" class="user_type" >
+                    <option value="Pet Owner">Pet Owner</option>
+                    <option value="Veterinarian">Veterinarian</option>
+                    <option value="Pharmacist">Pharmacist</option>
+                    <option value="Pet Shop">Pet Shop</option>
+                    
+                    </select><br>
+				<button type="submit" class="modern-button" name="register">Register</button>
+				<button type="reset" class="clear-button">Clear</button>
+			</form>
