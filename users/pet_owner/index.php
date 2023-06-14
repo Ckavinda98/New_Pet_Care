@@ -60,26 +60,22 @@ $login->GetUserDetails();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>My Shop</title>
+	<title>Owner Index</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 
 	<style>
 
-body {
-  background-color: #f8f8f8;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
     /* Main container styles */
 .second-main {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  
+  height: 100%;
+  gap: 20px;
 }
 
 /* Glass styles */
@@ -235,11 +231,12 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="MyAppointments.php">My Prescription</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
+                    
+                
                     
                 </ul>
             </nav>

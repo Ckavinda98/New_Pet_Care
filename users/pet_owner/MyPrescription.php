@@ -32,7 +32,7 @@ $login->SessionCheck();
 $user_id = $_SESSION["user_id"];
 
 // Fetch appointment data for the logged user
-$query = "SELECT * FROM appointments WHERE user_id = '$user_id'";
+$query = "SELECT * FROM prescriptions WHERE user_id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
 // Function to display appointment data in a table
@@ -40,11 +40,11 @@ function displayAppointments($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
             <tr>
-              <th>Appointment ID</th>
+              <th>Prescriptions ID</th>
               <th>Pet Owner Name</th>
               <th>Veterinarian Name</th>
-              <th>Appointment Date</th>
-              <th>Appointment Time</th>
+              <th>Prescriptions Time</th>
+              <th>Status</th>
             </tr>';
 
     while ($appointment = mysqli_fetch_assoc($result)) {
@@ -53,7 +53,8 @@ function displayAppointments($result) {
       echo '<td>' . $appointment["pet_owner_name"] . '</td>';
       echo '<td>' . $appointment["vet_name"] . '</td>';
       echo '<td>' . $appointment["appointment_date"] . '</td>';
-      echo '<td>' . $appointment["appointment_time"] . '</td>';
+      echo '<td>' . $appointment["prescription_time"] . '</td>';
+      echo '<td>' . $appointment["status"] . '</td>';
       echo '</tr>';
     }
 
@@ -76,7 +77,7 @@ mysqli_close($conn);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>My Shop</title>
+	<title>My Prescription</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 
@@ -341,6 +342,7 @@ main {
 }
 
 
+
 	</style>
 
 </head>
@@ -354,18 +356,13 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="MyAppointments.php">My Prescription</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                </ul>
-            </nav>
-            <div class="buttons">
-            <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
-                    <li><a href="../../includes/logout.php">Log out</a></li>
+                
+                    
                 </ul>
             </nav>
             <div class="buttons">
@@ -378,40 +375,7 @@ main {
 </header>
 
 
-<main class="second-main">
-<section class="glass-3">
-		<div class="Dashboard">
-			
-<h1>Add Shop Details</h1>
 
-
-		</div>
-		
-	</section>
-
-  <section class="glass-4">
-		<div class="Dashboard">
-			
-			
-        <h1>Add Profile Details</h1>
-
-
-		</div>
-		
-	</section>
-    <section class="glass-5">
-		<div class="Dashboard">
-        <h1>Add Product Details</h1>
-       
-
-        
-		</div>
-		
-	</section>
-
-
-	
-</main>
 <main>
 	
 	<section class="glass">

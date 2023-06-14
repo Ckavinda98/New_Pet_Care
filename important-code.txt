@@ -123,4 +123,51 @@ FOREIGN KEY (vet_id) REFERENCES veterinarian(vet_id),
   FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
+<form class="modern-form" action="function.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
+            <input type="hidden" name="pharmacist_id" value="<?php echo $pharmacist_id; ?>"><br>
+  <div class="form-group">
+    <label for="pet_owner_name">Pet Owner Name:</label>
+    <input type="text" id="pet_owner_name" name="pet_owner_name" required>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <label for="vet_name">Pharmacy Name:</label>
+    <input type="text" id="vet_name" name="pharmacist_name" value="<?php echo $pharmacist_name; ?>" readonly  required>
+  </div>
+ 
+  <div class="form-group">
+              <label for="image">Prescription:</label>
+            <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)">
+              </div>
+              <div class="form-group full-width">
+                <button type="submit" name="submit_p" class="btn-submit">Upload</button>
+              </div>
+            </form>
+          </div>
+          <div class="preview-section">
+           
+            <div class="form-group">
+              <img id="image-preview" src="#" alt="Image Preview" />
+            </div>
 
+  
+  <div class="form-group full-width">
+    <button type="submit" name="submit_prc" class="btn-submit">Submit</button>
+  </div>
+</form>
+
+ALTER TABLE prescriptions
+ADD pharmacist_name VARCHAR(100);
+
+ALTER TABLE prescriptions
+DROP COLUMN new_column; 
+
+
+ALTER TABLE prescriptions
+ADD COLUMN pet_owner_name VARCHAR(50) DEFAULT 'pending' AFTER pharmacist_name;
+
+
+100370712981 

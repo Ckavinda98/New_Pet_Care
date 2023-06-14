@@ -326,18 +326,13 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="Addapoitmnet.php">My Appointments</a></li>
-                   
-                    <li><a href="Addprescription.php">My Prescription</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
+                   
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                </ul>
-            </nav>
-            <div class="buttons">
-            <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
-                    <li><a href="../../includes/logout.php">Log out</a></li>
+                
+                    
                 </ul>
             </nav>
             <div class="buttons">
@@ -350,40 +345,7 @@ main {
 </header>
 
 
-<main class="second-main">
-<section class="glass-3">
-		<div class="Dashboard">
-			
-<h1>Add Shop Details</h1>
 
-
-		</div>
-		
-	</section>
-
-  <section class="glass-4">
-		<div class="Dashboard">
-			
-			
-        <h1>Add Profile Details</h1>
-
-
-		</div>
-		
-	</section>
-    <section class="glass-5">
-		<div class="Dashboard">
-        <h1>Add Product Details</h1>
-       
-
-        
-		</div>
-		
-	</section>
-
-
-	
-</main>
 <main>
 	
 	<section class="glass">
@@ -392,8 +354,8 @@ main {
 				<h1 style="margin-bottom: 30px;  ">Fill Appointments</h1>
 			</center>
             <form class="modern-form" action="function.php" method="POST">
-            <input type="text" name="user_id" value="<?php echo $user_id; ?>"><br>
-            <input type="text" name="vet_id" value="<?php echo $vet_id; ?>"><br>
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
+            <input type="hidden" name="vet_id" value="<?php echo $vet_id; ?>"><br>
   <div class="form-group">
     <label for="pet_owner_name">Pet Owner Name:</label>
     <input type="text" id="pet_owner_name" name="pet_owner_name" required>

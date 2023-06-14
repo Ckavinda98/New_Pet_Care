@@ -347,11 +347,12 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="MyAppointments.php">My Prescription</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
+                    
+                
                     
                 </ul>
             </nav>
@@ -365,40 +366,6 @@ main {
 </header>
 
 
-<main class="second-main">
-<section class="glass-3">
-		<div class="Dashboard">
-			
-<h1>Add Shop Details</h1>
-
-
-		</div>
-		
-	</section>
-
-  <section class="glass-4">
-		<div class="Dashboard">
-			
-			
-        <h1>Add Profile Details</h1>
-
-
-		</div>
-		
-	</section>
-    <section class="glass-5">
-		<div class="Dashboard">
-        <h1>Add Product Details</h1>
-       
-
-        
-		</div>
-		
-	</section>
-
-
-	
-</main>
 <main>
 	
 	<section class="glass">
