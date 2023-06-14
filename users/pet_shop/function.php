@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO pet_shop (shop_name, address, city, postal_code, contact_number, 
   email, website, description, latitude, longitude, busniess_id)
-          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$contact_number', '$Email', 
+          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
           '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId')";
 
 if (mysqli_query($db, $sql)) {

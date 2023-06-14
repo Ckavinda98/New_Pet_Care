@@ -99,3 +99,28 @@ FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
 );
 
 
+CREATE TABLE prescriptions (
+  prescription_id INT AUTO_INCREMENT,
+  user_id INT,
+  pharmacist_id INT,
+  prescription_text TEXT NOT NULL,
+  prescription_date DATE NOT NULL,
+  PRIMARY KEY (prescription_id),
+  FOREIGN KEY (pharmacist_id) REFERENCES pharmacist(pharmacist_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
+
+CREATE TABLE appointments (
+  appointment_id INT AUTO_INCREMENT,
+  pet_owner_name VARCHAR(255) NOT NULL,
+  user_id INT,
+  vet_id INT,
+  vet_name VARCHAR(255) NOT NULL,
+  appointment_date DATE NOT NULL,
+  appointment_time TIME NOT NULL,
+  PRIMARY KEY (appointment_id),
+FOREIGN KEY (vet_id) REFERENCES veterinarian(vet_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
+
+

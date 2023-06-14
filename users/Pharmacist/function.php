@@ -9,7 +9,7 @@ $db = mysqli_connect('localhost', 'root', '', 'pet_care_db');
 // REGISTER USER
 if (isset($_POST['submit'])) {
   // Receive all input values from the form
-  $Shop_name = mysqli_real_escape_string($db, $_POST['shop_name']);
+  $Shop_name = mysqli_real_escape_string($db, $_POST['pharmacist_name']);
   $Address = mysqli_real_escape_string($db, $_POST['address']);
   $Email = mysqli_real_escape_string($db, $_POST['email']);
   $Website = mysqli_real_escape_string($db, $_POST['website']);
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
 
   // Check if the username already exists
-  $check_query = "SELECT * FROM pet_shop WHERE shop_name='$Shop_name' LIMIT 1";
+  $check_query = "SELECT * FROM pharmacist WHERE pharmacist_name='$Shop_name' LIMIT 1";
   $check_result = mysqli_query($db, $check_query);
   $user = mysqli_fetch_assoc($check_result);
   
@@ -36,9 +36,9 @@ if (isset($_POST['submit'])) {
   }
 
   // Add the values using SQL query with POST method
-  $sql = "INSERT INTO veterinarian (vet_name, address, city, postal_code, contact_number, 
+  $sql = "INSERT INTO pharmacist (pharmacist_name, address, city, postal_code, contact_number, 
   email, website, description, latitude, longitude, busniess_id)
-          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$contact_number', '$Email', 
+          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
           '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId')";
 
 if (mysqli_query($db, $sql)) {

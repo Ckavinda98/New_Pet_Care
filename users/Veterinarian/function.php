@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
 
   // Check if the username already exists
-  $check_query = "SELECT * FROM pet_shop WHERE shop_name='$Shop_name' LIMIT 1";
+  $check_query = "SELECT * FROM veterinarian WHERE vet_name='$Shop_name' LIMIT 1";
   $check_result = mysqli_query($db, $check_query);
   $user = mysqli_fetch_assoc($check_result);
   
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO veterinarian (vet_name, address, city, postal_code, contact_number, 
   email, website, description, latitude, longitude, busniess_id)
-          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$contact_number', '$Email', 
+          VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
           '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId')";
 
 if (mysqli_query($db, $sql)) {

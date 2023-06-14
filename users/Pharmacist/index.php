@@ -313,46 +313,11 @@ body {
 
 <main class="second-main-product">
   <div class="card">
-    <h2>My Products</h2>
+    
   </div>
 
   <div class="product-container">
-    <?php
-    include 'connect.php';
-
-
-    // Retrieve the shop_id from the session
-    $shopId = $_SESSION["shop_id"];
-
-    // Fetch products from the database based on the shop_id
-    $query = "SELECT * FROM products WHERE shop_id = '$shopId'";
-    $result = mysqli_query($conn, $query);
-
-    // Loop over the products and generate HTML
-    while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['name'];
-      $description = $product['description'];
-      $price = $product['price'];
-      $image = 'uploads/' . $product['image']; // Modify this line
-
-      // Check if the image file exists
-      if (file_exists($image)) {
-        ?>
-        <section class="glass">
-          <div class="Dashboard">
-            <h2><?php echo $name; ?></h2>
-            <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
-            <p><?php echo $description; ?></p>
-            <p class="price">Price: $<?php echo $price; ?></p>
-          </div>
-        </section>
-        <?php
-      }
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
+    
   </div>
 </main>
 

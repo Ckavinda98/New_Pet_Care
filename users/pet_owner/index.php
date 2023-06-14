@@ -235,10 +235,10 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    <li><a href="Addapoitmnet.php">My Appointments</a></li>
                    
-                    <li><a href="AddShopDetails.php">Shop Details</a></li>
-                    <li><a href="AddProduct.php">Product Details</a></li>
+                    <li><a href="Addprescription.php">My Prescription</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="AddProfileDetails.php">Profile</a></li>
                     
                 </ul>

@@ -85,7 +85,7 @@ class Login {
       else if ($_SESSION["user_type"] == "Pet Grooming") {
        
         echo '<script>alert("Login successful.");</script>';
-        echo '<script>window.location.href = "../users/pet_owner/index.php";</script>';
+        echo '<script>window.location.href = "../users/pet_groomer/index.php";</script>';
       }
       else if ($_SESSION["user_type"] == "Pet DayCare") {
        

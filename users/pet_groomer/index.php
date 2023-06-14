@@ -180,7 +180,7 @@
                 <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="serive.php">Service</a></li>
+                    <li><a href="AddgroomerDetails.php">Add Grooming Details</a></li>
                     <li><a href="shop.php">Shop</a></li>
                     <li><a href="products.php">Products</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
