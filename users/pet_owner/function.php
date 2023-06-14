@@ -61,7 +61,7 @@ if (isset($_POST['submit_prc'])) {
   $pharmacist_name = mysqli_real_escape_string($db, $_POST['pharmacist_name']);
   $pet_owner_name = mysqli_real_escape_string($db, $_POST['pet_owner_name']);
   $pharmacist_id = mysqli_real_escape_string($db, $_POST['pharmacist_id']);
-  $vet_id = mysqli_real_escape_string($db, $_POST['vet_id']);
+  $user_id = mysqli_real_escape_string($db, $_POST['user_id']);
 
   $filename = $_FILES['file']['name'];
 $destination = 'uploads/' . $filename;// name of the uploaded file
@@ -85,12 +85,12 @@ echo "File too large!";
 } else {
 // move the uploaded (temporary) file to the specified destination
 if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO products (name, description, price, image, shop_id)
-            VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId')";
+  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name)
+            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name')";
 
   if (mysqli_query($db, $sql)) {
     echo '<script>alert("Added successfully.");</script>';
-    echo '<script>window.location.href = "AddProduct.php";</script>';
+    echo '<script>window.location.href = "Allservice.php";</script>';
   }
   else {
     echo '<script>alert("Failed to add Product.");</script>';

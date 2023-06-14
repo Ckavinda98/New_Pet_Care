@@ -4,10 +4,10 @@ include 'connect.php';
 
 class Login {
   // ...
-  
+
   public function SessionCheck() {
     global $conn;
-    
+
     // Storing Session
     $user_check = $_SESSION['login'];
 
@@ -19,12 +19,8 @@ class Login {
     $_SESSION["username"] = $row["username"];
     $_SESSION["user_type"] = $row["user_type"];
     $_SESSION["password"] = $row["password"];
-
-   
   }
 }
-
-// ...
 
 // Create an instance of the Login class
 $login = new Login();
@@ -32,13 +28,45 @@ $login = new Login();
 // Call the SessionCheck method to retrieve and store user_id and business_id
 $login->SessionCheck();
 
-// Get the user_id and business_id from the session
+// Get the user_id from the session
 $user_id = $_SESSION["user_id"];
 
-$vet_id = $_GET['vet_id'];
-$vet_name = $_GET['vet_name'];
+// Fetch appointment data for the logged user
+$query = "SELECT * FROM appointments WHERE user_id = '$user_id'";
+$result = mysqli_query($conn, $query);
 
+// Function to display appointment data in a table
+function displayAppointments($result) {
+  if (mysqli_num_rows($result) > 0) {
+    echo '<table>
+            <tr>
+              <th>Appointment ID</th>
+              <th>Pet Owner Name</th>
+              <th>Veterinarian Name</th>
+              <th>Appointment Date</th>
+              <th>Appointment Time</th>
+            </tr>';
+
+    while ($appointment = mysqli_fetch_assoc($result)) {
+      echo '<tr>';
+      echo '<td>' . $appointment["appointment_id"] . '</td>';
+      echo '<td>' . $appointment["pet_owner_name"] . '</td>';
+      echo '<td>' . $appointment["vet_name"] . '</td>';
+      echo '<td>' . $appointment["appointment_date"] . '</td>';
+      echo '<td>' . $appointment["appointment_time"] . '</td>';
+      echo '</tr>';
+    }
+
+    echo '</table>';
+  } else {
+    echo 'No appointments found for the logged user.';
+  }
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
+
 
 
 
@@ -326,9 +354,9 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="Addapoitmnet.php">My Appointments</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="Addprescription.php">My Prescription</a></li>
+                    <li><a href="MyAppointments.php">My Prescription</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="AddProfileDetails.php">Profile</a></li>
                     
@@ -389,37 +417,12 @@ main {
 	<section class="glass">
 		<div class="Dashboard">
 			<center>
-				<h1 style="margin-bottom: 30px;  ">Fill Appointments</h1>
+				<h1 style="margin-bottom: 30px;  ">My Appointments</h1>
 			</center>
-            <form class="modern-form" action="function.php" method="POST">
-            <input type="text" name="user_id" value="<?php echo $user_id; ?>"><br>
-            <input type="text" name="vet_id" value="<?php echo $vet_id; ?>"><br>
-  <div class="form-group">
-    <label for="pet_owner_name">Pet Owner Name:</label>
-    <input type="text" id="pet_owner_name" name="pet_owner_name" required>
-  </div>
-  
-  
-  
-  <div class="form-group">
-    <label for="vet_name">Vet Name:</label>
-    <input type="text" id="vet_name" name="vet_name" value="<?php echo $vet_name; ?>" readonly  required>
-  </div>
- 
-  <div class="form-group">
-    <label for="appointment_date">Appointment Date:</label>
-    <input type="date" id="appointment_date" name="appointment_date" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="appointment_time">Appointment Time:</label>
-    <input type="time" id="appointment_time" name="appointment_time" required>
-  </div>
-  
-  <div class="form-group full-width">
-    <button type="submit" name="submit_app" class="btn-submit">Submit</button>
-  </div>
-</form>
+            <?php
+    include 'function.php';
+    displayAppointments($result);
+  ?>
 
 
 

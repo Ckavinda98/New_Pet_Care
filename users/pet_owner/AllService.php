@@ -134,19 +134,20 @@
         </div>
         <div class="navbar-buttons">
             <nav>
-                <ul class="navbar">
+            <<ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
+                   
+                    <li><a href="MyAppointments.php">My Prescription</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="AddProfileDetails.php">Profile</a></li>
                     
-                    <li><a href="serive.php">Service</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
-                    <li><a href="login.php">Log in</a></li>
+                    <!-- <li><a href="register.php">Sing up</a></li> -->
+                    <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
     </div>

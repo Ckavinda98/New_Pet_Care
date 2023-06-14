@@ -235,9 +235,9 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="Addapoitmnet.php">My Appointments</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="Addprescription.php">My Prescription</a></li>
+                    <li><a href="MyAppointments.php">My Prescription</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="AddProfileDetails.php">Profile</a></li>
                     

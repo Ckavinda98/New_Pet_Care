@@ -347,10 +347,10 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="AddShopDetails.php">Shop Details</a></li>
-                    <li><a href="AddProduct.php">Product Details</a></li>
+                    <li><a href="MyAppointments.php">My Prescription</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
                     <li><a href="AddProfileDetails.php">Profile</a></li>
                     
                 </ul>
@@ -426,7 +426,7 @@ main {
             <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)">
               </div>
               <div class="form-group full-width">
-                <button type="submit" name="submit_p" class="btn-submit">Upload</button>
+                <button type="submit" name="submit_prc" class="btn-submit">Upload</button>
               </div>
             </form>
           </div>
