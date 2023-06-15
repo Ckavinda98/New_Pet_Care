@@ -351,40 +351,7 @@ main {
 </header>
 
 
-<main class="second-main">
-<section class="glass-3">
-		<div class="Dashboard">
-			
-<h1>Add Veterinarian Details</h1>
 
-
-		</div>
-		
-	</section>
-
-  <section class="glass-4">
-		<div class="Dashboard">
-			
-			
-        <h1>Add Profile Details</h1>
-
-
-		</div>
-		
-	</section>
-    <section class="glass-5">
-		<div class="Dashboard">
-        <h1>Appointment Details</h1>
-       
-
-        
-		</div>
-		
-	</section>
-
-
-	
-</main>
 <main>
 	
 	<section class="glass">
