@@ -189,7 +189,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addapoitmnet.php?vet_id=<?php echo $product['vet_id']; ?>&vet_name=<?php echo $product['vet_name']; ?>" class="btn-submit">Make Appointment</a>
+         
 
         </div>
       </section>
@@ -240,7 +240,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>" class="btn-submit">Send Prescription</a>
+         
         </div>
       </section>
       <?php
@@ -287,7 +287,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?day_care_id=<?php echo $product['day_care_id']; ?>&day_care_name=<?php echo $product['day_care_name']; ?>" class="btn-submit">Send Prescription</a>
+          
         </div>
       </section>
       <?php
@@ -334,7 +334,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?groomer_id=<?php echo $product['groomer_id']; ?>&groomer_name=<?php echo $product['groomer_name']; ?>" class="btn-submit">Send Prescription</a>
+         
         </div>
       </section>
       <?php

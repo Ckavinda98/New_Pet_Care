@@ -66,7 +66,7 @@ FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
 
 CREATE TABLE pet_day_care (
   day_care_id INT PRIMARY KEY AUTO_INCREMENT,
-  day_care_name VARCHAR(255) NOT NULL,
+  , VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   city VARCHAR(100) NOT NULL,
   postal_code VARCHAR(20) NOT NULL,
@@ -180,9 +180,116 @@ ADD pharmacist_name VARCHAR(100);
 ALTER TABLE prescriptions
 DROP COLUMN new_column; 
 
+ALTER TABLE appointments
+ADD COLUMN status VARCHAR(50) DEFAULT 'pending' AFTER appointment_time
 
-ALTER TABLE prescriptions
+
+ALTER TABLE veterinarian
 ADD COLUMN pet_owner_name VARCHAR(50) DEFAULT 'pending' AFTER pharmacist_name;
+
+ALTER TABLE pharmacist
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+ALTER TABLE veterinarian
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 
 100370712981 
+
+
+
+<main class="second-main-product">
+  <div class="card">
+    <h2>All Pet Day Care Services</h2>
+  </div>
+
+  <div class="product-container">
+  <?php
+    include 'connect.php';
+    // Assuming you have a database connection $conn established
+
+    // Fetch products from the database
+    $query = "SELECT * FROM pet_day_care";
+    $result = mysqli_query($conn, $query);
+
+    // Loop over the products and generate HTML
+    while ($product = mysqli_fetch_assoc($result)) {
+      $name = $product['day_care_name'];
+      $address = $product['address'];
+      $city = $product['city'];
+      $contact = $product['contact_number'];
+      $email = $product['email'];
+      $website = $product['website'];
+      $description = $product['description'];
+
+      ?>
+      <section class="glass">
+        <div class="Dashboard">
+          <h2><?php echo $name; ?></h2>
+          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <p><?php echo $address; ?></p>
+          <p><?php echo $city; ?></p>
+          <p><?php echo $contact; ?></p>
+          <p><?php echo $email; ?></p>
+          <p><?php echo $website; ?></p>
+          <p><?php echo $description; ?></p>
+          <a href="Addprescription.php?day_care_id=<?php echo $product['day_care_id']; ?>&day_care_name=<?php echo $product['day_care_name']; ?>" class="btn-submit">Send Prescription</a>
+        </div>
+      </section>
+      <?php
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+  </div>
+</main>
+
+<main class="second-main-product">
+  <div class="card">
+    <h2>All Grooming Services</h2>
+  </div>
+
+  <div class="product-container">
+  <?php
+    include 'connect.php';
+    // Assuming you have a database connection $conn established
+
+    // Fetch products from the database
+    $query = "SELECT * FROM pet_groomer";
+    $result = mysqli_query($conn, $query);
+
+    // Loop over the products and generate HTML
+    while ($product = mysqli_fetch_assoc($result)) {
+      $name = $product['groomer_name'];
+      $address = $product['address'];
+      $city = $product['city'];
+      $contact = $product['contact_number'];
+      $email = $product['email'];
+      $website = $product['website'];
+      $description = $product['description'];
+
+      ?>
+      <section class="glass">
+        <div class="Dashboard">
+          <h2><?php echo $name; ?></h2>
+          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <p><?php echo $address; ?></p>
+          <p><?php echo $city; ?></p>
+          <p><?php echo $contact; ?></p>
+          <p><?php echo $email; ?></p>
+          <p><?php echo $website; ?></p>
+          <p><?php echo $description; ?></p>
+          <a href="Addprescription.php?groomer_id=<?php echo $product['groomer_id']; ?>&groomer_name=<?php echo $product['groomer_name']; ?>" class="btn-submit">Send Prescription</a>
+        </div>
+      </section>
+      <?php
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+  </div>
+</main>

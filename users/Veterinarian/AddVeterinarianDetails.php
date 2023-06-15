@@ -335,9 +335,9 @@ main {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="AddVeterinarianDetails.php">Veterinarian Details</a></li>
                    
-                    <li><a href="AddShopDetails.php">Shop Details</a></li>
-                    <li><a href="AddProduct.php">Product Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="VetAppointment.php">Appoimnets</a></li>
+                    <li><a href=".php">Product Details</a></li>
+                    <li><a href=".php">Profile</a></li>
                     
                 </ul>
             </nav>
@@ -390,7 +390,7 @@ main {
 	<section class="glass">
 		<div class="Dashboard">
 			<center>
-				<h1 style="margin-bottom: 30px;  ">Add Pharmacy Details</h1>
+				<h1 style="margin-bottom: 30px;  ">Add Veterinarian Details</h1>
 			</center>
       <form class="modern-form" action="function.php" method="POST" >
       <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>

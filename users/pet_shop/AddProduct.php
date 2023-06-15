@@ -29,7 +29,7 @@ function SessionCheck() {
     $shopIdQuery = "SELECT shop_id FROM pet_shop WHERE busniess_id = '{$_SESSION["busniess_id"]}'";
     $shopIdResult = mysqli_query($conn, $shopIdQuery);
     $shopIdRow = mysqli_fetch_assoc($shopIdResult);
-    $shopId = $shopIdRow["shop_id"];
+    @$shopId = $shopIdRow["shop_id"];
   
     // Store the shop_id in the session
     $_SESSION["shop_id"] = $shopId;
@@ -457,7 +457,7 @@ main {
           <div class="preview-section">
            
             <div class="form-group">
-              <img id="image-preview" src="#" alt="Image Preview" />
+              <img id="image-preview" src="#" alt="" />
             </div>
           </div>
         </div>

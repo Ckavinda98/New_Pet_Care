@@ -326,7 +326,7 @@ body {
 
     // Fetch products from the database based on the shop_id
     $query = "SELECT * FROM products WHERE shop_id = '$shopId'";
-    $result = mysqli_query($conn, $query);
+    $result = @mysqli_query($conn, $query); // Apply error suppression with @
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {

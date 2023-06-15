@@ -156,7 +156,7 @@
 
 <main class="second-main-product">
   <div class="card">
-    <h2>All Veterinarian Service</h2>
+    <h2>All Pet Shops</h2>
   </div>
 
   <div class="product-container">
@@ -165,12 +165,12 @@
     // Assuming you have a database connection $conn established
 
     // Fetch products from the database
-    $query = "SELECT * FROM veterinarian";
+    $query = "SELECT * FROM pet_shop";
     $result = mysqli_query($conn, $query);
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['vet_name'];
+      $name = $product['shop_name'];
       $address = $product['address'];
       $city = $product['city'];
       $contact = $product['contact_number'];
@@ -182,14 +182,13 @@
       <section class="glass">
         <div class="Dashboard">
           <h2><?php echo $name; ?></h2>
-          <img src="images/vet2.png" alt="<?php echo $name; ?>" />
+          <img src="images/shop.png" alt="<?php echo $name; ?>" />
           <p><?php echo $address; ?></p>
           <p><?php echo $city; ?></p>
           <p><?php echo $contact; ?></p>
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addapoitmnet.php?vet_id=<?php echo $product['vet_id']; ?>&vet_name=<?php echo $product['vet_name']; ?>" class="btn-submit">Make Appointment</a>
 
         </div>
       </section>
