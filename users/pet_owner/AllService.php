@@ -179,6 +179,7 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+     
 
       ?>
       <section class="glass">
@@ -191,7 +192,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addapoitmnet.php?vet_id=<?php echo $product['vet_id']; ?>&vet_name=<?php echo $product['vet_name']; ?>" class="btn-submit">Make Appointment</a>
+          <a href="Addapoitmnet.php?user_id=<?php echo $product['user_id']; ?>&vet_name=<?php echo $product['vet_name']; ?>&vet_id=<?php echo $product['vet_id']; ?>" class="btn-submit">Make Appointment</a>
 
         </div>
       </section>
@@ -242,7 +243,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>" class="btn-submit">Send Prescription</a>
+          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>&user_id=<?php echo $product['user_id']; ?>" class="btn-submit">Send Prescription</a>
         </div>
       </section>
       <?php
@@ -330,14 +331,14 @@
       <section class="glass">
         <div class="Dashboard">
           <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <img src="images/groomer1.png" alt="<?php echo $name; ?>" />
           <p><?php echo $address; ?></p>
           <p><?php echo $city; ?></p>
           <p><?php echo $contact; ?></p>
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?groomer_id=<?php echo $product['groomer_id']; ?>&groomer_name=<?php echo $product['groomer_name']; ?>" class="btn-submit">Send Prescription</a>
+      
         </div>
       </section>
       <?php

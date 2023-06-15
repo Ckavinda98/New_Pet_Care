@@ -215,17 +215,7 @@ $businessId = $_SESSION["business_id"];
     font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
 }
 
-/* 
-form input, select{
 
-width: 200px;
-height: 20px;
-margin: 10px 0;
-padding: 0 5px;
-border: 1px solid #ccc;
-display: inline-block;
-border:2px solid rgba(0, 0, 0, 0.432);
-} */
 
 
 .glass{

@@ -15,7 +15,7 @@ if (isset($_POST['submit_app'])) {
   $appointment_time = mysqli_real_escape_string($db, $_POST['appointment_time']);
   $user_id = mysqli_real_escape_string($db, $_POST['user_id']);
   $vet_id = mysqli_real_escape_string($db, $_POST['vet_id']);
-
+  $vet_user_id = mysqli_real_escape_string($db, $_POST['vet_user_id']);
 
   // Convert appointment_date to desired format (e.g., YYYY-MM-DD)
 $appointment_date = date('Y-m-d', strtotime($appointment_date));
@@ -38,9 +38,9 @@ $appointment_time = date('H:i:s', strtotime($appointment_time));
 
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO appointments (pet_owner_name, user_id, vet_id, vet_name, appointment_date, 
-  appointment_time)
+  appointment_time, vet_user_id)
           VALUES ('$pet_owner_name', '$user_id', '$vet_id', '$vet_name', '$appointment_date', 
-          '$appointment_time')";
+          '$appointment_time', $vet_user_id)";
 
 if (mysqli_query($db, $sql)) {
  
@@ -62,6 +62,7 @@ if (isset($_POST['submit_prc'])) {
   $pet_owner_name = mysqli_real_escape_string($db, $_POST['pet_owner_name']);
   $pharmacist_id = mysqli_real_escape_string($db, $_POST['pharmacist_id']);
   $user_id = mysqli_real_escape_string($db, $_POST['user_id']);
+  $pham_user_id = mysqli_real_escape_string($db, $_POST['pham_user_id']);
 
   $filename = $_FILES['file']['name'];
 $destination = 'uploads/' . $filename;// name of the uploaded file
@@ -85,8 +86,8 @@ echo "File too large!";
 } else {
 // move the uploaded (temporary) file to the specified destination
 if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name)
-            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name')";
+  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name, pham_user_id)
+            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name', '$pham_user_id')";
 
   if (mysqli_query($db, $sql)) {
     echo '<script>alert("Added successfully.");</script>';

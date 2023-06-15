@@ -182,12 +182,12 @@ return true;
         </div>
         <div class="navbar-buttons">
             <nav>
-                <ul class="navbar">
+            <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="claim.php">Service</a></li>
-                    <li><a href="faq.php">FAQ</a></li>
-                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="service.php">Service</a></li>
+                    <li><a href="shop.php">Shop</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
                 </ul>
             </nav>

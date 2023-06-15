@@ -35,8 +35,9 @@ $login->SessionCheck();
 // Get the user_id and business_id from the session
 $user_id = $_SESSION["user_id"];
 
-$vet_id = $_GET['vet_id'];
+$vet_user_id = $_GET['user_id'];
 $vet_name = $_GET['vet_name'];
+$vet_id = $_GET['vet_id'];
 
 ?>
 
@@ -355,7 +356,9 @@ main {
 			</center>
             <form class="modern-form" action="function.php" method="POST">
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
+            <input type="hidden" name="vet_user_id" value="<?php echo $vet_user_id; ?>"><br>
             <input type="hidden" name="vet_id" value="<?php echo $vet_id; ?>"><br>
+            
   <div class="form-group">
     <label for="pet_owner_name">Pet Owner Name:</label>
     <input type="text" id="pet_owner_name" name="pet_owner_name" required>

@@ -181,14 +181,13 @@ function redirectToRegister() {
         </div>
         <div class="navbar-buttons">
             <nav>
-                <ul class="navbar">
+            <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
-                    <!-- <li><a href="serive.php">Service</a></li> -->
-                    <li><a href="serive.php">Shop Details</a></li>
-                    <li><a href="shop.php">Product Details</a></li>
-                    <li><a href="products.php">Products</a></li>
                     
+                    <li><a href="service.php">Service</a></li>
+                    <li><a href="shop.php">Shop</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                 </ul>
             </nav>
             <div class="buttons">
@@ -196,6 +195,7 @@ function redirectToRegister() {
                     <!-- <li><a href="..//profile.php">Profile</a></li> -->
                     <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
+                
         </div>
     </div>
 </header>

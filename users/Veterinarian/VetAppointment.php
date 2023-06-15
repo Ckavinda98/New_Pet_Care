@@ -32,7 +32,7 @@ $login->SessionCheck();
 $user_id = $_SESSION["user_id"];
 
 // Fetch appointment data for the logged user
-$query = "SELECT * FROM appointments WHERE vet_id = '$user_id'";
+$query = "SELECT * FROM appointments WHERE vet_user_id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
 // Function to display appointment data in a table

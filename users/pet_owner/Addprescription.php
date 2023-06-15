@@ -37,6 +37,7 @@ $user_id = $_SESSION["user_id"];
 
 $pharmacist_id = $_GET['pharmacist_id'];
 $pharmacist_name = $_GET['pharmacist_name'];
+$pham_user_id = $_GET['user_id'];
 
 ?>
 
@@ -218,6 +219,8 @@ main {
             <form class="modern-form" action="function.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
             <input type="hidden" name="pharmacist_id" value="<?php echo $pharmacist_id; ?>"><br>
+            <input type="hidden" name="pham_user_id" value="<?php echo $pham_user_id; ?>"><br>
+            
   <div class="form-group">
     <label for="pet_owner_name">Pet Owner Name:</label>
     <input type="text" id="pet_owner_name" name="pet_owner_name" required>
