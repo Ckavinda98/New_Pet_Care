@@ -64,6 +64,21 @@ busniess_id INT,
 FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
 );
 
+CREATE TABLE pet_day_care (
+  day_care_id INT PRIMARY KEY AUTO_INCREMENT,
+  day_care_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  contact_number VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  website VARCHAR(255),
+  description TEXT,
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+busniess_id INT,
+FOREIGN KEY (busniess_id) REFERENCES busniess_details(busniess_id)
+);
 
 CREATE TABLE veterinarian (
   vet_id INT PRIMARY KEY AUTO_INCREMENT,

@@ -80,154 +80,13 @@ $pharmacist_name = $_GET['pharmacist_name'];
 }
 	
 
-.glass-3{
-  /* margin-top: 50px; */
-  /* margin-bottom: 50px; */
-  
-  margin-left: 50px;
-  /* margin-right: 50px; */
-  background: white;
-  height: 10vh;
-  width: 30%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
-  /* border-radius: 2rem; */
-  z-index: 2;
-  backdrop-filter: blur(2rem);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #67696b;
-  text-align: center;
-  
-}
-.glass-4{
-  /* margin-top: 50px; */
-  /* margin-bottom: 50px; */
-  
-  /* margin-right: 50px; */
-  background: white;
-  height: 10vh;
-  width: 30%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0); /* Increased box shadow with larger values */
-  /* border-radius: 2rem; */
-  z-index: 2;
-  backdrop-filter: blur(2rem);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #67696b;
-  text-align: center;
-  
-}
-.glass-5{
-  /* margin-top: 50px; */
-  /* margin-bottom: 50px; */
-  
-  /* margin-right: 50px; */
-  background: white;
-  height: 10vh;
-  width: 30%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0); /* Increased box shadow with larger values */
-  /* border-radius: 2rem; */
-  z-index: 2;
-  backdrop-filter: blur(2rem);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #67696b;
-  text-align: center;
-  
-}
-.glass-6{
-  margin-top: 50px;
-  margin-bottom: 50px;
-  
-  /* margin-right: 50px; */
-  background: white;
-  height: 10vh;
-  width: 30%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
-  /* border-radius: 2rem; */
-  z-index: 2;
-  backdrop-filter: blur(2rem);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #67696b;
-  text-align: center;
-  
-}
-
-.glass-7{
-  margin-top: 50px;
-  margin-bottom: 50px;
-  
-  /* margin-right: 50px; */
-  
-  height: 40vh;
-  width: 90%;
-  
-  /* border-radius: 2rem; */
-  z-index: 2;
-  /* background: rgba(255, 255, 255, 0);  */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  
-  text-align: center;
-  
-}
-.glass-3, glass-4, glass-5, glass-6, p{
-    color:  #9f2485;
-    font-weight: bold;
-    padding: 2px;
-}
-
-.glass-7, glass-3, glass-4, glass-5, glass-6, h1 {
-    padding: 3px;
-    margin-top: 10px;
-    font-weight: bold;
-    color:  #67696b;
-    font-size: 30px;
-}
-
-.glass-7 p {
-    padding: 3px;
-    font-weight: bold;
-    color: white;
-    line-height: 1.5;
-    font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
-}
-
-/* 
-form input, select{
-
-width: 200px;
-height: 20px;
-margin: 10px 0;
-padding: 0 5px;
-border: 1px solid #ccc;
-display: inline-block;
-border:2px solid rgba(0, 0, 0, 0.432);
-} */
-
-
 .glass{
   
   margin: 50px;
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: white; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -239,24 +98,7 @@ border:2px solid rgba(0, 0, 0, 0.432);
   
 }
 
-/* label{
-  
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bold;
-  display: inline-block;
-  width: 100px;
-} */
 
-.loginbtn, .Addbtn{
-    display: inline-block;
-    background: darkblue;
-    color: #fff;
-    padding: 5px 15px;
-    margin-left: 150px;
-    margin-top: 20px;
-    transition: background 0.5s;
-    
-}
 
 main {
   position: relative;
@@ -390,7 +232,7 @@ main {
  
   <div class="form-group">
               <label for="image">Prescription:</label>
-            <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)">
+            <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)" required>
               </div>
               <div class="form-group full-width">
                 <button type="submit" name="submit_prc" class="btn-submit">Upload</button>
@@ -400,13 +242,11 @@ main {
           <div class="preview-section">
            
             <div class="form-group">
-              <img id="image-preview" src="#" alt="Image Preview" />
+              <img id="image-preview" src="#" alt="" />
             </div>
 
   
-  <div class="form-group full-width">
-    <button type="submit" name="submit_prc" class="btn-submit">Submit</button>
-  </div>
+ 
 </form>
 
 

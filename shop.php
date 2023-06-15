@@ -136,19 +136,17 @@
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="MyAppointments.php">My Appointments</a></li>
-                   
-                    <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                
-                    
+                    <li><a href="service.php">Service</a></li>
+                    <li><a href="shop.php">Shop</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
-                    <li><a href="../../includes/logout.php">Log out</a></li>
+                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>
     </div>
@@ -207,147 +205,6 @@
 
 
 
-<main class="second-main-product">
-  <div class="card">
-    <h2>All Pharmacy Services</h2>
-  </div>
-
-  <div class="product-container">
-  <?php
-    include 'connect.php';
-    // Assuming you have a database connection $conn established
-
-    // Fetch products from the database
-    $query = "SELECT * FROM pharmacist";
-    $result = mysqli_query($conn, $query);
-
-    // Loop over the products and generate HTML
-    while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['pharmacist_name'];
-      $address = $product['address'];
-      $city = $product['city'];
-      $contact = $product['contact_number'];
-      $email = $product['email'];
-      $website = $product['website'];
-      $description = $product['description'];
-
-      ?>
-      <section class="glass">
-        <div class="Dashboard">
-          <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
-          <p><?php echo $address; ?></p>
-          <p><?php echo $city; ?></p>
-          <p><?php echo $contact; ?></p>
-          <p><?php echo $email; ?></p>
-          <p><?php echo $website; ?></p>
-          <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>" class="btn-submit">Send Prescription</a>
-        </div>
-      </section>
-      <?php
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
-  </div>
-</main>
-
-
-<main class="second-main-product">
-  <div class="card">
-    <h2>All Pet Day Care Services</h2>
-  </div>
-
-  <div class="product-container">
-  <?php
-    include 'connect.php';
-    // Assuming you have a database connection $conn established
-
-    // Fetch products from the database
-    $query = "SELECT * FROM pet_day_care";
-    $result = mysqli_query($conn, $query);
-
-    // Loop over the products and generate HTML
-    while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['day_care_name'];
-      $address = $product['address'];
-      $city = $product['city'];
-      $contact = $product['contact_number'];
-      $email = $product['email'];
-      $website = $product['website'];
-      $description = $product['description'];
-
-      ?>
-      <section class="glass">
-        <div class="Dashboard">
-          <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
-          <p><?php echo $address; ?></p>
-          <p><?php echo $city; ?></p>
-          <p><?php echo $contact; ?></p>
-          <p><?php echo $email; ?></p>
-          <p><?php echo $website; ?></p>
-          <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?day_care_id=<?php echo $product['day_care_id']; ?>&day_care_name=<?php echo $product['day_care_name']; ?>" class="btn-submit">Send Prescription</a>
-        </div>
-      </section>
-      <?php
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
-  </div>
-</main>
-
-<main class="second-main-product">
-  <div class="card">
-    <h2>All Grooming Services</h2>
-  </div>
-
-  <div class="product-container">
-  <?php
-    include 'connect.php';
-    // Assuming you have a database connection $conn established
-
-    // Fetch products from the database
-    $query = "SELECT * FROM pet_groomer";
-    $result = mysqli_query($conn, $query);
-
-    // Loop over the products and generate HTML
-    while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['groomer_name'];
-      $address = $product['address'];
-      $city = $product['city'];
-      $contact = $product['contact_number'];
-      $email = $product['email'];
-      $website = $product['website'];
-      $description = $product['description'];
-
-      ?>
-      <section class="glass">
-        <div class="Dashboard">
-          <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
-          <p><?php echo $address; ?></p>
-          <p><?php echo $city; ?></p>
-          <p><?php echo $contact; ?></p>
-          <p><?php echo $email; ?></p>
-          <p><?php echo $website; ?></p>
-          <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?groomer_id=<?php echo $product['groomer_id']; ?>&groomer_name=<?php echo $product['groomer_name']; ?>" class="btn-submit">Send Prescription</a>
-        </div>
-      </section>
-      <?php
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
-  </div>
-</main>
 
 
 <footer>

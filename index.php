@@ -180,7 +180,7 @@
                 <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="serive.php">Service</a></li>
+                    <li><a href="service.php">Service</a></li>
                     <li><a href="shop.php">Shop</a></li>
                     <li><a href="products.php">Products</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
@@ -236,9 +236,9 @@ As a pet owner, we prioritize the well-being of your furry friend,
 			
         <h1>Veterinarian</h1>
 <p>
-As a pet owner, we prioritize the well-being of your furry friend,
- providing comprehensive services to enhance their happiness, health, 
- and overall satisfaction.</p>
+As dedicated veterinarians, we prioritize your pet's health and well-being.
+ With experience and passion for animals, we provide exceptional care, including check-ups, vaccinations, surgeries, and specialized treatments. 
+Trust us to give your pets the highest standard of compassionate care.</p>
 
 		</div>
 		
@@ -247,9 +247,10 @@ As a pet owner, we prioritize the well-being of your furry friend,
 		<div class="Dashboard">
         <h1>Pharmacist</h1>
         <p>
-As a pet owner, we prioritize the well-being of your furry friend,
- providing comprehensive services to enhance their happiness, health, 
- and overall satisfaction.</p>
+        As trusted pharmacists, we prioritize your well-being and medication needs.
+         With personalized care and expertise, we ensure safe and effective treatment. 
+         Count on us for reliable guidance and support on your path to wellness.
+         Experience exceptional pharmaceutical care with us.</p>
 
         
 		</div>
@@ -277,16 +278,11 @@ As a pet owner, we prioritize the well-being of your furry friend,
 			
 	<h1>Our Service</h1>
     <p>
-At our pet care center, 
-we provide a comprehensive range of services to ensure the well-being and happiness of your furry friends. 
-From professional grooming and bathing to nutritious meals and regular exercise, 
-we strive to create a nurturing and safe environment for your pets.
- Our highly trained staff members are passionate about animals and dedicated to providing individualized care tailored to each pet's unique needs. 
- Whether it's routine health check-ups,
-  specialized medical treatments, or fun-filled playtime, 
-  we are committed to delivering top-quality care and creating a positive experience for both you and your beloved pets.
-   Trust us to be your partner in providing exceptional care and making your pets feel loved, comfortable, 
-   and cherished every step of the way.</p>
+    Our website service aims to simplify access to veterinary care and other pet-related services.
+     Through our user-friendly web application, pet owners can easily book appointments with veterinarians, view profiles, and receive notifications. 
+     We also provide information on pet grooming centers and daycare services,including reviews.
+Our goal is to enhance accessibility, improve animal health, and strengthen the bond between pets and their owners.
+      Experience hassle-free pet care by exploring our website today.</p>
 		</div>
 		
 	</section>

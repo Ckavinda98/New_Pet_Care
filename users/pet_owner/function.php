@@ -85,15 +85,15 @@ echo "File too large!";
 } else {
 // move the uploaded (temporary) file to the specified destination
 if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name)
-            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name')";
+  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name)
+            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name')";
 
   if (mysqli_query($db, $sql)) {
     echo '<script>alert("Added successfully.");</script>';
     echo '<script>window.location.href = "Allservice.php";</script>';
   }
   else {
-    echo '<script>alert("Failed to add Product.");</script>';
+    echo '<script>alert("Failed to upload the image.");</script>';
     echo '<script>window.location.href = "AddProduct.php";</script>';
   }
 } else {

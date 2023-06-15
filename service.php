@@ -136,19 +136,17 @@
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="MyAppointments.php">My Appointments</a></li>
-                   
-                    <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                
-                    
+                    <li><a href="service.php">Service</a></li>
+                    <li><a href="shop.php">Shop</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
-                    <li><a href="../../includes/logout.php">Log out</a></li>
+                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>
     </div>
@@ -254,10 +252,9 @@
   </div>
 </main>
 
-
 <main class="second-main-product">
   <div class="card">
-    <h2>All Pet Day Care Services</h2>
+    <h2>All Day Care Services</h2>
   </div>
 
   <div class="product-container">
@@ -304,7 +301,7 @@
 
 <main class="second-main-product">
   <div class="card">
-    <h2>All Grooming Services</h2>
+    <h2>All Pet Grooming Services</h2>
   </div>
 
   <div class="product-container">
@@ -330,7 +327,7 @@
       <section class="glass">
         <div class="Dashboard">
           <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <img src="images/groomer1.png" alt="<?php echo $name; ?>" />
           <p><?php echo $address; ?></p>
           <p><?php echo $city; ?></p>
           <p><?php echo $contact; ?></p>
@@ -348,7 +345,6 @@
     ?>
   </div>
 </main>
-
 
 <footer>
 	<div class="footer">

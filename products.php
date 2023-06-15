@@ -167,7 +167,7 @@
             <h2><?php echo $name; ?></h2>
             <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
             <!-- <p><?php echo $description; ?></p> -->
-            <p class="price">Price: $<?php echo $price; ?></p>
+            <p class="price">Price: Rs<?php echo $price; ?></p>
           </div>
         </section>
         <?php
