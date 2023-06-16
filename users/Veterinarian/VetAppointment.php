@@ -133,17 +133,6 @@ mysqli_close($conn);
   
 }
 
-.loginbtn, .Addbtn{
-    display: inline-block;
-    background: darkblue;
-    color: #fff;
-    padding: 5px 15px;
-    margin-left: 150px;
-    margin-top: 20px;
-    transition: background 0.5s;
-    
-}
-
 main {
   position: relative;
   font-family: "Poppins", sans-serif;

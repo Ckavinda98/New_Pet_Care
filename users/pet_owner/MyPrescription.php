@@ -41,18 +41,17 @@ function displayAppointments($result) {
     echo '<table>
             <tr>
               <th>Prescriptions ID</th>
-              <th>Pet Owner Name</th>
-              <th>Veterinarian Name</th>
-              <th>Prescriptions Time</th>
+              <th>Pharmacy Name</th>
+              <th>Alocated Date</th>
+              <th>Alocated Time</th>
               <th>Status</th>
             </tr>';
 
     while ($appointment = mysqli_fetch_assoc($result)) {
       echo '<tr>';
-      echo '<td>' . $appointment["appointment_id"] . '</td>';
-      echo '<td>' . $appointment["pet_owner_name"] . '</td>';
-      echo '<td>' . $appointment["vet_name"] . '</td>';
-      echo '<td>' . $appointment["appointment_date"] . '</td>';
+      echo '<td>' . $appointment["prescription_id"] . '</td>';
+      echo '<td>' . $appointment["pharmacist_name"] . '</td>';
+      echo '<td>' . $appointment["prescription_date"] . '</td>';
       echo '<td>' . $appointment["prescription_time"] . '</td>';
       echo '<td>' . $appointment["status"] . '</td>';
       echo '</tr>';

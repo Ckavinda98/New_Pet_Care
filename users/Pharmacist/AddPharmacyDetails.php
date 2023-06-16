@@ -335,9 +335,8 @@ main {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="AddPharmacyDetails.php">Add Pharmacy</a></li>
                    
-                    <li><a href="Prescription.php">Prescription Details</a></li>
-                    <li><a href="AddProduct.php">Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="Prescription.php"> Prescription</a></li>
+                    
                     
                 </ul>
             </nav>

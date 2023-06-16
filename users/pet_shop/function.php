@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
   $Description = mysqli_real_escape_string($db, $_POST['description']);
   // $Opening_hours = mysqli_real_escape_string($db, $_POST['opening_hours']);
   $businessId = mysqli_real_escape_string($db, $_POST['busniess_id']);
+  $userId = mysqli_real_escape_string($db, $_POST['user_id']);
 
 
   // Check if the username already exists
@@ -37,9 +38,9 @@ if (isset($_POST['submit'])) {
 
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO pet_shop (shop_name, address, city, postal_code, contact_number, 
-  email, website, description, latitude, longitude, busniess_id)
+  email, website, description, latitude, longitude, busniess_id, user_id)
           VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
-          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId')";
+          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId')";
 
 if (mysqli_query($db, $sql)) {
  
@@ -61,6 +62,7 @@ if (isset($_POST['submit_p'])) {
   $Description = mysqli_real_escape_string($db, $_POST['description']);
   $Price = mysqli_real_escape_string($db, $_POST['price']);
   $ShopId = mysqli_real_escape_string($db, $_POST['shopId']);
+  $UserId = mysqli_real_escape_string($db, $_POST['user_id']);
 
   $filename = $_FILES['file']['name'];
 $destination = 'uploads/' . $filename;// name of the uploaded file
@@ -84,8 +86,8 @@ echo "File too large!";
 } else {
 // move the uploaded (temporary) file to the specified destination
 if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO products (name, description, price, image, shop_id)
-            VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId')";
+  $sql = "INSERT INTO products (name, description, price, image, shop_id, user_id)
+            VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId', '$UserId')";
 
   if (mysqli_query($db, $sql)) {
     echo '<script>alert("Added successfully.");</script>';
@@ -105,7 +107,116 @@ if (move_uploaded_file($file, $destination)) {
 
 
 
+// delete product function
+
+include 'connect.php';
+// Check if the product ID is provided
+if (isset($_GET['id'])) {
+  $productId = $_GET['id'];
+
+  // Perform the deletion query
+  // Modify the query as per your table structure
+  $query = "DELETE FROM products WHERE id = '$productId'";
+  
+  // Execute the query
+  // Add your database connection code here
+  // ...
+
+  // Check if the deletion was successful
+  if (mysqli_query($conn, $query)) {
+    // Deletion successful
+    echo '<script>alert("Product deleted successfully.");</script>';
+    echo '<script>window.location.href = "Myshop.php";</script>';
+    
+  } else {
+    // Deletion failed
+    echo '<script>alert("Error deleting product: ' . mysqli_error($conn) . '");</script>';
+    echo '<script>window.location.href = "Myshop.php";</script>';
+  }
+
+  // Close the database connection
+  mysqli_close($conn);
+} 
+
+// update product details 
 
 
 
+
+// Check if the form is submitted
+if (isset($_POST['update_p'])) {
+    // Get the product ID from the form
+    $productId = $_POST['product_id'];
+
+    // Retrieve the existing product details from the database
+    $query = "SELECT * FROM products WHERE id = '$productId'";
+    $result = mysqli_query($conn, $query);
+
+    // Check if the product exists
+    if (mysqli_num_rows($result) > 0) {
+        // Retrieve the product details
+        $product = mysqli_fetch_assoc($result);
+        $name = $product['name'];
+        $description = $product['description'];
+        $price = $product['price'];
+        $image = $product['image'];
+
+        // Get the updated values from the form inputs
+        $updatedName = $_POST['name'];
+        $updatedDescription = $_POST['description'];
+        $updatedPrice = $_POST['price'];
+
+        // Check if a new image file is uploaded
+        if ($_FILES['file']['name'] != '') {
+            // Process the uploaded image file
+            $targetDir = "uploads/";
+            $fileName = basename($_FILES['file']['name']);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+            // Allow only specific file types (e.g., jpeg, png)
+            $allowedTypes = array('jpg', 'jpeg', 'png');
+            if (in_array($fileType, $allowedTypes)) {
+               // Check if the image file exists
+if ($image != '' && file_exists($image)) {
+  // Attempt to delete the file
+  try {
+      if (unlink($image)) {
+          echo "File deleted successfully.";
+      } else {
+          echo "Failed to delete the file.";
+      }
+  } catch (Exception $e) {
+      echo "Error deleting the file: " . $e->getMessage();
+  }
+}
+
+
+                // Upload the new image file
+                move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath);
+
+                // Update the image path in the database
+                $image = $targetFilePath;
+            }
+        }
+
+        // Update the product details in the database
+        $query = "UPDATE products SET name = '$updatedName', description = '$updatedDescription', price = '$updatedPrice', image = '$fileName' WHERE id = '$productId'";
+        if (mysqli_query($conn, $query)) {
+            echo '<script>alert("Product details updated successfully.");</script>';
+            echo '<script>window.location.href = "Myshop.php";</script>';
+        } else {
+            echo '<script>alert("Error updating product details: ' . mysqli_error($conn) . '");</script>';
+        }
+    } else {
+        echo '<script>alert("Product not found.");</script>';
+    }
+} else {
+    echo '<script>alert("Form not submitted.");</script>';
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
+
+

@@ -124,7 +124,15 @@
 
 
 	</style>
+<script>
+function openGoogleMaps(latitude, longitude) {
+  // Construct the Google Maps URL with the latitude and longitude
+  var url = "https://www.google.com/maps/search/?api=1&query=" + latitude + "," + longitude;
 
+  // Open the URL in a new tab
+  window.open(url, "_blank");
+}
+</script>
 </head>
 <body>
 <header>
@@ -177,6 +185,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
@@ -189,7 +199,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-         
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
 
         </div>
       </section>
@@ -228,6 +238,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
@@ -240,7 +252,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-         
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
         </div>
       </section>
       <?php
@@ -275,18 +287,21 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
         <div class="Dashboard">
           <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <img src="images/daycare.png" alt="<?php echo $name; ?>" />
           <p><?php echo $address; ?></p>
           <p><?php echo $city; ?></p>
           <p><?php echo $contact; ?></p>
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
           
         </div>
       </section>
@@ -322,6 +337,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
@@ -334,6 +351,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
          
         </div>
       </section>

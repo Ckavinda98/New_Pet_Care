@@ -323,17 +323,12 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="aboutus.php">My Shop</a></li>
+                   
+                    <li><a href="AddDayCareDetails.php">Shop Details</a></li>
+                    <li><a href="AddProduct.php">Product Details</a></li>
+                    <li><a href="AddProfileDetails.php">Profile</a></li>
                     
-                    <li><a href="AddgroomerDetails.php">Add Grooming Details</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
-                </ul>
-            </nav>
-            <div class="buttons">
-            <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
-                    <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
             </nav>
             <div class="buttons">
@@ -352,14 +347,14 @@ main {
 	<section class="glass">
 		<div class="Dashboard">
 			<center>
-				<h1 style="margin-bottom: 30px;  ">Add Groomer Details</h1>
+				<h1 style="margin-bottom: 30px;  ">Add Day Care Details</h1>
 			</center>
       <form class="modern-form" action="function.php" method="POST" >
       <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
       <input type="hidden" name="busniess_id" value="<?php echo $businessId; ?>"><br>
   <div class="form-group">
-    <label for="shop_name">Groomer Name:</label>
-    <input type="text" id="shop_name" name="groomer_name" required>
+    <label for="shop_name">Day Care Name:</label>
+    <input type="text" id="shop_name" name="day_care_name" required>
   </div>
   <div class="form-group">
     <label for="address">Address:</label>

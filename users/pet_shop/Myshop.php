@@ -72,6 +72,8 @@ $login->GetUserDetails();
 
 // Call the GetBusinessDetails method to display the business details
 $login->GetBusinessDetails();
+
+$user_id = $_SESSION["user_id"];
 ?>
 
 
@@ -245,6 +247,18 @@ body {
 }
 
 	</style>
+<script>
+  function deleteProduct(product_id) {
+    if (confirm("Are you sure you want to delete this product?")) {
+      // Redirect to delete.php passing the product_id
+      window.location.href = "function.php?id=" + product_id;
+    }
+  }
+</script>
+
+
+
+
 
 </head>
 <body>
@@ -257,11 +271,11 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    <li><a href="Myshop.php">My Shop</a></li>
                    
-                    <li><a href="AddDayCareDetails.php">Shop Details</a></li>
+                    <li><a href="AddShopDetails.php">Shop Details</a></li>
                     <li><a href="AddProduct.php">Product Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                   
                     
                 </ul>
             </nav>
@@ -273,45 +287,56 @@ body {
         </div>
     </div>
 </header>
-<main class="second-main">
-<div class="card">
-  <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-</div>
-  <section class="glass-3">
-    <div class="Dashboard">
-      <!-- Display the user details here -->
-      <?php
-      // Call the GetUserDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $user = $login->GetUserDetails();
-        // Display the user details
-        echo "Username: " . $user["username"] . "<br>";
-        echo "User Type: " . $user["user_type"] . "<br>";
-        // Add any additional user details you want to display
-      }
-      ?>
-    </div>
-  </section>
 
-  <section class="glass-4">
-    <div class="Dashboard">
-      <!-- Display the business details here -->
-      <?php
-      // Call the GetBusinessDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $business = $login->GetBusinessDetails();
-        // Display the business details
-        echo "Business Name: " . $business["name"] . "<br>";
-        echo "Address: " . $business["address"] . "<br>";
-        // Add any additional business details you want to display
+
+
+<main class="second-main-product">
+  <div class="card">
+    <h2>My Products</h2>
+  </div>
+
+  <div class="product-container">
+    <?php
+    include 'connect.php';
+
+    // Retrieve the shop_id from the session
+    @$shopId = $_SESSION["shop_id"];
+
+    // Fetch products from the database based on the shop_id
+    $query = "SELECT * FROM products WHERE user_id = '$user_id'";
+    $result = @mysqli_query($conn, $query); // Apply error suppression with @
+
+    // Loop over the products and generate HTML
+    while ($product = mysqli_fetch_assoc($result)) {
+      $product_id = $product['id']; // Fetch the product ID
+      $name = $product['name'];
+      $description = $product['description'];
+      $price = $product['price'];
+      $image = 'uploads/' . $product['image'];
+
+      // Check if the image file exists
+      if (file_exists($image)) {
+        ?>
+        <section class="glass">
+          <div class="Dashboard">
+            <h2><?php echo $name; ?></h2>
+            <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
+            <p><?php echo $description; ?></p>
+            <p class="price">Price: $<?php echo $price; ?></p>
+            <button class="edit-button" onclick="location.href='UpdateProduct.php?product_id=<?php echo $product_id; ?>&name=<?php echo $name; ?>&description=<?php echo $description; ?>&price=<?php echo $price; ?>'">Edit</button>
+            <button class="delete-button" onclick="deleteProduct(<?php echo $product['id']; ?>)">Delete</button>
+
+          </div>
+        </section>
+        <?php
       }
-      ?>
-    </div>
-  </section>
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+  </div>
 </main>
-
-
-
 
 
 

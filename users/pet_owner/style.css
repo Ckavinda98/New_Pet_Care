@@ -229,4 +229,19 @@ td {
   background-color: #e77fd1;
 }
 
+.map-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.map-button:hover {
+  background-color: #2980b9;
+}
+
 /* register page */

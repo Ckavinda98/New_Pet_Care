@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
   $Description = mysqli_real_escape_string($db, $_POST['description']);
   // $Opening_hours = mysqli_real_escape_string($db, $_POST['opening_hours']);
   $businessId = mysqli_real_escape_string($db, $_POST['busniess_id']);
+  $userId = mysqli_real_escape_string($db, $_POST['user_id']);
 
 
   // Check if the username already exists
@@ -37,9 +38,9 @@ if (isset($_POST['submit'])) {
 
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO pharmacist (pharmacist_name, address, city, postal_code, contact_number, 
-  email, website, description, latitude, longitude, busniess_id)
+  email, website, description, latitude, longitude, busniess_id, user_id)
           VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
-          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId')";
+          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId')";
 
 if (mysqli_query($db, $sql)) {
  

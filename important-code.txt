@@ -183,18 +183,37 @@ DROP COLUMN new_column;
 ALTER TABLE appointments
 ADD COLUMN status VARCHAR(50) DEFAULT 'pending' AFTER appointment_time
 
+appointment_time TIME NOT NULL,
+ADD COLUMN prescription_time VARCHAR(50) DEFAULT  AFTER prescription_date
 
 ALTER TABLE veterinarian
 ADD COLUMN pet_owner_name VARCHAR(50) DEFAULT 'pending' AFTER pharmacist_name;
 
-ALTER TABLE pharmacist
-ADD COLUMN user_id INT,
+ALTER TABLE appointments
+ADD COLUMN vet_user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+ALTER TABLE prescriptions
+ADD COLUMN pham_user_id INT,
 ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 ALTER TABLE veterinarian
 ADD COLUMN user_id INT,
 ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
+
+ALTER TABLE pet_day_care
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+ALTER TABLE pet_groomer
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+
+ALTER TABLE pet_shop
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 100370712981 
 

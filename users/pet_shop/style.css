@@ -140,7 +140,7 @@ footer {
 }
 
 .col-3 {
-  margin-left: 650px;
+  margin-left: 600px;
 }
 
 .colo-3list {
@@ -223,6 +223,32 @@ td {
 
 .explore-btn:active {
   background-color: #e77fd1;
+}
+
+.edit-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 0.8;
 }
 
 /* register page */

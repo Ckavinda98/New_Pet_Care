@@ -154,7 +154,54 @@
     </div>
 </header>
 
+<main class="second-main-product">
+  <div class="card">
+    <h2>All Pet Shops</h2>
+  </div>
 
+  <div class="product-container">
+    <?php
+    include 'connect.php';
+    // Assuming you have a database connection $conn established
+
+    // Fetch products from the database
+    $query = "SELECT * FROM pet_shop";
+    $result = mysqli_query($conn, $query);
+
+    // Loop over the products and generate HTML
+    while ($product = mysqli_fetch_assoc($result)) {
+      $name = $product['shop_name'];
+      $address = $product['address'];
+      $city = $product['city'];
+      $contact = $product['contact_number'];
+      $email = $product['email'];
+      $website = $product['website'];
+      $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
+
+      ?>
+      <section class="glass">
+        <div class="Dashboard">
+          <h2><?php echo $name; ?></h2>
+          <img src="images/shop.png" alt="<?php echo $name; ?>" />
+          <p><?php echo $address; ?></p>
+          <p><?php echo $city; ?></p>
+          <p><?php echo $contact; ?></p>
+          <p><?php echo $email; ?></p>
+          <p><?php echo $website; ?></p>
+          <p><?php echo $description; ?></p>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+        </div>
+      </section>
+      <?php
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+  </div>
+</main>
 
 <main class="second-main-product">
   <div class="card">
@@ -179,6 +226,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
      
 
       ?>
@@ -192,6 +241,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
           <a href="Addapoitmnet.php?user_id=<?php echo $product['user_id']; ?>&vet_name=<?php echo $product['vet_name']; ?>&vet_id=<?php echo $product['vet_id']; ?>" class="btn-submit">Make Appointment</a>
 
         </div>
@@ -231,6 +281,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
@@ -243,7 +295,8 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>&user_id=<?php echo $product['user_id']; ?>" class="btn-submit">Send Prescription</a>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <a href="Addprescription.php?pharmacist_id=<?php echo $product['pharmacist_id']; ?>&pharmacist_name=<?php echo $product['pharmacist_name']; ?>&user_id=<?php echo $product['user_id']; ?>" class="btn-submit">Send Your Prescription</a>
         </div>
       </section>
       <?php
@@ -279,19 +332,22 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
         <div class="Dashboard">
           <h2><?php echo $name; ?></h2>
-          <img src="images/vet3.png" alt="<?php echo $name; ?>" />
+          <img src="images/daycare.png" alt="<?php echo $name; ?>" />
           <p><?php echo $address; ?></p>
           <p><?php echo $city; ?></p>
           <p><?php echo $contact; ?></p>
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <a href="Addprescription.php?day_care_id=<?php echo $product['day_care_id']; ?>&day_care_name=<?php echo $product['day_care_name']; ?>" class="btn-submit">Send Prescription</a>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+         
         </div>
       </section>
       <?php
@@ -326,6 +382,8 @@
       $email = $product['email'];
       $website = $product['website'];
       $description = $product['description'];
+      $longitude = $product['longitude']; // Retrieve longitude value from database
+      $latitude = $product['latitude']; // Retrieve latitude value from database
 
       ?>
       <section class="glass">
@@ -338,6 +396,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
+          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
       
         </div>
       </section>

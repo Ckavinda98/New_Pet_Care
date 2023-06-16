@@ -72,6 +72,8 @@ $login->GetUserDetails();
 
 // Call the GetBusinessDetails method to display the business details
 $login->GetBusinessDetails();
+
+$user_id = $_SESSION["user_id"];
 ?>
 
 
@@ -257,11 +259,11 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    <li><a href="Myshop.php">My Shop</a></li>
                    
                     <li><a href="AddShopDetails.php">Shop Details</a></li>
                     <li><a href="AddProduct.php">Product Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    
                     
                 </ul>
             </nav>
@@ -322,10 +324,10 @@ body {
 
 
     // Retrieve the shop_id from the session
-    $shopId = $_SESSION["shop_id"];
+    @$shopId = $_SESSION["shop_id"];
 
     // Fetch products from the database based on the shop_id
-    $query = "SELECT * FROM products WHERE shop_id = '$shopId'";
+    $query = "SELECT * FROM products WHERE user_id = '$user_id'";
     $result = @mysqli_query($conn, $query); // Apply error suppression with @
 
     // Loop over the products and generate HTML

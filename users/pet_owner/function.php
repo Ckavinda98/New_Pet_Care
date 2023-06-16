@@ -6,7 +6,7 @@ $db = mysqli_connect('localhost', 'root', '', 'pet_care_db');
 
 /* all the functions related to register and adding feedback */
 
-// REGISTER USER
+//adding appointment function
 if (isset($_POST['submit_app'])) {
   // Receive all input values from the form
   $vet_name = mysqli_real_escape_string($db, $_POST['vet_name']);

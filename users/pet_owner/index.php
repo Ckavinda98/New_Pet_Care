@@ -236,7 +236,7 @@ $login->GetUserDetails();
                    
                     <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                
+                    
                     
                 </ul>
             </nav>

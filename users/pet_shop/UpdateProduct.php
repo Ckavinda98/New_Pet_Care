@@ -231,58 +231,79 @@ main {
 
 
 <main>
-	
-	<section class="glass">
-		<div class="Dashboard">
-			<center>
-				<h1 style="margin-bottom: 30px;  ">Add Product Details</h1>
-			</center>
+    <section class="glass">
+        <div class="Dashboard">
+            <center>
+                <h1 style="margin-bottom: 30px;">Update Product Details</h1>
+            </center>
             <div class="split-screen-container">
-          <div class="form-section">
-            <form class="modern-form" action="function.php" method="POST" enctype="multipart/form-data">
-              <!-- Rest of your form inputs -->
-              <input type="hidden" name="shopId" value="<?php echo $shopId; ?>"><br>
-              <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea id="description" name="description"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" step="0.01" required>
-              </div>
-              <div class="form-group">
-              <label for="image">Image:</label>
-            <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)">
-              </div>
-              <div class="form-group full-width">
-                <button type="submit" name="submit_p" class="btn-submit">Upload</button>
-              </div>
-            </form>
-          </div>
-          <div class="preview-section">
-           
-            <div class="form-group">
-              <img id="image-preview" src="#" alt="" />
+                <div class="form-section">
+                    <form class="modern-form" action="function.php" method="POST" enctype="multipart/form-data">
+                        <?php
+                        include 'connect.php';
+
+                        // Check if the product ID is provided
+                        if (isset($_GET['product_id'])) {
+                            $productId = $_GET['product_id'];
+
+                            // Retrieve the product details from the database
+                            $query = "SELECT * FROM products WHERE id = '$productId'";
+                            $result = mysqli_query($conn, $query);
+
+                            // Check if the product exists
+                            if (mysqli_num_rows($result) > 0) {
+                                $product = mysqli_fetch_assoc($result);
+
+                                // Retrieve the product details
+                                $name = $product['name'];
+                                $description = $product['description'];
+                                $price = $product['price'];
+                                $image = 'uploads/' . $product['image'];
+                                ?>
+
+                                <!-- Rest of your form inputs -->
+                                <input type="hidden" name="product_id" value="<?php echo $productId; ?>"><br>
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea id="description" name="description"><?php echo $description; ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price:</label>
+                                    <input type="number" id="price" name="price" step="0.01" value="<?php echo $price; ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Image:</label>
+                                    <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <button type="submit" name="update_p" class="btn-submit">Update</button>
+                                </div>
+
+                                <?php
+                            } else {
+                                echo "Product not found.";
+                            }
+                        } else {
+                            echo "Product ID not provided.";
+                        }
+
+                        // Close the database connection
+                        mysqli_close($conn);
+                        ?>
+                    </form>
+                </div>
+                <div class="preview-section">
+                    <div class="form-group">
+                        <img id="image-preview" src="#" alt="" />
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-
-
-
-
-
-     
-		</div>
-		
-	</section>
-	
+    </section>
 </main>
 
 
