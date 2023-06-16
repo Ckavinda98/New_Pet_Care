@@ -156,20 +156,6 @@ footer {
   text-align: center;
 }
 
-table {
-  width: 650px;
-  border-collapse: collapse;
-  margin: 30px auto;
-}
-th,
-td {
-  height: 40px;
-  vertical-align: center;
-  border: 1px solid black;
-  text-align: center;
-  background-color: #d8d2d2;
-}
-
 .clear-button {
   display: inline-block;
   padding: 8px 10px;
@@ -245,3 +231,26 @@ td {
 }
 
 /* register page */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+td {
+  padding: 8px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

@@ -1,0 +1,52 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  th {
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  td {
+    padding: 8px;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table rows with data -->
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>johndoe@example.com</td>
+      <td>Admin</td>
+      <td>
+        <!-- Action buttons -->
+        <button>Edit</button>
+        <button>Delete</button>
+      </td>
+    </tr>
+    <!-- Add more table rows as needed -->
+  </tbody>
+</table>

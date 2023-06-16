@@ -236,18 +236,6 @@ mysqli_close($conn);
     font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
 }
 
-/* 
-form input, select{
-
-width: 200px;
-height: 20px;
-margin: 10px 0;
-padding: 0 5px;
-border: 1px solid #ccc;
-display: inline-block;
-border:2px solid rgba(0, 0, 0, 0.432);
-} */
-
 
 .glass{
   
@@ -267,24 +255,6 @@ border:2px solid rgba(0, 0, 0, 0.432);
   
 }
 
-/* label{
-  
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bold;
-  display: inline-block;
-  width: 100px;
-} */
-
-.loginbtn, .Addbtn{
-    display: inline-block;
-    background: darkblue;
-    color: #fff;
-    padding: 5px 15px;
-    margin-left: 150px;
-    margin-top: 20px;
-    transition: background 0.5s;
-    
-}
 
 main {
   position: relative;
@@ -340,7 +310,29 @@ main {
   padding: 10px;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
+  th {
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  td {
+    padding: 8px;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
 
 	</style>
 
