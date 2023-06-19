@@ -215,6 +215,10 @@ ALTER TABLE pet_shop
 ADD COLUMN user_id INT,
 ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
+ALTER TABLE products
+ADD COLUMN user_id INT,
+ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+
 100370712981 
 
 

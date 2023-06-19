@@ -125,14 +125,32 @@
 
 	</style>
 <script>
-function openGoogleMaps(latitude, longitude) {
-  // Construct the Google Maps URL with the latitude and longitude
-  var url = "https://www.google.com/maps/search/?api=1&query=" + latitude + "," + longitude;
-
-  // Open the URL in a new tab
-  window.open(url, "_blank");
+  function openServiceDetails(groomerId, vetId, pharmacistId, daycareId) {
+  var url = "servicedetails.php?";
+  if (groomerId !== undefined) {
+    url += "groomer_id=" + groomerId + "&";
+  }
+  if (vetId !== undefined) {
+    url += "vet_id=" + vetId + "&";
+  }
+  if (pharmacistId !== undefined) {
+    url += "pharmacist_id=" + pharmacistId + "&";
+  }
+  if (daycareId !== undefined) {
+    url += "day_care_id=" + daycareId + "&";
+  }
+  // Remove the trailing '&' from the URL
+  url = url.slice(0, -1);
+  window.location.href = url;
 }
+
 </script>
+
+
+
+
+
+
 </head>
 <body>
 <header>
@@ -178,6 +196,7 @@ function openGoogleMaps(latitude, longitude) {
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
+      $vetId = $product['vet_id']; // Retrieve groomer ID from the database
       $name = $product['vet_name'];
       $address = $product['address'];
       $city = $product['city'];
@@ -199,7 +218,8 @@ function openGoogleMaps(latitude, longitude) {
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <button class="map-button" onclick="openServiceDetails(undefined, <?php echo $vetId; ?>, undefined, undefined)">View</button>
+
 
         </div>
       </section>
@@ -231,6 +251,7 @@ function openGoogleMaps(latitude, longitude) {
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
+      $pharmacistId = $product['pharmacist_id']; // Retrieve groomer ID from the database
       $name = $product['pharmacist_name'];
       $address = $product['address'];
       $city = $product['city'];
@@ -252,7 +273,8 @@ function openGoogleMaps(latitude, longitude) {
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <button class="map-button" onclick="openServiceDetails(undefined, undefined, <?php echo $pharmacistId; ?>, undefined)">View</button>
+
         </div>
       </section>
       <?php
@@ -280,6 +302,7 @@ function openGoogleMaps(latitude, longitude) {
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
+      $daycareId = $product['day_care_id']; // Retrieve groomer ID from the database
       $name = $product['day_care_name'];
       $address = $product['address'];
       $city = $product['city'];
@@ -301,7 +324,7 @@ function openGoogleMaps(latitude, longitude) {
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <button class="map-button" onclick="openServiceDetails(undefined, undefined, undefined, <?php echo $daycareId; ?>)">View</button>
           
         </div>
       </section>
@@ -330,6 +353,7 @@ function openGoogleMaps(latitude, longitude) {
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
+      $groomerId = $product['groomer_id']; // Retrieve groomer ID from the database
       $name = $product['groomer_name'];
       $address = $product['address'];
       $city = $product['city'];
@@ -351,7 +375,7 @@ function openGoogleMaps(latitude, longitude) {
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <button class="map-button" onclick="openServiceDetails(<?php echo $groomerId; ?>, undefined, undefined, undefined)">View</button>
          
         </div>
       </section>

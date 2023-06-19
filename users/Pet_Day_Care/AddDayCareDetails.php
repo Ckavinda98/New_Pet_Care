@@ -323,11 +323,10 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    
                    
                     <li><a href="AddDayCareDetails.php">Shop Details</a></li>
-                    <li><a href="AddProduct.php">Product Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                   
                     
                 </ul>
             </nav>
