@@ -40,6 +40,44 @@ class Login {
 
 }
 
+// Fetch user counts based on user_type
+$query = "SELECT user_type, COUNT(*) AS user_count FROM user GROUP BY user_type";
+$result = mysqli_query($conn, $query);
+
+// Store user types and counts in arrays
+$userTypes = array();
+$userCounts = array();
+while ($row = mysqli_fetch_assoc($result)) {
+  $userTypes[] = $row['user_type'];
+  $userCounts[] = $row['user_count'];
+}
+
+
+// Fetch the count of accepted appointments
+$queryAcceptedAppointments = "SELECT COUNT(*) AS acceptedCount FROM appointments WHERE status = 'accepted'";
+$resultAcceptedAppointments = mysqli_query($conn, $queryAcceptedAppointments);
+$rowAcceptedAppointments = mysqli_fetch_assoc($resultAcceptedAppointments);
+$acceptedCountAppointments = $rowAcceptedAppointments['acceptedCount'];
+
+// Fetch the count of rejected appointments
+$queryRejectedAppointments = "SELECT COUNT(*) AS rejectedCount FROM appointments WHERE status = 'pending'";
+$resultRejectedAppointments = mysqli_query($conn, $queryRejectedAppointments);
+$rowRejectedAppointments = mysqli_fetch_assoc($resultRejectedAppointments);
+$rejectedCountAppointments = $rowRejectedAppointments['rejectedCount'];
+
+// Fetch the count of accepted prescriptions
+$queryAcceptedPrescriptions = "SELECT COUNT(*) AS acceptedCount FROM prescriptions WHERE status = 'accepted'";
+$resultAcceptedPrescriptions = mysqli_query($conn, $queryAcceptedPrescriptions);
+$rowAcceptedPrescriptions = mysqli_fetch_assoc($resultAcceptedPrescriptions);
+$acceptedCountPrescriptions = $rowAcceptedPrescriptions['acceptedCount'];
+
+// Fetch the count of rejected prescriptions
+$queryRejectedPrescriptions = "SELECT COUNT(*) AS rejectedCount FROM prescriptions WHERE status = 'pending'";
+$resultRejectedPrescriptions = mysqli_query($conn, $queryRejectedPrescriptions);
+$rowRejectedPrescriptions = mysqli_fetch_assoc($resultRejectedPrescriptions);
+$rejectedCountPrescriptions = $rowRejectedPrescriptions['rejectedCount'];
+
+
 // Create an instance of the Login class
 $login = new Login();
 
@@ -62,7 +100,9 @@ $login->GetUserDetails();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>My Shop</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
 
 	<style>
 
@@ -84,13 +124,16 @@ body {
 
 /* Glass styles */
 .glass-3,
-.glass-4 {
+.glass-4,
+ {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
 }
+
+.glass-5{}
 
 /* Dashboard styles */
 .Dashboard {
@@ -211,7 +254,7 @@ body {
 /* Additional styling for the container */
 
 .Dashboard {
-  width: 300px;
+  width: 100%;
   padding: 20px;
   margin: 10px;
   background-color: white;
@@ -222,6 +265,12 @@ body {
   color: red;
 }
 
+
+#userChart {
+    display: block;
+    width: 100%;
+    height: 400px;
+  }
 	</style>
 
 </head>
@@ -252,9 +301,10 @@ body {
     </div>
 </header>
 <main class="second-main">
-<div class="card">
-  <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-</div>
+  <div class="card">
+    <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
+  </div>
+
   <section class="glass-3">
     <div class="Dashboard">
       <!-- Display the user details here -->
@@ -271,21 +321,136 @@ body {
     </div>
   </section>
 
+ 
+
+  
+
+</main>
+
+
+<main class="second-main">
+  
+
+
   <section class="glass-4">
     <div class="Dashboard">
-    
-    
+      <canvas id="appointmentChart"></canvas>
+    </div>
+  </section>
+
+  <section class="glass-5">
+    <div class="Dashboard">
+      <canvas id="prescriptionChart"></canvas>
     </div>
   </section>
 </main>
 
+<script>
+  // JavaScript code for creating the appointment chart
+  var acceptedCountAppointments = <?php echo $acceptedCountAppointments; ?>;
+  var rejectedCountAppointments = <?php echo $rejectedCountAppointments; ?>;
 
+  // Create the appointment bar chart
+  var ctx1 = document.getElementById('appointmentChart').getContext('2d');
+  var appointmentChart = new Chart(ctx1, {
+    type: 'doughnut',
+    data: {
+      labels: ['Accepted', 'Rejected'],
+      datasets: [{
+        label: 'Appointment Count',
+        data: [acceptedCountAppointments, rejectedCountAppointments],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.7)',  // Blue for Accepted
+          'rgba(255, 99, 132, 0.7)'   // Red for Rejected
+        ],
+      }]
+    },
+    options: {
+        responsive: true,
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+  });
 
+  // JavaScript code for creating the prescription chart
+  var acceptedCountPrescriptions = <?php echo $acceptedCountPrescriptions; ?>;
+  var rejectedCountPrescriptions = <?php echo $rejectedCountPrescriptions; ?>;
 
+  // Create the prescription bar chart
+  var ctx2 = document.getElementById('prescriptionChart').getContext('2d');
+  var prescriptionChart = new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+      labels: ['Accepted', 'Rejected'],
+      datasets: [{
+        label: 'Prescription Count',
+        data: [acceptedCountPrescriptions, rejectedCountPrescriptions],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.7)',  // Blue for Accepted
+          'rgba(255, 99, 132, 0.7)'   // Red for Rejected
+        ],
+      }]
+    },
+    options: {
+        responsive: true,
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+    });
+</script>
 
+</main>
 
+<main class="second-main">
 
+<section class="glass-4">
+<h2>User Count</h2>
+    <div class="Dashboard">
+      
+      <canvas id="userChart"></canvas>
+    </div>
+  </section>
 
+  <script>
+    // Get the user types and counts from PHP
+    var userTypes = <?php echo json_encode($userTypes); ?>;
+    var userCounts = <?php echo json_encode($userCounts); ?>;
+
+    // Create the pie chart
+    var ctx = document.getElementById('userChart').getContext('2d');
+    var userChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: userTypes,
+        datasets: [{
+          data: userCounts,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',   // Red
+            'rgba(54, 162, 235, 0.7)',    // Blue
+            'rgba(255, 206, 86, 0.7)',    // Yellow
+            'rgba(75, 192, 192, 0.7)',    // Teal
+            'rgba(153, 102, 255, 0.7)',   // Purple
+            'rgba(255, 159, 64, 0.7)',    // Orange
+            'rgba(0, 204, 102, 0.7)',     // Green
+            'rgba(255, 0, 255, 0.7)'      // Magenta
+          ],
+        }]
+      },
+
+      options: {
+        responsive: true,
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+    });
+  </script>
+</main>
 
 
 

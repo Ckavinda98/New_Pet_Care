@@ -133,16 +133,6 @@ mysqli_close($conn);
   
 }
 
-.loginbtn, .Addbtn{
-    display: inline-block;
-    background: darkblue;
-    color: #fff;
-    padding: 5px 15px;
-    margin-left: 150px;
-    margin-top: 20px;
-    transition: background 0.5s;
-    
-}
 
 main {
   position: relative;
@@ -155,79 +145,10 @@ main {
   justify-content: center;
 }
 
-/* Styles for the modern form */
-.modern-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.modern-form .form-group {
-  width: calc(50% - 10px);
-  margin-bottom: 20px;
-  margin-right: 10px; /* Add margin-right for the gap */
-}
-
-.modern-form .form-group:last-child {
-  margin-right: 0; /* Remove margin-right for the last form group */
-}
-
-.modern-form .form-group.full-width {
-  width: 100%;
-}
-
-.modern-form label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.modern-form input[type="text"],
-.modern-form input[type="email"],
-.modern-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.modern-form .btn-submit {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-}
 
 
 
-.table-container {
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: purple;
-      color: white;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
 	</style>
 
 </head>

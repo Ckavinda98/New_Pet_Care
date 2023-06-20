@@ -67,6 +67,11 @@ class Login {
       echo '<script>alert("Login successful.");</script>';
       echo '<script>window.location.href = "../users/pet_owner/index.php";</script>';
     }
+    else if ($_SESSION["user_type"] == "admin") {
+      
+      echo '<script>alert("Login successful.");</script>';
+      echo '<script>window.location.href = "../users/admin/index.php";</script>';
+    } 
      else if ($_SESSION["user_type"] == "Veterinarian") {
       
       echo '<script>alert("Login successful.");</script>';

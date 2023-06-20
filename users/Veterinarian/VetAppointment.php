@@ -35,7 +35,7 @@ $user_id = $_SESSION["user_id"];
 $query = "SELECT * FROM appointments WHERE vet_user_id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
-// Function to display appointment data in a table
+// Function to display appointment data in a table with an Action column
 function displayAppointments($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
@@ -46,6 +46,7 @@ function displayAppointments($result) {
               <th>Appointment Date</th>
               <th>Appointment Time</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>';
 
     while ($appointment = mysqli_fetch_assoc($result)) {
@@ -56,6 +57,16 @@ function displayAppointments($result) {
       echo '<td>' . $appointment["appointment_date"] . '</td>';
       echo '<td>' . $appointment["appointment_time"] . '</td>';
       echo '<td>' . $appointment["status"] . '</td>';
+      echo '<td>';
+      
+      // Display different buttons based on the status
+      if ($appointment["status"] == "pending") {
+        echo '<button class="green-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'accepted\')">Accept</button>';
+      } elseif ($appointment["status"] == "accepted") {
+        echo '<button class="red-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'pending\')">Undo</button>';
+      }
+      
+      echo '</td>';
       echo '</tr>';
     }
 
@@ -217,7 +228,57 @@ main {
     tbody tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+    /* Green button */
+.green-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Red button */
+.red-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 	</style>
+<script>
+  function updateStatus(appointmentId, newStatus) {
+    // Send an AJAX request to update the appointment status
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          // Success message
+          alert("Appointment status updated.");
+          window.location.reload(true);
+        } else {
+          // Error message
+          alert("Appointment status update failed.");
+          window.location.reload(true);
+        }
+      }
+    };
+    xhttp.open("POST", "update_status.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("appointment_id=" + appointmentId + "&status=" + newStatus);
+  }
+</script>
 
 </head>
 <body>
@@ -232,7 +293,7 @@ main {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="AddVeterinarianDetails.php">Veterinarian Details</a></li>
                    
-                    <li><a href="VetAppointment.php">Appoimnets</a></li>
+                    <li><a href="VetAppointment.php">Appointments</a></li>
                     
                     
                 </ul>

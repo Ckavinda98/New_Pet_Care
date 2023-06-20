@@ -125,6 +125,14 @@
 
 	</style>
 
+<script>
+  function openServiceDetails(shopId) {
+    var url = "servicedetails.php?shop_id=" + shopId;
+    window.location.href = url;
+  }
+</script>
+
+
 </head>
 <body>
 <header>
@@ -170,6 +178,7 @@
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
+      $shopId = $product['shop_id']; // Retrieve groomer ID from the database
       $name = $product['shop_name'];
       $address = $product['address'];
       $city = $product['city'];
@@ -191,7 +200,7 @@
           <p><?php echo $email; ?></p>
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
+          <button class="map-button" onclick="openServiceDetails(<?php echo $shopId; ?>)">View</button>
         </div>
       </section>
       <?php
