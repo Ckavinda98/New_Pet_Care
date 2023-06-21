@@ -116,9 +116,11 @@ body {
     /* Main container styles */
 .second-main {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
+  
   
 }
 
@@ -162,10 +164,10 @@ body {
 }
 
 /* Additional styles */
-.container {
+/* .container {
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
     
     .second-main-product{
@@ -219,7 +221,7 @@ body {
   
     background-color: white;
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   text-align: center;
   margin: 20px;
@@ -227,7 +229,42 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.glass-userchart {
+  
+  
+  background-color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.glass-pie-chart{
+  background-color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.glass-user-dash{
+  background-color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 .glass img {
   width: 150px;
@@ -284,11 +321,10 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">My Shop</a></li>
+                    
                    
-                    <li><a href="AddShopDetails.php">Shop Details</a></li>
-                    <li><a href="AddProduct.php">Product Details</a></li>
-                    <li><a href="AddProfileDetails.php">Profile</a></li>
+                    <li><a href="allAoppiment.php">Recordes Tabels</a></li>
+                    <li><a href="usertable.php">User Tabels</a></li>
                     
                 </ul>
             </nav>
@@ -301,6 +337,7 @@ body {
     </div>
 </header>
 <main class="second-main">
+<section class="glass-user-dash"> 
   <div class="card">
     <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
   </div>
@@ -319,6 +356,7 @@ body {
       }
       ?>
     </div>
+ 
   </section>
 
  
@@ -330,19 +368,26 @@ body {
 
 <main class="second-main">
   
+<section class="glass"> 
 
-
-  <section class="glass-4">
+  <section class="glass-pie-chart">
+  <div class="card">
+    <h2>Appointments Status</h2>
+  </div>
     <div class="Dashboard">
       <canvas id="appointmentChart"></canvas>
     </div>
   </section>
 
-  <section class="glass-5">
+  <section class="glass-pie-chart">
+  <div class="card">
+    <h2>Prescriptions Status</h2>
+  </div>
     <div class="Dashboard">
       <canvas id="prescriptionChart"></canvas>
     </div>
   </section>
+  
 </main>
 
 <script>
@@ -355,7 +400,7 @@ body {
   var appointmentChart = new Chart(ctx1, {
     type: 'doughnut',
     data: {
-      labels: ['Accepted', 'Rejected'],
+      labels: ['Accepted', 'Pending'],
       datasets: [{
         label: 'Appointment Count',
         data: [acceptedCountAppointments, rejectedCountAppointments],
@@ -383,7 +428,7 @@ body {
   var prescriptionChart = new Chart(ctx2, {
     type: 'doughnut',
     data: {
-      labels: ['Accepted', 'Rejected'],
+      labels: ['Accepted', 'Pending'],
       datasets: [{
         label: 'Prescription Count',
         data: [acceptedCountPrescriptions, rejectedCountPrescriptions],
@@ -402,13 +447,15 @@ body {
       }
     });
 </script>
-
+</section>
 </main>
 
 <main class="second-main">
 
-<section class="glass-4">
-<h2>User Count</h2>
+<section class="glass-userchart">
+<div class="card">
+    <h2>User Status</h2>
+  </div>
     <div class="Dashboard">
       
       <canvas id="userChart"></canvas>
@@ -450,6 +497,8 @@ body {
       }
     });
   </script>
+
+</section>
 </main>
 
 

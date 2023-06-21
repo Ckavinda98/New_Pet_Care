@@ -1,0 +1,1 @@
+container is for margin error in footer. look for the container css
