@@ -335,20 +335,14 @@ main {
                     <li><a href="index.php">Home</a></li>
                     
                     <li><a href="AddgroomerDetails.php">Add Grooming Details</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
+                    <li><a href="addimage.php">Add Image</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
+                    
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
-                    <li><a href="../../includes/logout.php">Log out</a></li>
-                </ul>
-            </nav>
-            <div class="buttons">
-            <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
+                    
                     <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
@@ -426,6 +420,7 @@ main {
 	</section>
 	
 </main>
+
 
 
 

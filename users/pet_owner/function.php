@@ -108,6 +108,4 @@ if (move_uploaded_file($file, $destination)) {
 
 
 
-
-
 ?>

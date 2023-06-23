@@ -325,8 +325,9 @@ main {
                     <li><a href="index.php">Home</a></li>
                     
                    
-                    <li><a href="AddDayCareDetails.php">Shop Details</a></li>
-                   
+                    <li><a href="AddDayCareDetails.php">Add Day Care Details</a></li>
+                    <li><a href="addimage.php">Add Image</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
                     
                 </ul>
             </nav>

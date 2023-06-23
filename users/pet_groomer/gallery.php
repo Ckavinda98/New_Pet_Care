@@ -72,6 +72,8 @@ $login->GetUserDetails();
 
 // Call the GetBusinessDetails method to display the business details
 $login->GetBusinessDetails();
+
+$user_id = $_SESSION["user_id"];
 ?>
 
 
@@ -87,9 +89,7 @@ $login->GetBusinessDetails();
 	
 
 	<style>
-main{
-  height: 500px;
-}
+
 body {
   background-color: #f8f8f8;
   font-family: Arial, sans-serif;
@@ -100,6 +100,7 @@ body {
     /* Main container styles */
 .second-main {
   display: flex;
+  f
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -132,17 +133,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Business details styles */
-.glass-4 p {
-  margin-bottom: 10px;
-}
-
-/* Price styles */
-.price {
-  font-weight: bold;
-}
-
-
 
     
     .second-main-product{
@@ -156,10 +146,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+ 
+  flex-direction: column;
+ 
 }
 
 .product-container {
@@ -207,10 +196,10 @@ body {
 
 
 .glass img {
-  width: 150px;
+  width: 250px;
   height: 150px;
   object-fit: cover;
-  border-radius: 50%;
+ 
   margin-bottom: 10px;
 }
 
@@ -219,14 +208,7 @@ body {
   margin-bottom: 10px;
 }
 
-.glass p {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
 
-.glass p.price {
-  font-weight: bold;
-}
 
 /* Additional styling for the container */
 
@@ -237,12 +219,21 @@ body {
   background-color: white;
 }
 
-.price {
-  font-weight: bold;
-  color: red;
-}
+
 
 	</style>
+<script>
+  function deleteProduct(product_id) {
+    if (confirm("Are you sure you want to delete this product?")) {
+      // Redirect to delete.php passing the product_id
+      window.location.href = "function.php?id=" + product_id;
+    }
+  }
+</script>
+
+
+
+
 
 </head>
 <body>
@@ -256,8 +247,7 @@ body {
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                   
-                    <li><a href="AddDayCareDetails.php">Add Day Care Details</a></li>
+                    <li><a href="AddgroomerDetails.php">Add Grooming Details</a></li>
                     <li><a href="addimage.php">Add Image</a></li>
                     <li><a href="gallery.php">Gallery</a></li>
                     
@@ -265,7 +255,7 @@ body {
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <!-- <li><a href="register.php">Sing up</a></li> -->
+                    
                     <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
@@ -274,45 +264,50 @@ body {
 
 
 
-<main class="second-main">
-<div class="card">
-  <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-</div>
-  <section class="glass-3">
-    <div class="Dashboard">
-      <!-- Display the user details here -->
-      <?php
-      // Call the GetUserDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $user = $login->GetUserDetails();
-        // Display the user details
-        echo "Username: " . $user["username"] . "<br>";
-        echo "User Type: " . $user["user_type"] . "<br>";
-        // Add any additional user details you want to display
-      }
-      ?>
-    </div>
-  </section>
+<main class="second-main-product">
+  <div class="card">
+    <h2>Gallery</h2>
+  </div>
 
-  <section class="glass-4">
-    <div class="Dashboard">
-      <!-- Display the business details here -->
-      <?php
-      // Call the GetBusinessDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $business = $login->GetBusinessDetails();
-        // Display the business details
-        echo "Business Name: " . $business["name"] . "<br>";
-        echo "Address: " . $business["address"] . "<br>";
-        // Add any additional business details you want to display
+  <div class="product-container">
+    <?php
+    include 'connect.php';
+
+    // Retrieve the shop_id from the session
+    @$shopId = $_SESSION["user_id"];
+
+    // Fetch products from the database based on the shop_id
+    $query = "SELECT * FROM gallery WHERE user_id = '$user_id'";
+    $result = @mysqli_query($conn, $query); // Apply error suppression with @
+
+    // Loop over the products and generate HTML
+    while ($product = mysqli_fetch_assoc($result)) {
+      $product_id = $product['image_id']; // Fetch the image ID
+      
+      $image = 'uploads/' . $product['images'];
+
+      // Check if the image file exists
+      if (file_exists($image)) {
+        ?>
+        <section class="glass">
+          <div class="Dashboard">
+           
+            <img src="<?php echo $image; ?>" alt="" />
+           
+            
+           
+
+          </div>
+        </section>
+        <?php
       }
-      ?>
-    </div>
-  </section>
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+  </div>
 </main>
-
-
-
 
 
 

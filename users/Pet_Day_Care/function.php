@@ -105,7 +105,88 @@ if (move_uploaded_file($file, $destination)) {
 }
 
 
+// adding image to the gallery
 
+if (isset($_POST['submit_img'])) {
+
+  
+  
+
+
+  $userId = $_POST['user_id'];
+  $filename = $_FILES['file']['name'];
+$destination = 'uploads/' . $filename;// name of the uploaded file
+$extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+ // destination of the file on the server
+ $file = $_FILES['file']['tmp_name'];
+ $size = $_FILES['file']['size'];
+
+ // get the file extension
+ 
+ 
+
+ // the physical file on a temporary uploads directory on the server
+ 
+
+ if (!in_array($extension, ['zip', 'pdf', 'docx','jpg','png','jpeg',])) {
+echo "You file extension must be .zip, .pdf or .docx";
+} elseif ($_FILES['file']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+echo "File too large!";
+} else {
+// move the uploaded (temporary) file to the specified destination
+if (move_uploaded_file($file, $destination)) {
+  $sql = "INSERT INTO gallery (user_id, images) VALUES ('$userId', '$filename')";
+
+
+
+  if (mysqli_query($db, $sql)) {
+    echo '<script>alert("Added successfully.");</script>';
+    echo '<script>window.location.href = "addimage.php";</script>';
+  }
+  else {
+    echo '<script>alert("Failed to add Image.");</script>';
+    echo '<script>window.location.href = "addimage.php";</script>';
+  }
+} else {
+  // File upload failed
+  echo '<script>alert("Failed to upload the image.");</script>';
+  echo '<script>window.location.href = "addimage.php";</script>';
+}
+} 
+}
+
+
+// delete product function
+
+include 'connect.php';
+// Check if the product ID is provided
+if (isset($_GET['image_id'])) {
+  $productId = $_GET['image_id'];
+
+  // Perform the deletion query
+  // Modify the query as per your table structure
+  $query = "DELETE FROM gallery WHERE image_id = '$productId'";
+  
+  // Execute the query
+  // Add your database connection code here
+  // ...
+
+  // Check if the deletion was successful
+  if (mysqli_query($db, $query)) {
+    // Deletion successful
+    echo '<script>alert("Product deleted successfully.");</script>';
+    echo '<script>window.location.href = "addimage.php";</script>';
+    
+  } else {
+    // Deletion failed
+    echo '<script>alert("Error deleting product: ' . mysqli_error($db) . '");</script>';
+    echo '<script>window.location.href = "addimage.php";</script>';
+  }
+
+  // Close the database connection
+  mysqli_close($db);
+} 
 
 
 

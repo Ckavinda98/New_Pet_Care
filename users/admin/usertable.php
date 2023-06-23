@@ -53,9 +53,20 @@ function displayUser($result) {
     while ($appointment = mysqli_fetch_assoc($result)) {
       echo '<tr>';
       echo '<td>' . $appointment["user_id"] . '</td>';
-      echo '<td>' . $appointment["username"] . '</td>';
-      echo '<td>' . $appointment["email"] . '</td>';
-      echo '<td>' . $appointment["user_type"] . '</td>';
+      echo '<td><input type="text" name="username" value="' . $appointment["username"] . '"></td>';
+      echo '<td><input type="email" name="email" value="' . $appointment["email"] . '"></td>';
+      echo '<td>
+              <select name="user_type">
+                <option value="admin" ' . ($appointment["user_type"] === "admin" ? "selected" : "") . '>Admin</option>
+                <option value="Pet Owner" ' . ($appointment["user_type"] === "Pet Owner" ? "selected" : "") . '>Pet Owner</option>
+                <option value="Pet Shop" ' . ($appointment["user_type"] === "Pet Shop" ? "selected" : "") . '>Pet Shop</option>
+                <option value="Veterinarian" ' . ($appointment["user_type"] === "Veterinarian" ? "selected" : "") . '>Veterinarian</option>
+                <option value="Pharmacistr" ' . ($appointment["user_type"] === "Pharmacist" ? "selected" : "") . '>Pharmacist</option>
+                <option value="Pet Grooming" ' . ($appointment["user_type"] === "Pet Owner" ? "selected" : "") . '>Pet Grooming</option>
+                <option value="Pet DayCare" ' . ($appointment["user_type"] === "Pet DayCare" ? "selected" : "") . '>Pet Day Care</option>
+                <option value="Serivce Provider" ' . ($appointment["user_type"] === "Serivce Provider" ? "selected" : "") . '>Serivce Provider</option>
+              </select>
+            </td>';
       
 
       
@@ -255,6 +266,27 @@ main {
   cursor: pointer;
 }
 
+
+.card {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #9f2485;;
+  padding: 10px;
+ 
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 24px;
+  margin: 0;
+  color: white;
+}
+
+
 	</style>
 <script>
   function updateStatus(appointmentId, newStatus) {
@@ -365,9 +397,9 @@ function updateStatus(appointmentId, newStatus) {
 <main>
   <section class="glass">
     <div class="Dashboard">
-      <center>
-        <h1 style="margin-bottom: 30px;">All Users</h1>
-      </center>
+    <div class="card">
+    <h2>User Table</h2>
+  </div>
       <?php displayUser($result); ?>
     </div>
   </section>

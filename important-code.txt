@@ -316,3 +316,15 @@ ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
     ?>
   </div>
 </main>
+
+
+ALTER TABLE `pet_day_care` ADD COLUMN `images` VARCHAR(255) DEFAULT NULL;
+ALTER TABLE `pet_groomer` ADD COLUMN `images` VARCHAR(255) DEFAULT NULL;
+
+CREATE TABLE Gallery (
+  image_id INT AUTO_INCREMENT,
+  images VARCHAR(255) NOT NULL,
+  user_id INT,
+  PRIMARY KEY (image_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
