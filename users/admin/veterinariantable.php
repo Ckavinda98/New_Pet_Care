@@ -34,7 +34,7 @@ $user_id = $_SESSION["user_id"];
 
 
 // Fetch user data for the logged user
-$query = "SELECT * FROM user";
+$query = "SELECT * FROM veterinarian";
 $result = mysqli_query($conn, $query);
 
 // Function to display user data in a table
@@ -42,10 +42,18 @@ function displayUser($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
     <tr>
-      <th>User ID</th>
-      <th>User Name</th>
+    <th>User ID</th>
+   
+      <th>Pharmacy Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Postal Code</th>
+      <th>Contact Number</th>
       <th>Email</th>
-      <th>User Type</th>
+      <th>Website</th>
+      <th>Description</th>
+      <th>Lattitude</th>
+      <th>Longitude</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>';
@@ -53,21 +61,18 @@ function displayUser($result) {
     while ($user = mysqli_fetch_assoc($result)) {
       echo '<tr>';
       echo '<td>' . $user["user_id"] . '</td>';
-      echo '<td><input type="text" name="username[' . $user["user_id"] . ']" value="' . $user["username"] . '"></td>';
+      
+      echo '<td><input type="text" name="username[' . $user["user_id"] . ']" value="' . $user["vet_name"] . '"></td>';
+      echo '<td><input type="text" name="address[' . $user["user_id"] . ']" value="' . $user["address"] . '"></td>';
+      echo '<td><input type="text" name="city[' . $user["user_id"] . ']" value="' . $user["city"] . '"></td>';
+      echo '<td><input type="text" name="postal_code[' . $user["user_id"] . ']" value="' . $user["postal_code"] . '"></td>';
+      echo '<td><input type="text" name="contact_number[' . $user["user_id"] . ']" value="' . $user["contact_number"] . '"></td>';
       echo '<td><input type="email" name="email[' . $user["user_id"] . ']" value="' . $user["email"] . '"></td>';
-      echo '<td>
-              <select name="user_type[' . $user["user_id"] . ']">
-                <option value="admin" ' . ($user["user_type"] === "admin" ? "selected" : "") . '>Admin</option>
-                <option value="Pet Owner" ' . ($user["user_type"] === "Pet Owner" ? "selected" : "") . '>Pet Owner</option>
-                <option value="Pet Shop" ' . ($user["user_type"] === "Pet Shop" ? "selected" : "") . '>Pet Shop</option>
-                <option value="Veterinarian" ' . ($user["user_type"] === "Veterinarian" ? "selected" : "") . '>Veterinarian</option>
-                <option value="Pharmacist" ' . ($user["user_type"] === "Pharmacist" ? "selected" : "") . '>Pharmacist</option>
-                <option value="Pet Grooming" ' . ($user["user_type"] === "Pet Grooming" ? "selected" : "") . '>Pet Grooming</option>
-                <option value="Pet DayCare" ' . ($user["user_type"] === "Pet DayCare" ? "selected" : "") . '>Pet Day Care</option>
-                <option value="Serivce Provider" ' . ($user["user_type"] === "Serivce Provider" ? "selected" : "") . '>Service Provider</option>
-              </select>
-            </td>';
-    
+      echo '<td><input type="text" name="website[' . $user["user_id"] . ']" value="' . $user["website"] . '"></td>';
+      echo '<td><input type="text" name="description[' . $user["user_id"] . ']" value="' . $user["description"] . '"></td>';
+      echo '<td><input type="text" name="latitude[' . $user["user_id"] . ']" value="' . $user["latitude"] . '"></td>';
+      echo '<td><input type="text" name="longitude[' . $user["user_id"] . ']" value="' . $user["longitude"] . '"></td>';
+
       echo '<td>';
       echo '<button class="edit-button" onclick="updateUser(' . $user["user_id"] . ')">Edit</button>';
       echo '</td>';
@@ -168,7 +173,7 @@ body {
   margin: 50px;
   /* background: white; */
   min-height: 80vh;
-  width: 80%;
+  width: 100%;
   background-color: white; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
@@ -249,13 +254,14 @@ main {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      
+      font-size: 10px;
     }
 
     th,
     td {
       padding: 10px;
       text-align: left;
+      font-size: 10px;
 
     }
 
@@ -266,6 +272,7 @@ main {
 
     tbody tr:nth-child(even) {
       background-color: #f2f2f2;
+      font-size: 10px;
     }
     /* Green button */
 .green-button {
@@ -325,7 +332,7 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
   width: 100%;
-  font-size: 16px;
+  font-size: 10px;
   margin-bottom: 10px;
 }
 
@@ -356,11 +363,18 @@ input[type="submit"]:hover {
   console.log('updateUser function called with userId:', userId);
   var username = document.getElementsByName('username[' + userId + ']')[0].value;
   var email = document.getElementsByName('email[' + userId + ']')[0].value;
-  var userType = document.getElementsByName('user_type[' + userId + ']')[0].value;
+  var address = document.getElementsByName('address[' + userId + ']')[0].value;
+  var city = document.getElementsByName('city[' + userId + ']')[0].value;
+  var postalCode = document.getElementsByName('postal_code[' + userId + ']')[0].value;
+  var contactNumber = document.getElementsByName('contact_number[' + userId + ']')[0].value;
+  var website = document.getElementsByName('website[' + userId + ']')[0].value;
+  var description = document.getElementsByName('description[' + userId + ']')[0].value;
+  var latitude = document.getElementsByName('latitude[' + userId + ']')[0].value;
+  var longitude = document.getElementsByName('longitude[' + userId + ']')[0].value;
 
   // Perform the update using AJAX
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'update_user.php', true);
+  xhr.open('POST', 'update_vet.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -368,7 +382,32 @@ input[type="submit"]:hover {
       alert(xhr.responseText); // Display a success message or handle any errors
     }
   };
-  xhr.send('user_id=' + userId + '&username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + '&user_type=' + encodeURIComponent(userType));
+
+  var params =
+    'user_id=' +
+    userId +
+    '&username=' +
+    encodeURIComponent(username) +
+    '&email=' +
+    encodeURIComponent(email) +
+    '&address=' +
+    encodeURIComponent(address) +
+    '&city=' +
+    encodeURIComponent(city) +
+    '&postal_code=' +
+    encodeURIComponent(postalCode) +
+    '&contact_number=' +
+    encodeURIComponent(contactNumber) +
+    '&website=' +
+    encodeURIComponent(website) +
+    '&description=' +
+    encodeURIComponent(description) +
+    '&latitude=' +
+    encodeURIComponent(latitude) +
+    '&longitude=' +
+    encodeURIComponent(longitude);
+
+  xhr.send(params);
 }
 
 
@@ -421,7 +460,7 @@ input[type="submit"]:hover {
   <section class="glass">
     <div class="Dashboard">
     <div class="card">
-    <h2>User Table</h2>
+    <h2>Veterinarian Table</h2>
   </div>
       <?php displayUser($result); ?>
     </div>

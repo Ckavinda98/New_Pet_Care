@@ -311,6 +311,13 @@ main {
 
 
 <main>
+<section class="glass-for-button-list">
+    
+    <button class="explore-btn" onclick="location.href='allAoppiment.php'">Appointments Table</button>
+    <button class="explore-btn" onclick="location.href='Allprescription.php'">Prescription Table</button>
+    
+    
+      </section>
   <section class="glass">
     <div class="Dashboard">
       <center>

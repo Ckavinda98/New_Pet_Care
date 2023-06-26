@@ -31,55 +31,72 @@ $login->SessionCheck();
 // Get the user_id from the session
 $user_id = $_SESSION["user_id"];
 
-// Fetch appointment data for the logged user
-$query1 = "SELECT * FROM appointments";
-$result1 = mysqli_query($conn, $query1);
 
 
-
-// Fetch appointment data for the logged user
-$query = "SELECT * FROM prescriptions";
+// Fetch user data for the logged user
+$query = "SELECT * FROM pet_day_care";
 $result = mysqli_query($conn, $query);
 
-// Function to display appointment data in a table
-function displayPrescriptions($result) {
+// Function to display user data in a table
+function displayUser($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
-            <tr>
-              <th>Prescription ID</th>
-              <th>Pet Owner Name</th>
-              <th>Prescription Date</th>
-              <th>Prescription Time</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>';
+    <tr>
+    <th>User ID</th>
+   
+      <th>Day Care Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Postal Code</th>
+      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Description</th>
+      <th>Lattitude</th>
+      <th>Longitude</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>';
 
-    while ($appointment = mysqli_fetch_assoc($result)) {
+    while ($user = mysqli_fetch_assoc($result)) {
       echo '<tr>';
-      echo '<td>' . $appointment["prescription_id"] . '</td>';
-      echo '<td>' . $appointment["pet_owner_name"] . '</td>';
-      echo '<td>' . $appointment["prescription_date"] . '</td>';
-      echo '<td>' . $appointment["prescription_time"] . '</td>';
-      echo '<td>' . $appointment["status"] . '</td>';
+      echo '<td>' . $user["user_id"] . '</td>';
+      
+      echo '<td><input type="text" name="username[' . $user["user_id"] . ']" value="' . $user["day_care_name"] . '"></td>';
+      echo '<td><input type="text" name="address[' . $user["user_id"] . ']" value="' . $user["address"] . '"></td>';
+      echo '<td><input type="text" name="city[' . $user["user_id"] . ']" value="' . $user["city"] . '"></td>';
+      echo '<td><input type="text" name="postal_code[' . $user["user_id"] . ']" value="' . $user["postal_code"] . '"></td>';
+      echo '<td><input type="text" name="contact_number[' . $user["user_id"] . ']" value="' . $user["contact_number"] . '"></td>';
+      echo '<td><input type="email" name="email[' . $user["user_id"] . ']" value="' . $user["email"] . '"></td>';
+      echo '<td><input type="text" name="website[' . $user["user_id"] . ']" value="' . $user["website"] . '"></td>';
+      echo '<td><input type="text" name="description[' . $user["user_id"] . ']" value="' . $user["description"] . '"></td>';
+      echo '<td><input type="text" name="latitude[' . $user["user_id"] . ']" value="' . $user["latitude"] . '"></td>';
+      echo '<td><input type="text" name="longitude[' . $user["user_id"] . ']" value="' . $user["longitude"] . '"></td>';
 
       echo '<td>';
-      
-      // Display different buttons based on the status
-      if ($appointment["status"] == "pending") {
-        echo '<button class="green-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'accepted\')">Accept</button>';
-      } elseif ($appointment["status"] == "accepted") {
-        echo '<button class="red-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'pending\')">Undo</button>';
-      }
-      
+      echo '<button class="edit-button" onclick="updateUser(' . $user["user_id"] . ')">Edit</button>';
       echo '</td>';
+    
+      echo '<td>';
+      echo '<form action="delete_user.php" method="post">';
+      echo '<input type="hidden" name="user_id" value="' . $user["user_id"] . '">';
+      echo '<button class="delete-button" type="submit">Delete</button>';
+      echo '</form>';
+      echo '</td>';
+    
       echo '</tr>';
     }
+    
 
-    echo '</table>';
+echo '</table>';
+
+
+
   } else {
-    echo 'No appointments found for the logged user.';
+    echo 'No users found.';
   }
 }
+
 // Display the appointment data
 // displayAppointments($result);
 
@@ -103,6 +120,13 @@ mysqli_close($conn);
 	
 
 	<style>
+
+body {
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
     
 .first-main {
   position: relative;
@@ -128,15 +152,29 @@ mysqli_close($conn);
 
   opacity: 0.9;
 }
-	
+ .glass-for-button-list{
+  margin: 50px;
+  /* background: white; */
+  min-height: 10vh;
+  width: 80%;
+  background-color: white; /* Set a light background color for the body section */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
+  border-radius: 0.5rem;
+  z-index: 2;
+  /* backdrop-filter: blur(2rem); */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+ }	
 
 .glass{
   
   margin: 50px;
   /* background: white; */
   min-height: 80vh;
-  width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  width: 100%;
+  background-color: white; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -216,12 +254,15 @@ main {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
+      font-size: 10px;
     }
 
     th,
     td {
       padding: 10px;
       text-align: left;
+      font-size: 10px;
+
     }
 
     th {
@@ -231,6 +272,7 @@ main {
 
     tbody tr:nth-child(even) {
       background-color: #f2f2f2;
+      font-size: 10px;
     }
     /* Green button */
 .green-button {
@@ -260,28 +302,83 @@ main {
   cursor: pointer;
 }
 
+
+.card {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #9f2485;;
+  padding: 10px;
+ 
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 24px;
+  margin: 0;
+  color: white;
+}
+
+/* new input styles */
+
+input[type="text"],
+input[type="email"],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+select {
+  height: 38px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
 	</style>
 <script>
-  function updateStatus(appointmentId, newStatus) {
-    // Send an AJAX request to update the appointment status
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4) {
-        if (this.status == 200) {
-          // Success message
-          alert("Appointment status updated.");
-          window.location.reload(true);
-        } else {
-          // Error message
-          alert("Appointment status update failed.");
-          window.location.reload(true);
-        }
-      }
-    };
-    xhttp.open("POST", "update_status.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("appointment_id=" + appointmentId + "&status=" + newStatus);
-  }
+ 
+
+ function updateUser(userId) {
+  console.log('updateUser function called with userId:', userId);
+  var username = document.getElementsByName('username[' + userId + ']')[0].value;
+  var email = document.getElementsByName('email[' + userId + ']')[0].value;
+  var userType = document.getElementsByName('user_type[' + userId + ']')[0].value;
+
+  // Perform the update using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'function.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      // Handle the response from the server
+      alert(xhr.responseText); // Display a success message or handle any errors
+    }
+  };
+  xhr.send('user_id=' + userId + '&username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + '&user_type=' + encodeURIComponent(userType));
+}
+
+
 </script>
 
 </head>
@@ -319,17 +416,21 @@ main {
 <main>
 <section class="glass-for-button-list">
     
-    <button class="explore-btn" onclick="location.href='allAoppiment.php'">Appointments Table</button>
-    <button class="explore-btn" onclick="location.href='Allprescription.php'">Prescription Table</button>
-    
-    
-      </section>
+<button class="explore-btn" onclick="location.href='usertable.php'">User Table</button>
+<button class="explore-btn" onclick="location.href='petshoptable.php'">Pet Shop Table</button>
+<button class="explore-btn" onclick="location.href='petgroomertable.php'">Pet Groomer Table</button>
+<button class="explore-btn" onclick="location.href='petdaycaretable.php'">Pet Day Care Table</button>
+<button class="explore-btn" onclick="location.href='pharmacytable.php'">Pharmacy Table</button>
+<button class="explore-btn" onclick="location.href='veterinariantable.php'">Veterinarian Table</button>
+
+  </section>
+  
   <section class="glass">
     <div class="Dashboard">
-      <center>
-        <h1 style="margin-bottom: 30px;">All Prescriptions</h1>
-      </center>
-      <?php displayPrescriptions($result); ?>
+    <div class="card">
+    <h2>Pet Dat Care Table</h2>
+  </div>
+      <?php displayUser($result); ?>
     </div>
   </section>
 </main>
