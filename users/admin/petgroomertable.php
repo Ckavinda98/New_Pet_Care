@@ -367,7 +367,7 @@ input[type="submit"]:hover {
 
   // Perform the update using AJAX
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'function.php', true);
+  xhr.open('POST', 'update_grooming.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
