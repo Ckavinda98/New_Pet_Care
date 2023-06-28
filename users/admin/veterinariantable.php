@@ -44,7 +44,7 @@ function displayUser($result) {
     <tr>
     <th>User ID</th>
    
-      <th>Pharmacy Name</th>
+      <th>Veterinarian Name</th>
       <th>Address</th>
       <th>City</th>
       <th>Postal Code</th>

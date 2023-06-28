@@ -25,13 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $longitude = $_POST["longitude"];
   
     // Perform the update query
-    $query = "UPDATE veterinarian SET vet_name='$username', email='$email', address='$address', city='$city', postal_code='$postalCode', contact_number='$contactNumber', website='$website', description='$description', latitude='$latitude', longitude='$longitude' WHERE user_id='$userId'";
+    $query = "UPDATE pet_day_care SET day_care_id='$username', email='$email', address='$address', city='$city', postal_code='$postalCode', contact_number='$contactNumber', website='$website', description='$description', latitude='$latitude', longitude='$longitude' WHERE user_id='$userId'";
   
     // Execute the query
     if (mysqli_query($db, $query)) {
         echo 'User updated successfully.';
         // echo '<script>alert("User updated successfully.");</script>';
-        echo '<script>window.location.href = "usertable.php";</script>';
+        // echo '<script>window.location.href = "usertable.php";</script>';
     } else {
         echo '<script>alert("Error updating user: ' . mysqli_error($db) . '");</script>';
         echo '<script>window.location.href = "usertable.php";</script>';

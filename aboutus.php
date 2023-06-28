@@ -9,14 +9,52 @@
 	
 
 	<style>
+        .first-main-about-m {
+            position: relative;
+  font-family: "Poppins", sans-serif;
+
+  background-image: url(images/bgpattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.first-main-about-m::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%);
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+
+  opacity: 0.9;
+}
+.first-main-about {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+
+ 
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 2px solid black; */
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+}
+
     .glass-9 {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  
  padding: 10px;
-  background: white;
+ 
   /* margin-right: 50px; */
 
-  height: 90vh;
+  height: 60vh;
   width: 80%;
 
   border-radius: 2rem;
@@ -27,24 +65,50 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 2px solid #9f2485;
+  
+  
 }
 	
   .glass-9 h1 {
   padding: 3px;
   font-weight: bold;
-  color: #9f2485;
+  /* color: #9f2485; */
+  color: white;
   font-size: 30px;
   
 }
 
 .glass-9 p {
+    color: white;
   padding: 3px;
   font-weight: bold;
-  color: #9f2485;
-  line-height: 1.3;
+  /* color: #9f2485; */
+  line-height: 1.5;
   font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
  
+}
+.glass-10 {
+  margin-top: 10px;
+  margin-bottom: 50px;
+ padding: 10px;
+ 
+  /* margin-right: 50px; */
+margin-left: 10px;
+  height: 250px;
+  width: 250px;
+background-color: white;
+  border-radius: 2rem;
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(images/bgpattern3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid #9f2485;
 }
 
 	</style>
@@ -76,7 +140,7 @@
 </header>
 
 
-<main class="first-main">
+<main class="first-main-about-m">
 <section class="glass-9">
 		<div class="Dashboard">
 			
@@ -98,11 +162,43 @@
 		</div>
 		
 	</section>
+<main class="first-main-about">
+    <section class="glass-10">
+		<div class="Dashboard">
+		
+     
+		</div>
+		
+	</section>
+    <section class="glass-10">
+		<div class="Dashboard">
+		
+     
+		</div>
+		
+	</section>
+    <section class="glass-10">
+		<div class="Dashboard">
+		
+     
+		</div>
+		
+	</section>
+    <section class="glass-10">
+		<div class="Dashboard">
+		
+     
+		</div>
+		
+	</section>
+	</main>
+</main>
+
+
+
 
  
 	
-</main>
-
 
 
 <footer>
