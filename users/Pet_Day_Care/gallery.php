@@ -142,7 +142,7 @@ main{
     .second-main-product{
   position: relative;
   font-family: "Poppins", sans-serif;
-
+  height: 70vh;
   /* background-image: url(images/bgpattern.png);
   background-repeat: no-repeat;
   background-size: cover; */
@@ -285,27 +285,36 @@ main{
     $query = "SELECT * FROM gallery WHERE user_id = '$user_id'";
     $result = @mysqli_query($conn, $query); // Apply error suppression with @
 
+    // Variable to track if any images were displayed
+    $imageDisplayed = false;
+
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
       $product_id = $product['image_id']; // Fetch the image ID
-      
       $image = 'uploads/' . $product['images'];
 
       // Check if the image file exists
       if (file_exists($image)) {
+        $imageDisplayed = true;
         ?>
         <section class="glass">
           <div class="Dashboard">
-           
             <img src="<?php echo $image; ?>" alt="" />
-           
-            
-           
-
           </div>
         </section>
         <?php
       }
+    }
+
+    // Check if any images were displayed
+    if (!$imageDisplayed) {
+      ?>
+      <section class="glass">
+        <div class="Dashboard">
+          <p>No images available.</p>
+        </div>
+      </section>
+      <?php
     }
 
     // Close the database connection
@@ -314,9 +323,6 @@ main{
   </div>
 </main>
 
-
-
-</main>
 
 
 

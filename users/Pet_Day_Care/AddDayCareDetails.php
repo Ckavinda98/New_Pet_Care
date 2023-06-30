@@ -395,8 +395,14 @@ main {
     <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group">
-    <label for="opening_hours">Opening Hours:</label>
-    <input type="text" id="opening_hours" name="opening_hours">
+    <label for="opening_hours">Opening Time:</label>
+    <input type="time" id="opening_hours" name="opening_time">
+    
+  </div>
+
+<div class="form-group">
+    <label for="opening_hours">Closing Time:</label>
+    <input type="time" id="opening_time" name="closing_time">
   </div>
   <div class="form-group full-width">
     <button type="submit" name="submit" class="btn-submit">Submit</button>

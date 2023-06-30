@@ -234,8 +234,8 @@ border:2px solid rgba(0, 0, 0, 0.432);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
+  background-color: #ffffff; /* Set a light background color for the body section */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
   /* backdrop-filter: blur(2rem); */
@@ -362,7 +362,7 @@ main {
       <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
       <input type="hidden" name="busniess_id" value="<?php echo $businessId; ?>"><br>
   <div class="form-group">
-    <label for="shop_name">Groomer Name:</label>
+    <label for="shop_name">Grooming Center Name:</label>
     <input type="text" id="shop_name" name="groomer_name" required>
   </div>
   <div class="form-group">
@@ -404,8 +404,14 @@ main {
     <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group">
-    <label for="opening_hours">Opening Hours:</label>
-    <input type="text" id="opening_hours" name="opening_hours">
+    <label for="opening_hours">Opening Time:</label>
+    <input type="time" id="opening_hours" name="opening_time">
+    
+  </div>
+
+<div class="form-group">
+    <label for="opening_hours">Closing Time:</label>
+    <input type="time" id="opening_time" name="closing_time">
   </div>
   <div class="form-group full-width">
     <button type="submit" name="submit" class="btn-submit">Submit</button>

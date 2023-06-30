@@ -328,3 +328,42 @@ CREATE TABLE Gallery (
   PRIMARY KEY (image_id),
   FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
+
+
+ALTER TABLE veterinarian
+
+ADD COLUMN office VARCHAR(255);
+
+ALTER TABLE pet_day_care
+ADD COLUMN opening_time TIME NOT NULL,
+ADD COLUMN closing_time TIME NOT NULL;
+
+
+$Opening_time = mysqli_real_escape_string($db, $_POST['opening_time']);
+  $Closing_time = mysqli_real_escape_string($db, $_POST['closing_time']);
+
+
+opening_time, closing_time
+
+'$Opening_time', '  $Closing_time'
+
+<div class="form-group">
+    <label for="opening_hours">Opening Time:</label>
+    <input type="time" id="opening_hours" name="opening_time">
+    
+  </div>
+
+<div class="form-group">
+    <label for="opening_hours">Closing Time:</label>
+    <input type="time" id="opening_time" name="closing_time">
+  </div>
+
+
+@PutMapping("/tableProduct/email/{ns}")
+    public ResponseEntity<?> updateEmail(@PathVariable String ns) {
+        DES_Product updatedProduct = DES_productService.updateEmail(ns);
+
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+

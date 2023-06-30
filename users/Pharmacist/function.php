@@ -19,7 +19,8 @@ if (isset($_POST['submit'])) {
   $Latitude = mysqli_real_escape_string($db, $_POST['latitude']);
   $Longitude = mysqli_real_escape_string($db, $_POST['longitude']);
   $Description = mysqli_real_escape_string($db, $_POST['description']);
-  // $Opening_hours = mysqli_real_escape_string($db, $_POST['opening_hours']);
+  $Opening_time = mysqli_real_escape_string($db, $_POST['opening_time']);
+  $Closing_time = mysqli_real_escape_string($db, $_POST['closing_time']);
   $businessId = mysqli_real_escape_string($db, $_POST['busniess_id']);
   $userId = mysqli_real_escape_string($db, $_POST['user_id']);
 
@@ -38,9 +39,9 @@ if (isset($_POST['submit'])) {
 
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO pharmacist (pharmacist_name, address, city, postal_code, contact_number, 
-  email, website, description, latitude, longitude, busniess_id, user_id)
+  email, website, description, latitude, longitude, busniess_id, user_id, opening_time, closing_time)
           VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
-          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId')";
+          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId', '$Opening_time', '  $Closing_time')";
 
 if (mysqli_query($db, $sql)) {
  

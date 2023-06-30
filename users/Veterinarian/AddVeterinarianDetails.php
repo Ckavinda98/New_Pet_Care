@@ -335,9 +335,8 @@ main {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="AddVeterinarianDetails.php">Veterinarian Details</a></li>
                    
-                    <li><a href="VetAppointment.php">Appoimnets</a></li>
-                    <li><a href=".php">Product Details</a></li>
-                    <li><a href=".php">Profile</a></li>
+                    <li><a href="VetAppointment.php">Appointments</a></li>
+                    
                     
                 </ul>
             </nav>
@@ -363,7 +362,7 @@ main {
       <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
       <input type="hidden" name="busniess_id" value="<?php echo $businessId; ?>"><br>
   <div class="form-group">
-    <label for="shop_name">Pharmacy Name:</label>
+    <label for="shop_name">Veterinarian Name:</label>
     <input type="text" id="shop_name" name="shop_name" required>
   </div>
   <div class="form-group">
@@ -405,8 +404,18 @@ main {
     <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group">
-    <label for="opening_hours">Opening Hours:</label>
-    <input type="text" id="opening_hours" name="opening_hours">
+    <label for="opening_hours">Opening Time:</label>
+    <input type="time" id="opening_hours" name="opening_time">
+    
+  </div>
+  <div class="form-group">
+    <label for="opening_hours">Closing Time:</label>
+    <input type="time" id="closing_hours" name="closing_time">
+    
+  </div>
+  <div class="form-group">
+    <label for="office">Office:</label>
+    <input type="text" id="office" name="office">
   </div>
   <div class="form-group full-width">
     <button type="submit" name="submit" class="btn-submit">Submit</button>

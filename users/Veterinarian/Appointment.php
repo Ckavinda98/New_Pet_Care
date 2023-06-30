@@ -335,9 +335,8 @@ main {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="AddVeterinarianDetails.php">Veterinarian Details</a></li>
                    
-                    <li><a href="VetAppointment.php">Appoimnets</a></li>
-                    <li><a href=".php">Product Details</a></li>
-                    <li><a href=".php">Profile</a></li>
+                    <li><a href="VetAppointment.php">Appointments</a></li>
+                    
                     
                 </ul>
             </nav>

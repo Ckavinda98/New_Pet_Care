@@ -177,7 +177,7 @@ border-radius: 10px;
     <section class="glass-1">
 		<div class="Dashboard">
         <center>
-				<h1 style="margin-bottom: 30px;  border:2px solid #9f2485;; border-radius:10px; width: 90%; ">Notice</h1>
+				<h1 style="margin-bottom: 30px;  border:2px solid #9f2485;; border-radius:10px; width: 90%; color: #9f2485;">Notice</h1>
 			</center>
 		<ul>
             <li>Use Your Registration Number</li>

@@ -98,6 +98,7 @@ body {
     /* Main container styles */
 .second-main {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -141,10 +142,10 @@ body {
 }
 
 /* Additional styles */
-.container {
+/* .container {
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
     
     .second-main-product{
@@ -198,7 +199,7 @@ body {
   
     background-color: white;
   display: flex;
-  flex-direction: column;
+  
   align-items: center;
   text-align: center;
   margin: 20px;
@@ -272,11 +273,14 @@ body {
         </div>
     </div>
 </header>
+
+
 <main class="second-main">
 <div class="card">
   <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
 </div>
-  <section class="glass-3">
+ <div class="glass">
+ <section class="glass-3">
     <div class="Dashboard">
       <!-- Display the user details here -->
       <?php
@@ -307,6 +311,7 @@ body {
       ?>
     </div>
   </section>
+ </div>
 </main>
 
 

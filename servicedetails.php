@@ -73,6 +73,8 @@ if (mysqli_num_rows($result) > 0) {
   $description = $service['description'];
   $longitude = $service['longitude'];
   $latitude = $service['latitude'];
+  $Opening_time = $service['opening_time'];
+  $Closing_time = $service['closing_time'];
 
   // Close the database connection
   mysqli_close($conn);
@@ -373,18 +375,33 @@ main {
         <p><?php echo $description; ?></p>
       </div>
       <div class="service-details-item">
+        <h3>Available Time:</h3>
+        <p><?php echo $Opening_time; ?></p>
+        <p><?php echo $Closing_time; ?></p>
+      </div>
+      <div class="service-details-item">
         <h3>Location:</h3>
         <div id="map"></div>
+        <button class="map-button" onclick="openLocation(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">Location</button>
       </div>
     </div>
   </div>
 </main>
     
 
+</script>
 
+<!-- Include the Google Maps API script -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 
 
 <script>
+  // Open the location in Google Maps
+  function openLocation(latitude, longitude) {
+    var url = "https://www.google.com/maps/search/?api=1&query=" + latitude + "," + longitude;
+    window.open(url, "_blank");
+  }
+
   // Initialize and display the map with the provided longitude and latitude
   function initMap() {
     var location = { lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?> };
@@ -399,8 +416,7 @@ main {
   }
 </script>
 
-<!-- Include the Google Maps API script -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
 
 
 

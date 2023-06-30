@@ -74,7 +74,7 @@ $login->GetUserDetails();
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  height: 100%;
+  height: 70vh;
   gap: 20px;
 }
 
@@ -268,12 +268,7 @@ $login->GetUserDetails();
     </div>
   </section>
 
-  <section class="glass-4">
-    <div class="Dashboard">
-    
-    
-    </div>
-  </section>
+  
 </main>
 
 

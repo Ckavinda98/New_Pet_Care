@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding: 10px;
   background-color: #ffffff;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: #ffffff; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   /* border-radius: 2rem; */
 }
@@ -115,6 +115,7 @@ footer {
   background-color: #ffffff;
   min-height: 20vh;
   color: #9f2485;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 .footer {
   font-size: 14px;
@@ -145,6 +146,7 @@ footer {
 .copyright {
   padding-top: 5px;
   text-align: center;
+  font-weight: bold;
 }
 
 table {

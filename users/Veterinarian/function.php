@@ -19,7 +19,9 @@ if (isset($_POST['submit'])) {
   $Latitude = mysqli_real_escape_string($db, $_POST['latitude']);
   $Longitude = mysqli_real_escape_string($db, $_POST['longitude']);
   $Description = mysqli_real_escape_string($db, $_POST['description']);
-  // $Opening_hours = mysqli_real_escape_string($db, $_POST['opening_hours']);
+  $Office = mysqli_real_escape_string($db, $_POST['office']);
+  $Opening_time = mysqli_real_escape_string($db, $_POST['opening_time']);
+  $Closing_time = mysqli_real_escape_string($db, $_POST['closing_time']);
   $businessId = mysqli_real_escape_string($db, $_POST['busniess_id']);
   $userId = mysqli_real_escape_string($db, $_POST['user_id']);
 
@@ -32,15 +34,15 @@ if (isset($_POST['submit'])) {
   if ($user) {
     
     echo '<script>alert("Shop Name already exists. Please choose a different Name.");</script>';
-    echo '<script>window.location.href = "index.php";</script>';
+    echo '<script>window.location.href = "AddVeterinarianDetails.php";</script>';
     exit();
   }
 
   // Add the values using SQL query with POST method
   $sql = "INSERT INTO veterinarian (vet_name, address, city, postal_code, contact_number, 
-  email, website, description, latitude, longitude, busniess_id, user_id)
+  email, website, description, latitude, longitude, busniess_id, user_id, office, opening_time, closing_time)
           VALUES ('$Shop_name', '$Address', '$City', '$Postal_code', '$Contact_number', '$Email', 
-          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId')";
+          '$Website', '$Description', '$Latitude', ' $Longitude', ' $businessId', '$userId', '$Office', '$Opening_time', '  $Closing_time')";
 
 if (mysqli_query($db, $sql)) {
  

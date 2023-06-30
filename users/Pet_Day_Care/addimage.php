@@ -395,28 +395,39 @@ function deleteProduct(product_id) {
     $query = "SELECT * FROM gallery WHERE user_id = '$user_id'";
     $result = @mysqli_query($conn, $query); // Apply error suppression with @
 
+    // Variable to track if any images were displayed
+    $imageDisplayed = false;
+
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
       $product_id = $product['image_id']; // Fetch the product ID
-      
       $image = 'uploads/' . $product['images'];
 
       // Check if the image file exists
       if (file_exists($image)) {
+        $imageDisplayed = true;
         ?>
         <section class="glass">
           <div class="Dashboard">
-           
             <img src="<?php echo $image; ?>" alt="" />
-           
             <p></p>
             <p></p>
             <button class="delete-button" onclick="deleteProduct(<?php echo $product['image_id']; ?>)">Delete</button>
-
           </div>
         </section>
         <?php
       }
+    }
+
+    // Check if any images were displayed
+    if (!$imageDisplayed) {
+      ?>
+      <section class="glass">
+        <div class="Dashboard">
+          <p>No images available.</p>
+        </div>
+      </section>
+      <?php
     }
 
     // Close the database connection
@@ -424,6 +435,7 @@ function deleteProduct(product_id) {
     ?>
   </div>
 </main>
+
 
 
 

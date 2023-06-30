@@ -141,10 +141,10 @@ body {
 }
 
 /* Additional styles */
-.container {
+/* .container {
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
     
     .second-main-product{
