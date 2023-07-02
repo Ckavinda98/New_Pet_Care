@@ -147,23 +147,19 @@ border-radius: 10px;
 <header>
     <div class="header">
         <div class="logo-container">
-            <img src="images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
+            <img src="../../images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
         </div>
         <div class="navbar-buttons">
             <nav>
                 <ul class="navbar">
-                    <li><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="front-end-B-registration.php">Register</a>
-</li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="index.php">Profile</a></li>
+                    <!-- <li><a href="index.php">Profile</a></li> -->
                     <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
@@ -263,10 +259,10 @@ border-radius: 10px;
 				<div class="col-3">
                 <h4 style="text-align:center;">Follow Us</h4>
 		<div class="colo-3list">
-        <a href="https://www.facebook.com">	<img src="images/FB.png" width="40px" height="40px" alt=""></a>
-		<a href="www.twitter.com">	    <img src="images/TW.png" width="40px" height="40px" alt=""></a>
-		<a href="www.instagram.com">	<img src="images/IG.png" width="40px" height="40px" alt=""></a>
-		<a href="www.lindkin.com"> 	<img src="images/LK.png" width="40px" height="40px" alt=""></a>
+        <a href="https://www.facebook.com">	<img src="../../images/FB.png" width="40px" height="40px" alt=""></a>
+		<a href="www.twitter.com">	    <img src="../../images/TW.png" width="40px" height="40px" alt=""></a>
+		<a href="www.instagram.com">	<img src="../../images/IG.png" width="40px" height="40px" alt=""></a>
+		<a href="www.lindkin.com"> 	<img src="../../images/LK.png" width="40px" height="40px" alt=""></a>
         </div>
                 </div>
 			</div>

@@ -200,8 +200,8 @@
 <section class="glass-1">
 		<div class="Dashboard">
 			
-		<h1>Welcome to Mobile Vet!</h1>
-        <button type="submit" class="explore-btn" name="submit">Explore</button>
+		<h1>Welcome to Pet Care!</h1>
+        <button class="explore-btn"   onclick="location.href='service.php'" >More</button>
 		</div>
 		
 	</section>

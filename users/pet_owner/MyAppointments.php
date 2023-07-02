@@ -55,7 +55,18 @@ function displayAppointments($result) {
       echo '<td>' . $appointment["vet_name"] . '</td>';
       echo '<td>' . $appointment["appointment_date"] . '</td>';
       echo '<td>' . $appointment["appointment_time"] . '</td>';
-      echo '<td>' . $appointment["status"] . '</td>';
+
+      $status = $appointment["status"];
+      $statusColor = '';
+
+      // Set the color based on the status value
+      if ($status == 'pending') {
+        $statusColor = 'blue';
+      } elseif ($status == 'accepted') {
+        $statusColor = 'green';
+      }
+
+      echo '<td style="color: ' . $statusColor . ';">' . $status . '</td>';
       echo '</tr>';
     }
 
@@ -64,6 +75,7 @@ function displayAppointments($result) {
     echo 'No appointments found for the logged user.';
   }
 }
+
 
 // Display the appointment data
 // displayAppointments($result);
@@ -121,7 +133,7 @@ mysqli_close($conn);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: #ffffff; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;

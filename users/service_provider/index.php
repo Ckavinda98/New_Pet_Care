@@ -184,10 +184,9 @@ function redirectToRegister() {
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="service.php">Service</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
+                    <li><a href="register.php">Register</a></li>
+              
+                    
                 </ul>
             </nav>
             <div class="buttons">

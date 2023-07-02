@@ -87,6 +87,9 @@ $login->GetBusinessDetails();
 	
 
 	<style>
+    main{
+  height: 500px;
+}
 
 body {
   background-color: #f8f8f8;
@@ -98,6 +101,7 @@ body {
     /* Main container styles */
 .second-main {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -107,6 +111,7 @@ body {
 /* Glass styles */
 .glass-3,
 .glass-4 {
+  
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -158,9 +163,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
   text-align: center;
 }
 
@@ -196,15 +200,15 @@ body {
 	.glass {
   
   
-    background-color: white;
+    
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   text-align: center;
-  margin: 20px;
+  gap: 10%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 
@@ -276,7 +280,8 @@ body {
 <div class="card">
   <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
 </div>
-  <section class="glass-3">
+ <div class="glass">
+ <section class="glass-3">
     <div class="Dashboard">
       <!-- Display the user details here -->
       <?php
@@ -307,18 +312,11 @@ body {
       ?>
     </div>
   </section>
+ </div>
 </main>
 
 
-<main class="second-main-product">
-  <div class="card">
-    
-  </div>
 
-  <div class="product-container">
-    
-  </div>
-</main>
 
 
 

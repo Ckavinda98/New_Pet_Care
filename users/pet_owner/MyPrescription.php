@@ -53,7 +53,18 @@ function displayAppointments($result) {
       echo '<td>' . $appointment["pharmacist_name"] . '</td>';
       echo '<td>' . $appointment["prescription_date"] . '</td>';
       echo '<td>' . $appointment["prescription_time"] . '</td>';
-      echo '<td>' . $appointment["status"] . '</td>';
+
+      $status = $appointment["status"];
+      $statusColor = '';
+
+      // Set the color based on the status value
+      if ($status == 'pending') {
+        $statusColor = 'blue';
+      } elseif ($status == 'accepted') {
+        $statusColor = 'green';
+      }
+
+      echo '<td style="color: ' . $statusColor . ';">' . $status . '</td>';
       echo '</tr>';
     }
 
@@ -62,6 +73,7 @@ function displayAppointments($result) {
     echo 'No appointments found for the logged user.';
   }
 }
+
 
 // Close the database connection
 mysqli_close($conn);
@@ -243,7 +255,7 @@ mysqli_close($conn);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: #ffffff; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -372,7 +384,7 @@ table {
 	<section class="glass">
 		<div class="Dashboard">
 			<center>
-				<h1 style="margin-bottom: 30px;  ">My Appointments</h1>
+				<h1 style="margin-bottom: 30px;  ">My Prescription</h1>
 			</center>
             <?php
     include 'function.php';

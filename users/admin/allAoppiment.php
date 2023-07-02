@@ -133,7 +133,7 @@ mysqli_close($conn);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: white; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -258,6 +258,8 @@ main {
 }
 
 	</style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
   function updateStatus(appointmentId, newStatus) {
     // Send an AJAX request to update the appointment status

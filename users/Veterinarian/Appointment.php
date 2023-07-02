@@ -215,17 +215,6 @@ $businessId = $_SESSION["business_id"];
     font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
 }
 
-/* 
-form input, select{
-
-width: 200px;
-height: 20px;
-margin: 10px 0;
-padding: 0 5px;
-border: 1px solid #ccc;
-display: inline-block;
-border:2px solid rgba(0, 0, 0, 0.432);
-} */
 
 
 .glass{
@@ -234,7 +223,7 @@ border:2px solid rgba(0, 0, 0, 0.432);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: white; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -246,24 +235,7 @@ border:2px solid rgba(0, 0, 0, 0.432);
   
 }
 
-/* label{
-  
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bold;
-  display: inline-block;
-  width: 100px;
-} */
 
-.loginbtn, .Addbtn{
-    display: inline-block;
-    background: darkblue;
-    color: #fff;
-    padding: 5px 15px;
-    margin-left: 150px;
-    margin-top: 20px;
-    transition: background 0.5s;
-    
-}
 
 main {
   position: relative;
@@ -276,48 +248,7 @@ main {
   justify-content: center;
 }
 
-/* Styles for the modern form */
-.modern-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.modern-form .form-group {
-  width: calc(50% - 10px);
-  margin-bottom: 20px;
-  margin-right: 10px; /* Add margin-right for the gap */
-}
-
-.modern-form .form-group:last-child {
-  margin-right: 0; /* Remove margin-right for the last form group */
-}
-
-.modern-form .form-group.full-width {
-  width: 100%;
-}
-
-.modern-form label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.modern-form input[type="text"],
-.modern-form input[type="email"],
-.modern-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.modern-form .btn-submit {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-}
 
 
 	</style>

@@ -36,7 +36,7 @@ $query = "SELECT * FROM prescriptions WHERE pham_user_id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
 // Function to display appointment data in a table
-function displayAppointments($result) {
+function displayPrescriptions($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
             <tr>
@@ -45,23 +45,45 @@ function displayAppointments($result) {
               <th>Prescription Date</th>
               <th>Prescription Time</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>';
 
     while ($appointment = mysqli_fetch_assoc($result)) {
       echo '<tr>';
       echo '<td>' . $appointment["prescription_id"] . '</td>';
       echo '<td>' . $appointment["pet_owner_name"] . '</td>';
-      echo '<td>' . $appointment["prescription_date"] . '</td>';
-      echo '<td>' . $appointment["prescription_time"] . '</td>';
+
+      // Display the Prescription Date input field
+      echo '<td><input type="date" id="date_' . $appointment["prescription_id"] . '" value="' . $appointment["prescription_date"] . '"></td>';
+
+      // Display the Prescription Time input field
+      echo '<td><input type="time" id="time_' . $appointment["prescription_id"] . '" value="' . $appointment["prescription_time"] . '"></td>';
+
       echo '<td>' . $appointment["status"] . '</td>';
+      echo '<td>';
+
+      // Display different buttons based on the status
+      if ($appointment["status"] == "pending") {
+        echo '<button class="green-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'accepted\')">Accept</button>';
+      } elseif ($appointment["status"] == "accepted") {
+        echo '<button class="red-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'pending\')">Undo</button>';
+      }
+
+      // Add separate buttons to update Prescription Date and Prescription Time
+      echo '<button class="green-button" onclick="updateDate(' . $appointment["prescription_id"] . ')">Update Date</button>';
+      echo '<button class="green-button" onclick="updateTime(' . $appointment["prescription_id"] . ')">Update Time</button>';
+
+      echo '</td>';
+
       echo '</tr>';
     }
 
     echo '</table>';
   } else {
-    echo 'No appointments found for the logged user.';
+    echo 'No prescriptions found for the logged user.';
   }
 }
+
 
 // Display the appointment data
 // displayAppointments($result);
@@ -119,7 +141,7 @@ mysqli_close($conn);
   /* background: white; */
   min-height: 80vh;
   width: 80%;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: #ffffff; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   border-radius: 2rem;
   z-index: 2;
@@ -187,35 +209,83 @@ main {
 
 
 
-.table-container {
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: purple;
-      color: white;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
 	</style>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function updateStatus(prescriptionId, newStatus) {
+    // Send an AJAX request to update the prescription status
+    $.ajax({
+      type: "POST",
+      url: "update_status.php",
+      data: {
+        prescription_id: prescriptionId,
+        status: newStatus
+      },
+      success: function(response) {
+        // Success message
+        alert("Prescription status updated.");
+        window.location.reload(true);
+      },
+      error: function() {
+        // Error message
+        alert("Prescription status update failed.");
+        window.location.reload(true);
+      }
+    });
+  }
+
+
+  function updateDate(prescriptionId) {
+  var newDate = document.getElementById('date_' + prescriptionId).value;
+
+  // Send an AJAX request to update the Prescription Date
+  $.ajax({
+    type: "POST",
+    url: "update_date.php",
+    data: {
+      prescription_id: prescriptionId,
+      date: newDate
+    },
+    success: function(response) {
+      // Success message
+      alert("Prescription Date updated.");
+      window.location.reload(true);
+    },
+    error: function() {
+      // Error message
+      alert("Prescription Date update failed.");
+      window.location.reload(true);
+    }
+  });
+}
+
+function updateTime(prescriptionId) {
+  var newTime = document.getElementById('time_' + prescriptionId).value;
+
+  // Send an AJAX request to update the Prescription Time
+  $.ajax({
+    type: "POST",
+    url: "update_time.php",
+    data: {
+      prescription_id: prescriptionId,
+      time: newTime
+    },
+    success: function(response) {
+      // Success message
+      alert("Prescription Time updated.");
+      window.location.reload(true);
+    },
+    error: function() {
+      // Error message
+      alert("Prescription Time update failed.");
+      window.location.reload(true);
+    }
+  });
+}
+
+
+</script>
 
 </head>
 <body>
@@ -250,9 +320,9 @@ main {
   <section class="glass">
     <div class="Dashboard">
       <center>
-        <h1 style="margin-bottom: 30px;">My Appointments</h1>
+        <h1 style="margin-bottom: 30px;">My Prescription</h1>
       </center>
-      <?php displayAppointments($result); ?>
+      <?php displayPrescriptions($result); ?>
     </div>
   </section>
 </main>

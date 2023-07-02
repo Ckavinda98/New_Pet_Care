@@ -87,6 +87,13 @@ $login->GetBusinessDetails();
 	
 
 	<style>
+        main{
+  height: 500px;
+}
+main{
+  height: 500px;
+}
+
 
 body {
   background-color: #f8f8f8;
@@ -197,15 +204,15 @@ body {
 	.glass {
   
   
-    background-color: white;
-  display: flex;
   
+  display: flex;
+  gap: 10%;
   align-items: center;
   text-align: center;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 

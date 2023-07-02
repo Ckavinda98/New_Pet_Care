@@ -10,12 +10,19 @@
   justify-content: space-between;
   padding: 10px;
   background-color: #ffffff;
-  background-color: #f6f6f6; /* Set a light background color for the body section */
+  background-color: #ffffff; /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
   /* border-radius: 2rem; */
 }
 .logo-container {
   order: 1;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-buttons {
@@ -114,6 +121,7 @@ footer {
   background-color: #ffffff;
   min-height: 20vh;
   color: #9f2485;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 .footer {
   font-size: 14px;
@@ -206,3 +214,34 @@ footer {
 }
 
 /* register page */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+td {
+  padding: 8px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-container {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
