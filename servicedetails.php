@@ -12,6 +12,10 @@ if (isset($_GET['groomer_id'])) {
   $serviceType = 'pharmacist';
   $serviceId = $_GET['pharmacist_id'];
 } 
+elseif (isset($_GET['day_care_id'])) {
+  $serviceType = 'day_care';
+  $serviceId = $_GET['day_care_id'];
+} 
 elseif (isset($_GET['shop_id'])) {
   $serviceType = 'shop';
   $serviceId = $_GET['shop_id'];

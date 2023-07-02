@@ -312,6 +312,7 @@
       $description = $product['description'];
       $longitude = $product['longitude']; // Retrieve longitude value from database
       $latitude = $product['latitude']; // Retrieve latitude value from database
+      $userId = $product['user_id'];
 
       ?>
       <section class="glass">

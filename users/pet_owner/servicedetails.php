@@ -12,6 +12,10 @@ if (isset($_GET['groomer_id'])) {
   $serviceType = 'pharmacist';
   $serviceId = $_GET['pharmacist_id'];
 } 
+elseif (isset($_GET['day_care_id'])) {
+  $serviceType = 'day_care';
+  $serviceId = $_GET['day_care_id'];
+} 
 elseif (isset($_GET['shop_id'])) {
   $serviceType = 'shop';
   $serviceId = $_GET['shop_id'];
@@ -19,6 +23,7 @@ elseif (isset($_GET['shop_id'])) {
   echo "Service ID not provided.";
   exit();
 }
+
 
 // Define the table and column names based on the service type
 $tableName = '';
@@ -316,17 +321,19 @@ main {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
+                    <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
+                   
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                    <li><a href="service.php">Service</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
+                    
+                    
                 </ul>
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
-                    <li><a href="login.php">Log in</a></li>
+                    <!-- <li><a href="register.php">Sing up</a></li> -->
+                    <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
     </div>

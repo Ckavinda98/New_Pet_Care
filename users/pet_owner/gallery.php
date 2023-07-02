@@ -24,7 +24,7 @@ class Login {
     $businessIdQuery = "SELECT busniess_id FROM busniess_details WHERE user_id = '{$_SESSION["user_id"]}'";
     $businessIdResult = mysqli_query($conn, $businessIdQuery);
     $businessIdRow = mysqli_fetch_assoc($businessIdResult);
-    $businessId = $businessIdRow["busniess_id"];
+    @$businessId = $businessIdRow["busniess_id"];
 
     // Store the business_id in the session
     $_SESSION["business_id"] = $businessId;
@@ -72,6 +72,8 @@ $login->GetUserDetails();
 
 // Call the GetBusinessDetails method to display the business details
 $login->GetBusinessDetails();
+
+// $user_id = $_SESSION["user_id"];
 ?>
 
 
@@ -87,20 +89,19 @@ $login->GetBusinessDetails();
 	
 
 	<style>
-main{
-  height: 500px;
-}
+
 body {
   background-color: #f8f8f8;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+ 
 }
 
     /* Main container styles */
 .second-main {
   display: flex;
-  flex-direction: column;
+ 
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -133,23 +134,12 @@ body {
   margin-bottom: 10px;
 }
 
-/* Business details styles */
-.glass-4 p {
-  margin-bottom: 10px;
-}
-
-/* Price styles */
-.price {
-  font-weight: bold;
-}
-
-
 
     
     .second-main-product{
   position: relative;
   font-family: "Poppins", sans-serif;
-
+  height: 70vh;
   /* background-image: url(images/bgpattern.png);
   background-repeat: no-repeat;
   background-size: cover; */
@@ -157,10 +147,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+ 
+  flex-direction: column;
+ 
 }
 
 .product-container {
@@ -193,25 +182,25 @@ body {
 
 
 	.glass {
-  
-  
-  gap: 10%;
-  display: flex;
  
+  
+    background-color: white;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
- 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
 .glass img {
-  width: 150px;
+  width: 250px;
   height: 150px;
   object-fit: cover;
-  border-radius: 50%;
+ 
   margin-bottom: 10px;
 }
 
@@ -220,14 +209,7 @@ body {
   margin-bottom: 10px;
 }
 
-.glass p {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
 
-.glass p.price {
-  font-weight: bold;
-}
 
 /* Additional styling for the container */
 
@@ -238,12 +220,21 @@ body {
   background-color: white;
 }
 
-.price {
-  font-weight: bold;
-  color: red;
-}
+
 
 	</style>
+<script>
+  function deleteProduct(product_id) {
+    if (confirm("Are you sure you want to delete this product?")) {
+      // Redirect to delete.php passing the product_id
+      window.location.href = "function.php?id=" + product_id;
+    }
+  }
+</script>
+
+
+
+
 
 </head>
 <body>
@@ -256,11 +247,12 @@ body {
             <nav>
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
-                    
+                    <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="MyAppointments.php">My Appointments</a></li>
                    
-                    <li><a href="AddDayCareDetails.php">Add Day Care Details</a></li>
-                    <li><a href="addimage.php">Add Image</a></li>
-                    <li><a href="gallery.php">Gallery</a></li>
+                    <li><a href="MyPrescription.php">My Prescription</a></li>
+                    
+                    
                     
                 </ul>
             </nav>
@@ -275,46 +267,60 @@ body {
 
 
 
-<main class="second-main">
-<div class="card">
-  <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-</div>
- <div class="glass">
- <section class="glass-3">
-    <div class="Dashboard">
-      <!-- Display the user details here -->
-      <?php
-      // Call the GetUserDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $user = $login->GetUserDetails();
-        // Display the user details
-        echo "Username: " . $user["username"] . "<br>";
-        echo "User Type: " . $user["user_type"] . "<br>";
-        // Add any additional user details you want to display
-      }
-      ?>
-    </div>
-  </section>
+<main class="second-main-product">
+  <div class="card">
+    <h2>Gallery</h2>
+  </div>
 
-  <section class="glass-4">
+  <div class="product-container">
+  <?php
+include 'connect.php';
+
+// Retrieve the user_id from the query parameters or session
+$user_id = $_GET['user_id']; // Assuming you are passing the user_id as a query parameter
+
+// Fetch images from the database based on the user_id
+$query = "SELECT * FROM gallery WHERE user_id = '$user_id'";
+$result = mysqli_query($conn, $query);
+
+// Variable to track if any images were displayed
+$imageDisplayed = false;
+
+// Loop over the images and generate HTML
+while ($image = mysqli_fetch_assoc($result)) {
+  $image_id = $image['image_id']; // Fetch the image ID
+  $image_path = 'uploads/' . $image['images'];
+
+  // Check if the image file exists
+  if (file_exists($image_path)) {
+    $imageDisplayed = true;
+    ?>
+    <section class="glass">
+      <div class="Dashboard">
+        <img src="<?php echo $image_path; ?>" alt="Image <?php echo $image_id; ?>" />
+      </div>
+    </section>
+    <?php
+  }
+}
+
+// Check if any images were displayed
+if (!$imageDisplayed) {
+  ?>
+  <section class="glass">
     <div class="Dashboard">
-      <!-- Display the business details here -->
-      <?php
-      // Call the GetBusinessDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $business = $login->GetBusinessDetails();
-        // Display the business details
-        echo "Business Name: " . $business["name"] . "<br>";
-        echo "Address: " . $business["address"] . "<br>";
-        // Add any additional business details you want to display
-      }
-      ?>
+      <p>No images available.</p>
     </div>
   </section>
- </div>
+  <?php
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+  </div>
 </main>
-
-
 
 
 

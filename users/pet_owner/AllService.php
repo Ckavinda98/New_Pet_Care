@@ -147,6 +147,10 @@
   window.location.href = url;
 }
 
+function openGallery(userId) {
+  // Redirect to the gallery page with the user_id parameter
+  window.location.href = "gallery.php?user_id=" + userId;
+}
 </script>
 </head>
 <body>
@@ -253,6 +257,7 @@
       $description = $product['description'];
       $longitude = $product['longitude']; // Retrieve longitude value from database
       $latitude = $product['latitude']; // Retrieve latitude value from database
+      
      
 
       ?>
@@ -361,7 +366,7 @@
       $description = $product['description'];
       $longitude = $product['longitude']; // Retrieve longitude value from database
       $latitude = $product['latitude']; // Retrieve latitude value from database
-
+      $userId = $product['user_id'];
       ?>
       <section class="glass">
         <div class="Dashboard">
@@ -374,6 +379,8 @@
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
           <button class="map-button" onclick="openServiceDetails(undefined, undefined, undefined, <?php echo $daycareId; ?>)">View</button>
+          <button class="map-button" onclick="openGallery(<?php echo $userId; ?>)">Gallery</button>
+  
          
         </div>
       </section>
@@ -412,7 +419,7 @@
       $description = $product['description'];
       $longitude = $product['longitude']; // Retrieve longitude value from database
       $latitude = $product['latitude']; // Retrieve latitude value from database
-
+      $userId = $product['user_id'];
       ?>
       <section class="glass">
         <div class="Dashboard">
@@ -425,7 +432,7 @@
           <p><?php echo $website; ?></p>
           <p><?php echo $description; ?></p>
           <button class="map-button" onclick="openServiceDetails(<?php echo $groomerId; ?>, undefined, undefined, undefined)">View</button>
-      
+          <button class="map-button" onclick="openGallery(<?php echo $userId; ?>)">Gallery</button>
         </div>
       </section>
       <?php
