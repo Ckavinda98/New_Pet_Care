@@ -414,7 +414,7 @@ function deleteUser(userId) {
 
   // Perform the deletion using AJAX
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'delete_pcare.php', true);
+  xhr.open('POST', 'delete_pha.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
