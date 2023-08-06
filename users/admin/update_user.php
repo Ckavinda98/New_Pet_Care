@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   
     // Execute the query
     if (mysqli_query($db, $query)) {
-        echo 'User updated successfully.';
+        echo 'User Details updated successfully.';
         // echo '<script>alert("User updated successfully.");</script>';
         // echo '<script>window.location.href = "usertable.php";</script>';
     } else {

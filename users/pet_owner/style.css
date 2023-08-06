@@ -11,7 +11,7 @@
   padding: 10px;
   background-color: #ffffff;
   /* Set a light background color for the body section */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Increased box shadow with larger values */
   /* border-radius: 2rem; */
 }
 
@@ -46,7 +46,7 @@
 }
 
 body {
-  background-color: #f6f6f6be;
+  background-color: hwb(0 98% 1%);
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;

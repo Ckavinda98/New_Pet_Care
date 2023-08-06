@@ -60,7 +60,7 @@ function displayUser($result) {
 
     while ($user = mysqli_fetch_assoc($result)) {
       echo '<tr>';
-      echo '<td>' . $user["user_id"] . '</td>';
+      echo '<td>' . $user["vet_id"] . '</td>';
       
       echo '<td><input type="text" name="username[' . $user["user_id"] . ']" value="' . $user["vet_name"] . '"></td>';
       echo '<td><input type="text" name="address[' . $user["user_id"] . ']" value="' . $user["address"] . '"></td>';
@@ -78,9 +78,9 @@ function displayUser($result) {
       echo '</td>';
     
       echo '<td>';
-      echo '<form action="delete_user.php" method="post">';
-      echo '<input type="hidden" name="user_id" value="' . $user["user_id"] . '">';
-      echo '<button class="delete-button" type="submit">Delete</button>';
+      // echo '<form action="delete_user.php" method="post">';
+      
+      echo '<button class="delete-button" onclick="deleteUser(' . $user["user_id"] . ')">Delete</button>';
       echo '</form>';
       echo '</td>';
     
@@ -408,6 +408,33 @@ input[type="submit"]:hover {
     encodeURIComponent(longitude);
 
   xhr.send(params);
+}
+
+
+function deleteUser(userId) {
+  console.log('deleteUser function called with userId:', userId);
+
+  // Perform the deletion using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'delete_pcare.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Handle the successful response from the server
+        alert(xhr.responseText); // Display a success message or handle any errors
+        
+        // Reload the page after a short delay (e.g., 2 seconds)
+        setTimeout(function() {
+          location.reload();
+        }, 2000);
+      } else {
+        // Handle any errors that occurred during the deletion process
+        alert('Error deleting user: ' + xhr.responseText);
+      }
+    }
+  };
+  xhr.send('user_id=' + userId);
 }
 
 

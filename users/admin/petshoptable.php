@@ -78,9 +78,7 @@ function displayUser($result) {
       echo '</td>';
     
       echo '<td>';
-      echo '<form action="delete_user.php" method="post">';
-      echo '<input type="hidden" name="user_id" value="' . $user["user_id"] . '">';
-      echo '<button class="delete-button" type="submit">Delete</button>';
+      echo '<button class="delete-button" onclick="deleteUser(' . $user["user_id"] . ')">Delete</button>';
       echo '</form>';
       echo '</td>';
     
@@ -363,7 +361,14 @@ input[type="submit"]:hover {
   console.log('updateUser function called with userId:', userId);
   var username = document.getElementsByName('username[' + userId + ']')[0].value;
   var email = document.getElementsByName('email[' + userId + ']')[0].value;
-  var userType = document.getElementsByName('user_type[' + userId + ']')[0].value;
+  var address = document.getElementsByName('address[' + userId + ']')[0].value;
+  var city = document.getElementsByName('city[' + userId + ']')[0].value;
+  var postalCode = document.getElementsByName('postal_code[' + userId + ']')[0].value;
+  var contactNumber = document.getElementsByName('contact_number[' + userId + ']')[0].value;
+  var website = document.getElementsByName('website[' + userId + ']')[0].value;
+  var description = document.getElementsByName('description[' + userId + ']')[0].value;
+  var latitude = document.getElementsByName('latitude[' + userId + ']')[0].value;
+  var longitude = document.getElementsByName('longitude[' + userId + ']')[0].value;
 
   // Perform the update using AJAX
   var xhr = new XMLHttpRequest();
@@ -375,7 +380,58 @@ input[type="submit"]:hover {
       alert(xhr.responseText); // Display a success message or handle any errors
     }
   };
-  xhr.send('user_id=' + userId + '&username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + '&user_type=' + encodeURIComponent(userType));
+
+  var params =
+    'user_id=' +
+    userId +
+    '&username=' +
+    encodeURIComponent(username) +
+    '&email=' +
+    encodeURIComponent(email) +
+    '&address=' +
+    encodeURIComponent(address) +
+    '&city=' +
+    encodeURIComponent(city) +
+    '&postal_code=' +
+    encodeURIComponent(postalCode) +
+    '&contact_number=' +
+    encodeURIComponent(contactNumber) +
+    '&website=' +
+    encodeURIComponent(website) +
+    '&description=' +
+    encodeURIComponent(description) +
+    '&latitude=' +
+    encodeURIComponent(latitude) +
+    '&longitude=' +
+    encodeURIComponent(longitude);
+
+  xhr.send(params);
+}
+
+function deleteUser(userId) {
+  console.log('deleteUser function called with userId:', userId);
+
+  // Perform the deletion using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'delete_pcare.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Handle the successful response from the server
+        alert(xhr.responseText); // Display a success message or handle any errors
+        
+        // Reload the page after a short delay (e.g., 2 seconds)
+        setTimeout(function() {
+          location.reload();
+        }, 2000);
+      } else {
+        // Handle any errors that occurred during the deletion process
+        alert('Error deleting user: ' + xhr.responseText);
+      }
+    }
+  };
+  xhr.send('user_id=' + userId);
 }
 
 

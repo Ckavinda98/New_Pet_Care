@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Delete the user from the database
-        $query = "DELETE FROM user WHERE user_id = '$user_id'";
+        $query = "DELETE FROM 	pet_groomer WHERE user_id = '$user_id'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
