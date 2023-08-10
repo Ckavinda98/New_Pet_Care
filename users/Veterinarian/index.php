@@ -87,9 +87,7 @@ $login->GetBusinessDetails();
 	
 
 	<style>
-        main{
-  height: 500px;
-}
+
 main{
   height: 500px;
 }

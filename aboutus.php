@@ -124,7 +124,7 @@ background-color: white;
                 <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     
-                    <li><a href="serive.php">Service</a></li>
+                    <li><a href="service.php">Service</a></li>
                     <li><a href="shop.php">Shop</a></li>
                     <li><a href="products.php">Products</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
@@ -132,7 +132,7 @@ background-color: white;
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="register.php">Sign up</a></li>
                     <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>

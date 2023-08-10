@@ -47,6 +47,7 @@ function displayAppointments($result1) {
               <th>Appointment Time</th>
               <th>Status</th>
               <th>Action</th>
+              <th>Delete</th>
             </tr>';
 
     while ($appointment = mysqli_fetch_assoc($result1)) {
@@ -66,6 +67,9 @@ function displayAppointments($result1) {
         echo '<button class="red-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'pending\')">Undo</button>';
       }
       
+      echo '</td>';
+      echo '<td>';
+      echo '<button class="red-button" onclick="deleteAppoitment(' . $appointment["appointment_id"] . ', \'pending\')">Delete</button>';
       echo '</td>';
       echo '</tr>';
     }
@@ -281,6 +285,33 @@ main {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("appointment_id=" + appointmentId + "&status=" + newStatus);
   }
+
+
+  function deleteAppoitment(userId) {
+  console.log('deleteUser function called with userId:', userId);
+
+  // Perform the deletion using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'delete_app.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Handle the successful response from the server
+        alert(xhr.responseText); // Display a success message or handle any errors
+        
+        // Reload the page after a short delay (e.g., 2 seconds)
+        setTimeout(function() {
+          location.reload();
+        }, 2000);
+      } else {
+        // Handle any errors that occurred during the deletion process
+        alert('Error deleting user: ' + xhr.responseText);
+      }
+    }
+  };
+  xhr.send('appointment_id=' + userId);
+}
 </script>
 
 </head>

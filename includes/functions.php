@@ -37,11 +37,11 @@ class Login {
     }
   }
 
-  public function SessionVerify() {
-    if (isset($_SESSION['login'])) {
-      header("location: includes/checkuser.php"); // Check user session and role
-    }
-  }
+  // public function SessionVerify() {
+  //   if (isset($_SESSION['login'])) {
+  //     header("location: includes/checkuser.php"); // Check user session and role
+  //   }
+  // }
 
   public function SessionCheck() {
     global $conn;
@@ -102,6 +102,12 @@ class Login {
         echo '<script>alert("Login successful, but business type is not set.");</script>';
         echo '<script>window.location.href = "../users/service_provider/index.php";</script>';
       }
+
+      else if ($_SESSION["user_type"] == "test_user") {
+      
+        echo '<script>alert("Login successful.");</script>';
+        echo '<script>window.location.href = "../users/test/index.php";</script>';
+      } 
         else {
           echo '<script>alert("Invalid Username or Password");</script>';
         echo '<script>window.location.href = "../login.php";</script>';

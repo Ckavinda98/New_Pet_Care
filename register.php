@@ -58,10 +58,10 @@ border-radius: 10px;
   margin-bottom: 50px;
   
   margin-right: 100px;
-  background: white;
+ 
   height: 70vh;
   width: 40%;
-  background-color: white;
+  background: linear-gradient(to bottom, #e68cd3  10%, #c1f7f4 60%);
   border-radius: 2rem;
   z-index: 2;
   backdrop-filter: blur(2rem);
@@ -173,7 +173,7 @@ function validate() {
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="register.php">Sign up</a></li>
                     <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>
@@ -216,9 +216,10 @@ function validate() {
 				<select name="user_type" class="user_type" >
                     <option value="Pet Owner">Pet Owner</option>
                     <!-- <option value="Veterinarian">Veterinarian</option> -->
-                    <!-- <option value="Pharmacist">Pharmacist</option> -->
+                   
                     <option value="Serivce Provider">Serivce Provider</option>
-                    
+                    <option value="admin">Admin</option>
+                    <option value="test_user">Test User</option>
                     </select><br>
 				<button type="submit" class="loginbtn" name="register">Register</button>
 				<button type="reset" class="clear-button">Clear</button>

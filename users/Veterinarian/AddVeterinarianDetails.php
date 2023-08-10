@@ -374,10 +374,10 @@ main {
     <input type="text" id="city" name="city" required>
   </div>
  
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="postal_code">Postal Code:</label>
     <input type="text" id="postal_code" name="postal_code" required>
-  </div>
+  </div> -->
   <div class="form-group">
     <label for="contact_number">Contact Number:</label>
     <input type="text" id="contact_number" name="contact_number" required>
@@ -394,17 +394,13 @@ main {
     <label for="description">Description:</label>
     <textarea id="description" name="description"></textarea>
   </div>
+  <div class="form-group">
+    <label for="office">Office:</label>
+    <input type="text" id="office" name="office">
+  </div>
   
   <div class="form-group">
-    <label for="latitude">Latitude</label>
-    <input type="text" name="latitude" id="latitude" required>
-  </div>
-  <div class="form-group">
-    <label for="longitude">Longitude</label>
-    <input type="text" name="longitude" id="longitude" required>
-  </div>
-  <div class="form-group">
-    <label for="opening_hours">Opening Time:</label>
+    <label for="opening_hours">Available Time:</label>
     <input type="time" id="opening_hours" name="opening_time">
     
   </div>
@@ -414,8 +410,12 @@ main {
     
   </div>
   <div class="form-group">
-    <label for="office">Office:</label>
-    <input type="text" id="office" name="office">
+    <label for="latitude">Latitude</label>
+    <input type="text" name="latitude" id="latitude" required>
+  </div>
+  <div class="form-group">
+    <label for="longitude">Longitude</label>
+    <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group full-width">
     <button type="submit" name="submit" class="btn-submit">Submit</button>

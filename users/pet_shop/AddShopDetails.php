@@ -195,40 +195,7 @@ main {
 </header>
 
 
-<main class="second-main">
-<section class="glass-3">
-		<div class="Dashboard">
-			
-<h1>Add Shop Details</h1>
 
-
-		</div>
-		
-	</section>
-
-  <section class="glass-4">
-		<div class="Dashboard">
-			
-			
-        <h1>Add Profile Details</h1>
-
-
-		</div>
-		
-	</section>
-    <section class="glass-5">
-		<div class="Dashboard">
-        <h1>Add Product Details</h1>
-       
-
-        
-		</div>
-		
-	</section>
-
-
-	
-</main>
 <main>
 	
 	<section class="glass">
@@ -282,7 +249,7 @@ main {
     <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group">
-    <label for="opening_hours">Opening Time:</label>
+    <label for="opening_hours">Available Time:</label>
     <input type="time" id="opening_hours" name="opening_time">
     
   </div>

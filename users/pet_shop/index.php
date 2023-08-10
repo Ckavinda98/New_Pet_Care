@@ -89,6 +89,9 @@ $user_id = $_SESSION["user_id"];
 	
 
 	<style>
+    main{
+  height: 500px;
+}
 
 body {
   background-color: #f8f8f8;
@@ -100,6 +103,7 @@ body {
     /* Main container styles */
 .second-main {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -198,15 +202,15 @@ body {
 	.glass {
   
   
-    background-color: white;
+    /* background-color: white; */
   display: flex;
-  flex-direction: column;
+  gap: 10%;
   align-items: center;
   text-align: center;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 
@@ -275,11 +279,15 @@ body {
         </div>
     </div>
 </header>
+
+
+
 <main class="second-main">
 <div class="card">
   <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
 </div>
-  <section class="glass-3">
+ <div class="glass">
+ <section class="glass-3">
     <div class="Dashboard">
       <!-- Display the user details here -->
       <?php
@@ -310,6 +318,7 @@ body {
       ?>
     </div>
   </section>
+ </div>
 </main>
 
 

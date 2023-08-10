@@ -89,6 +89,9 @@ $user_id = $_SESSION["user_id"];
 	
 
 	<style>
+        main{
+  height: 500px;
+}
 
 body {
   background-color: #f8f8f8;

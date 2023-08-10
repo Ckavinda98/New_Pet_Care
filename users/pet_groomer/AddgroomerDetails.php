@@ -404,7 +404,7 @@ main {
     <input type="text" name="longitude" id="longitude" required>
   </div>
   <div class="form-group">
-    <label for="opening_hours">Opening Time:</label>
+    <label for="opening_hours">Available Time:</label>
     <input type="time" id="opening_hours" name="opening_time">
     
   </div>

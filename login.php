@@ -56,10 +56,10 @@ border-radius: 10px;
   margin-bottom: 50px;
   
   margin-right: 100px;
-  background: white;
+
   height: 70vh;
   width: 30%;
-  background-color: white;
+  background: linear-gradient(to bottom, #e68cd3  10%, #c1f7f4 60%);
   border-radius: 2rem;
   z-index: 2;
   backdrop-filter: blur(2rem);
@@ -193,7 +193,7 @@ return true;
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="register.php">Sign up</a></li>
                     <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>
