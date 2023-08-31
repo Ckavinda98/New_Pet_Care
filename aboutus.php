@@ -13,19 +13,19 @@
             position: relative;
   font-family: "Poppins", sans-serif;
 
-  background-image: url(images/bgpattern.png);
+  /* background-image: url(images/bgpattern.png); */
   background-repeat: no-repeat;
   background-size: cover;
-  /* border: 2px solid black; */
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
 }
 .first-main-about-m::before {
   content: "";
   position: absolute;
-  background: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%);
+  /* background: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%); */
   top: 0%;
   bottom: 0%;
   left: 0%;
@@ -72,32 +72,33 @@
   .glass-9 h1 {
   padding: 3px;
   font-weight: bold;
-  /* color: #9f2485; */
-  color: white;
+  color: #9f2485;
+  /* color: black; */
   font-size: 30px;
   
 }
 
 .glass-9 p {
-    color: white;
+    /* color: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%); */
   padding: 3px;
   font-weight: bold;
-  /* color: #9f2485; */
+  color: #9f2485;
   line-height: 1.5;
   font-size: 20px; /* Adjust this value to increase or decrease the line spacing */
  
 }
 .glass-10 {
-  margin-top: 10px;
+  margin-top: 40px;
+  margin-right: 40px;
   margin-bottom: 50px;
  padding: 10px;
  
   /* margin-right: 50px; */
 margin-left: 10px;
-  height: 250px;
-  width: 250px;
+  height: 400px;
+  width: 400px;
 background-color: white;
-  border-radius: 2rem;
+  border-radius: 20rem;
   z-index: 2;
 
   display: flex;
@@ -105,10 +106,13 @@ background-color: white;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url(images/bgpattern3.png);
+  background-image: url(images/dog2.png);
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid #9f2485;
+}
+p{
+  color: linear-gradient(to bottom, #9f2485 0%, #00a49a 60%);
 }
 
 	</style>
@@ -148,14 +152,14 @@ background-color: white;
       About Us
     </h1>
       <p>
-      Welcome to Pet E-Care, where we understand the challenges of accessing healthcare services for your beloved pets.
+      "Welcome to Pet E-Care, where we understand the challenges of accessing healthcare services for your beloved pets.
        Our mission is to simplify and streamline the process, revolutionizing the way pet owners access veterinary care and essential pet services.
        
         With our user-friendly web application, you can effortlessly search and book appointments with veterinary clinics, explore detailed veterinarian profiles, and receive convenient notifications.
          We also go beyond veterinary care by providing access to reputable pet grooming centers and daycares.
           Our goal is to promote accessibility and quality in pet-related services, ensuring the well-being of your pets and strengthening the bond between you and your furry companions.
           Join us on this journey of enhanced pet care for happier, healthier lives.
-       Experience convenience, reliability, and exceptional service at Pet E-Care.
+       Experience convenience, reliability, and exceptional service at Pet E-Care."
 
 
       </p>
@@ -163,27 +167,10 @@ background-color: white;
 		
 	</section>
 <main class="first-main-about">
-    <section class="glass-10">
-		<div class="Dashboard">
-		
-     
-		</div>
-		
-	</section>
-    <section class="glass-10">
-		<div class="Dashboard">
-		
-     
-		</div>
-		
-	</section>
-    <section class="glass-10">
-		<div class="Dashboard">
-		
-     
-		</div>
-		
-	</section>
+   
+    
+	
+   
     <section class="glass-10">
 		<div class="Dashboard">
 		
