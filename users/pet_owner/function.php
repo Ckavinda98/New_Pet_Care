@@ -63,6 +63,8 @@ if (isset($_POST['submit_prc'])) {
   $pharmacist_id = mysqli_real_escape_string($db, $_POST['pharmacist_id']);
   $user_id = mysqli_real_escape_string($db, $_POST['user_id']);
   $pham_user_id = mysqli_real_escape_string($db, $_POST['pham_user_id']);
+  $date = mysqli_real_escape_string($db, $_POST['date']);
+  $time = mysqli_real_escape_string($db, $_POST['time']);
 
   $filename = $_FILES['file']['name'];
 $destination = 'uploads/' . $filename;// name of the uploaded file
@@ -86,8 +88,8 @@ echo "File too large!";
 } else {
 // move the uploaded (temporary) file to the specified destination
 if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name, pham_user_id)
-            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name', '$pham_user_id')";
+  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name, pham_user_id, prescription_date	, prescription_time)
+            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name', '$pham_user_id', '$date', '$time')";
 
   if (mysqli_query($db, $sql)) {
     echo '<script>alert("Added successfully.");</script>';

@@ -46,11 +46,12 @@ function displayPrescriptions($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
             <tr>
-              <th>Prescription ID</th>
+              <th>ID</th>
               <th>Pet Owner Name</th>
               <th>Prescription Date</th>
               <th>Prescription Time</th>
               <th>Status</th>
+             
               <th>Action</th>
             </tr>';
 
@@ -58,14 +59,10 @@ function displayPrescriptions($result) {
       echo '<tr>';
       echo '<td>' . $appointment["prescription_id"] . '</td>';
       echo '<td>' . $appointment["pet_owner_name"] . '</td>';
-
-      // Display the Prescription Date input field
       echo '<td><input type="date" id="date_' . $appointment["prescription_id"] . '" value="' . $appointment["prescription_date"] . '"></td>';
-
-      // Display the Prescription Time input field
       echo '<td><input type="time" id="time_' . $appointment["prescription_id"] . '" value="' . $appointment["prescription_time"] . '"></td>';
-
       echo '<td>' . $appointment["status"] . '</td>';
+     
       echo '<td>';
 
       // Display different buttons based on the status
@@ -74,13 +71,12 @@ function displayPrescriptions($result) {
       } elseif ($appointment["status"] == "accepted") {
         echo '<button class="red-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'pending\')">Undo</button>';
       }
-
+      echo '<a href="../pet_owner/uploads/' . $appointment["image"] . '" download="Prescription_' . $appointment["prescription_id"] . '.jpg"><button class="green-button">View</button></a>';
       // Add separate buttons to update Prescription Date and Prescription Time
       echo '<button class="green-button" onclick="updateDate(' . $appointment["prescription_id"] . ')">Update Date</button>';
       echo '<button class="green-button" onclick="updateTime(' . $appointment["prescription_id"] . ')">Update Time</button>';
 
       echo '</td>';
-
       echo '</tr>';
     }
 
@@ -89,6 +85,7 @@ function displayPrescriptions($result) {
     echo 'No prescriptions found for the logged user.';
   }
 }
+
 
 // Display the appointment data
 // displayAppointments($result);

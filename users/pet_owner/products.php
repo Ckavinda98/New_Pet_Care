@@ -107,22 +107,6 @@
   color: red;
 }
 
-.btn-submit {
-  display: inline-block;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #45a049;
-}
-
-
 	</style>
 
 </head>
@@ -147,7 +131,7 @@
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sing up</a></li>
+                    <li><a href="register.php">Sign up</a></li>
                     <li><a href="login.php">Log in</a></li>
                 </ul>
         </div>
@@ -158,7 +142,7 @@
 
 <main class="second-main-product">
   <div class="card">
-    <h2>All Pet Shops</h2>
+    <h2>All Products</h2>
   </div>
 
   <div class="product-container">
@@ -167,36 +151,29 @@
     // Assuming you have a database connection $conn established
 
     // Fetch products from the database
-    $query = "SELECT * FROM pet_shop";
+    $query = "SELECT * FROM products";
     $result = mysqli_query($conn, $query);
 
     // Loop over the products and generate HTML
     while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['shop_name'];
-      $address = $product['address'];
-      $city = $product['city'];
-      $contact = $product['contact_number'];
-      $email = $product['email'];
-      $website = $product['website'];
+      $name = $product['name'];
       $description = $product['description'];
-      $longitude = $product['longitude']; // Retrieve longitude value from database
-      $latitude = $product['latitude']; // Retrieve latitude value from database
+      $price = $product['price'];
+      $image = 'images/' . $product['image']; // Modify this line
 
-      ?>
-      <section class="glass">
-        <div class="Dashboard">
-          <h2><?php echo $name; ?></h2>
-          <img src="images/shop.png" alt="<?php echo $name; ?>" />
-          <p><?php echo $address; ?></p>
-          <p><?php echo $city; ?></p>
-          <p><?php echo $contact; ?></p>
-          <p><?php echo $email; ?></p>
-          <p><?php echo $website; ?></p>
-          <p><?php echo $description; ?></p>
-          <button class="map-button" onclick="openGoogleMaps(<?php echo $latitude; ?>, <?php echo $longitude; ?>)">View Location</button>
-        </div>
-      </section>
-      <?php
+      // Check if the image file exists
+      if (file_exists($image)) {
+        ?>
+        <section class="glass">
+          <div class="Dashboard">
+            <h2><?php echo $name; ?></h2>
+            <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
+            <!-- <p><?php echo $description; ?></p> -->
+            <p class="price">Price: Rs<?php echo $price; ?></p>
+          </div>
+        </section>
+        <?php
+      }
     }
 
     // Close the database connection
@@ -204,6 +181,7 @@
     ?>
   </div>
 </main>
+
 
 
 

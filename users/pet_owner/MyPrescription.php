@@ -356,15 +356,15 @@ table {
             <img src="../../images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
         </div>
         <div class="navbar-buttons">
-            <nav>
-            <ul class="navbar">
+        <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
                     <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                
+                    
                     
                 </ul>
             </nav>

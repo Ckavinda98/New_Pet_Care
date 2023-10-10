@@ -191,11 +191,12 @@ main {
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
                     <li><a href="MyPrescription.php">My Prescription</a></li>
                     
-                
+                    
                     
                 </ul>
             </nav>
@@ -224,22 +225,34 @@ main {
   <div class="form-group">
     <label for="pet_owner_name">Pet Owner Name:</label>
     <input type="text" id="pet_owner_name" name="pet_owner_name" required>
+    
+             
   </div>
-  
   
   
   <div class="form-group">
     <label for="vet_name">Pharmacy Name:</label>
     <input type="text" id="vet_name" name="pharmacist_name" value="<?php echo $pharmacist_name; ?>" readonly  required>
+    
   </div>
- 
+  <div class="form-group">
+  <label for="Date">Date:</label>
+              <input type="date" id="date" name="date"  required>
+  </div>
+  <div class="form-group">
+  <label for="time">Time:</label>
+              <input type="time" id="time" name="time"  required>
+  </div>
   <div class="form-group">
               <label for="image">Prescription:</label>
+              
             <input type="file" id="image" name="file" accept="image/*" onchange="previewImage(event)" required>
+            
               </div>
               <div class="form-group full-width">
                 <button type="submit" name="submit_prc" class="btn-submit">Upload</button>
               </div>
+              
             </form>
           </div>
           <div class="preview-section">

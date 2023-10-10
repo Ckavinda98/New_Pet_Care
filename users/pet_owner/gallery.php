@@ -248,6 +248,7 @@ body {
             <ul class="navbar">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="Allservice.php">All Service</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="MyAppointments.php">My Appointments</a></li>
                    
                     <li><a href="MyPrescription.php">My Prescription</a></li>
