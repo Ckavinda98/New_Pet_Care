@@ -285,10 +285,11 @@ Choose Your Business type and provide the valid details of your business.</p>
 				<div class="col-3">
                 <h4 style="text-align:center;">Follow Us</h4>
 		<div class="colo-3list">
-        <a href="facebook.com">	<img src="../../images/FB.png" width="40px" height="40px" alt=""></a>
-		<a href="twitter.com">	    <img src="../../images/TW.png" width="40px" height="40px" alt=""></a>
-		<a href="instagram.com">	<img src="../../images/IG.png" width="40px" height="40px" alt=""></a>
-		<a href="lindkin.com"> 	<img src="../../images/LK.png" width="40px" height="40px" alt=""></a>
+    <a href="https://www.facebook.com"><img src="../../images/FB.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.twitter.com"><img src="../../images/TW.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.instagram.com"><img src="../../images/IG.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.linkedin.com"><img src="../../images/LK.png" width="40px" height="40px" alt=""></a>
+
         </div>
                 </div>
 			</div>

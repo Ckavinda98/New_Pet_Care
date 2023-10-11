@@ -196,7 +196,7 @@ function validate() {
   <section class="glass-2">
 		<div class="Dashboard">
 			<center>
-				<h1 style="margin-bottom: 30px;  border:2px solid #9f2485; border-radius:10px; width: 50%; ">Sing In</h1>
+				<h1 style="margin-bottom: 30px;  border:2px solid #9f2485; border-radius:10px; width: 50%; ">Sign In</h1>
 			</center>
 			<form name="myform" method="POST" onsubmit="return validate()"  action="function.php">
      
@@ -218,8 +218,8 @@ function validate() {
                     <!-- <option value="Veterinarian">Veterinarian</option> -->
                    
                     <option value="Serivce Provider">Serivce Provider</option>
-                    <option value="admin">Admin</option>
-                    <option value="test_user">Test User</option>
+                    <!-- <option value="admin">Admin</option> -->
+                    <!-- <option value="test_user">Test User</option> -->
                     </select><br>
 				<button type="submit" class="loginbtn" name="register">Register</button>
 				<button type="reset" class="clear-button">Clear</button>
@@ -255,10 +255,10 @@ function validate() {
 				<div class="col-3">
                 <h4 style="text-align:center;">Follow Us</h4>
 		<div class="colo-3list">
-        <a href="www.facebook.com">	<img src="images/FB.png" width="40px" height="40px" alt=""></a>
-		<a href="www.twitter.com">	    <img src="images/TW.png" width="40px" height="40px" alt=""></a>
-		<a href="www.instagram.com">	<img src="images/IG.png" width="40px" height="40px" alt=""></a>
-		<a href="www.lindkin.com"> 	<img src="images/LK.png" width="40px" height="40px" alt=""></a>
+    <a href="https://www.facebook.com"><img src="images/FB.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.twitter.com"><img src="images/TW.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.instagram.com"><img src="images/IG.png" width="40px" height="40px" alt=""></a>
+<a href="https://www.linkedin.com"><img src="images/LK.png" width="40px" height="40px" alt=""></a>
         </div>
                 </div>
 			</div>
