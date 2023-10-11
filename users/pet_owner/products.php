@@ -131,8 +131,7 @@
             </nav>
             <div class="buttons">
             <ul class="navbar">
-                    <li><a href="register.php">Sign up</a></li>
-                    <li><a href="login.php">Log in</a></li>
+            <li><a href="../../includes/logout.php">Log out</a></li>
                 </ul>
         </div>
     </div>

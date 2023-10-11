@@ -40,11 +40,11 @@ function displayAppointments($result) {
   if (mysqli_num_rows($result) > 0) {
     echo '<table>
             <tr>
-              <th>Appointment ID</th>
+              <th>ID</th>
               <th>Pet Owner Name</th>
               <th>Veterinarian Name</th>
-              <th>Appointment Date</th>
-              <th>Appointment Time</th>
+              <th>Date</th>
+              <th>Time</th>
               <th>Status</th>
               <th>Action</th>
             </tr>';
@@ -54,8 +54,8 @@ function displayAppointments($result) {
       echo '<td>' . $appointment["appointment_id"] . '</td>';
       echo '<td>' . $appointment["pet_owner_name"] . '</td>';
       echo '<td>' . $appointment["vet_name"] . '</td>';
-      echo '<td>' . $appointment["appointment_date"] . '</td>';
-      echo '<td>' . $appointment["appointment_time"] . '</td>';
+      echo '<td><input type="date" id="date_' . $appointment["appointment_id"] . '" value="' . $appointment["appointment_date"] . '"></td>';
+      echo '<td><input type="time" id="time_' . $appointment["appointment_id"] . '" value="' . $appointment["appointment_time"] . '"></td>';
       echo '<td>' . $appointment["status"] . '</td>';
       echo '<td>';
       
@@ -66,6 +66,8 @@ function displayAppointments($result) {
         echo '<button class="red-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'pending\')">Undo</button>';
       }
       
+      echo '<button class="green-button" onclick="updateDate(' . $appointment["appointment_id"] . ')">Update Date</button>';
+      echo '<button class="green-button" onclick="updateTime(' . $appointment["appointment_id"] . ')">Update Time</button>';
       echo '</td>';
       echo '</tr>';
     }
@@ -187,7 +189,9 @@ main {
 }
 
 	</style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+   
   function updateStatus(appointmentId, newStatus) {
     // Send an AJAX request to update the appointment status
     var xhttp = new XMLHttpRequest();
@@ -208,6 +212,54 @@ main {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("appointment_id=" + appointmentId + "&status=" + newStatus);
   }
+
+  function updateDate(appointmentId) {
+  var newDate = document.getElementById('date_' + appointmentId).value;
+
+  // Send an AJAX request to update the Prescription Date
+  $.ajax({
+    type: "POST",
+    url: "update_date.php",
+    data: {
+      appointment_id: appointmentId,
+      date: newDate
+    },
+    success: function(response) {
+      // Success message
+      alert("Appointment Date updated.");
+      window.location.reload(true);
+    },
+    error: function() {
+      // Error message
+      alert("Appointment Date update failed.");
+      window.location.reload(true);
+    }
+  });
+}
+
+function updateTime(appointmentId) {
+  var newTime = document.getElementById('time_' + appointmentId).value;
+
+  // Send an AJAX request to update the Prescription Time
+  $.ajax({
+    type: "POST",
+    url: "update_time.php",
+    data: {
+      appointment_id: appointmentId,
+      time: newTime
+    },
+    success: function(response) {
+      // Success message
+      alert("Appointment Time updated.");
+      window.location.reload(true);
+    },
+    error: function() {
+      // Error message
+      alert("Appointment Time update failed.");
+      window.location.reload(true);
+    }
+  });
+}
 </script>
 
 </head>
