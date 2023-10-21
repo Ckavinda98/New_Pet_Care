@@ -98,13 +98,10 @@ body {
  
 }
 
-main{
-  height: 500px;
-}
     /* Main container styles */
 .second-main {
   display: flex;
-  f
+  
   justify-content: space-around;
   align-items: center;
   padding: 20px;
@@ -142,7 +139,7 @@ main{
     .second-main-product{
   position: relative;
   font-family: "Poppins", sans-serif;
-  height: 70vh;
+ 
   /* background-image: url(images/bgpattern.png);
   background-repeat: no-repeat;
   background-size: cover; */

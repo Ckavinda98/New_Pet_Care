@@ -139,7 +139,7 @@ body {
     .second-main-product{
   position: relative;
   font-family: "Poppins", sans-serif;
-  height: 70vh;
+  
   /* background-image: url(images/bgpattern.png);
   background-repeat: no-repeat;
   background-size: cover; */

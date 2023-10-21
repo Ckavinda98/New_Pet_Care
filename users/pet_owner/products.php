@@ -20,6 +20,7 @@
   /* border: 2px solid black; */
   display: flex;
   align-items: center;
+  padding: 30px;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -31,6 +32,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+ 
   
 }
 
@@ -58,7 +60,7 @@
 
 	.glass {
   
-  
+    height: 300px;
     background-color: white;
   display: flex;
   flex-direction: column;

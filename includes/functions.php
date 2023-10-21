@@ -90,7 +90,7 @@ class Login {
       }
       else if ($_SESSION["user_type"] == "Pet DayCare") {
        
-        echo '<script>alert("Login successful, but business type is not set.");</script>';
+        echo '<script>alert("Login successful");</script>';
         echo '<script>window.location.href = "../users/Pet_Day_Care/index.php";</script>';
       }
       else if ($_SESSION["user_type"] == "Serivce Provider") {

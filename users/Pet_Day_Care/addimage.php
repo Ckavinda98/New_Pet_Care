@@ -181,7 +181,7 @@ main {
 
 .product-container {
   display: flex;
-  
+  flex-wrap: wrap;
   justify-content: center;
   
 }

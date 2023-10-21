@@ -95,7 +95,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
- 
+  height: 100%;
 }
 
     /* Main container styles */
@@ -139,11 +139,7 @@ body {
     .second-main-product{
   position: relative;
   font-family: "Poppins", sans-serif;
-  height: 70vh;
-  /* background-image: url(images/bgpattern.png);
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* border: 2px solid black; */
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,6 +152,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 100%;
   
 }
 
@@ -183,7 +180,7 @@ body {
 
 	.glass {
  
-  
+    height: 300px;
     background-color: white;
   display: flex;
   flex-direction: column;
