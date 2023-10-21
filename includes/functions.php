@@ -93,12 +93,18 @@ class Login {
         echo '<script>alert("Login successful");</script>';
         echo '<script>window.location.href = "../users/Pet_Day_Care/index.php";</script>';
       }
+      else if ($_SESSION["user_type"] == "admin") {
+       
+        echo '<script>alert("Login successful.");</script>';
+        echo '<script>window.location.href = "../users/admin/index.php";</script>';
+      }
+
       else if ($_SESSION["user_type"] == "Serivce Provider") {
        
         echo '<script>alert("Login successful, but business type is not set.");</script>';
         echo '<script>window.location.href = "../users/service_provider/index.php";</script>';
       }
-
+      
        
         else {
           echo '<script>alert("Invalid Username or Password");</script>';
