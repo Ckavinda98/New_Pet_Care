@@ -315,7 +315,7 @@ main {
 <header>
     <div class="header">
         <div class="logo-container">
-            <img src="images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
+            <img src="../../images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
         </div>
         <div class="navbar-buttons">
             <nav>
