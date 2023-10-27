@@ -63,7 +63,7 @@ function displayAppointments($result) {
       if ($appointment["status"] == "pending") {
         echo '<button class="green-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'accepted\')">Accept</button>';
       } elseif ($appointment["status"] == "accepted") {
-        echo '<button class="red-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'pending\')">Undo</button>';
+        echo '<button class="red-button" onclick="updateStatus(' . $appointment["appointment_id"] . ', \'pending\')">Revert</button>';
       }
       
       echo '<button class="green-button" onclick="updateDate(' . $appointment["appointment_id"] . ')">Update Date</button>';

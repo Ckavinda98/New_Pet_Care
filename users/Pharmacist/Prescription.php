@@ -63,7 +63,7 @@ function displayPrescriptions($result) {
       if ($appointment["status"] == "pending") {
         echo '<button class="green-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'accepted\')">Accept</button>';
       } elseif ($appointment["status"] == "accepted") {
-        echo '<button class="red-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'pending\')">Undo</button>';
+        echo '<button class="red-button" onclick="updateStatus(' . $appointment["prescription_id"] . ', \'pending\')">Revert</button>';
       }
       echo '<a href="../pet_owner/uploads/' . $appointment["image"] . '" download="Prescription_' . $appointment["prescription_id"] . '.jpg"><button class="green-button">View</button></a>';
       // Add separate buttons to update Prescription Date and Prescription Time

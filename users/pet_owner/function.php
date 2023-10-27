@@ -72,7 +72,7 @@ if (isset($_POST['submit_prc'])) {
   $file = $_FILES['file']['tmp_name'];
 
   $allowedExtensions = ['zip', 'pdf', 'docx', 'jpg', 'png', 'jpeg'];
-  $maxFileSize = 1000000; // 1 Megabyte
+  $maxFileSize = 9000000; // 1 Megabyte
 
   if (!in_array($extension, $allowedExtensions)) {
       echo "Invalid file extension. Allowed extensions: " . implode(', ', $allowedExtensions);
