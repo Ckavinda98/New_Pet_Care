@@ -67,45 +67,45 @@ if (isset($_POST['submit_prc'])) {
   $time = mysqli_real_escape_string($db, $_POST['time']);
 
   $filename = $_FILES['file']['name'];
-$destination = 'uploads/' . $filename;// name of the uploaded file
-$extension = pathinfo($filename, PATHINFO_EXTENSION);
+  $destination = 'uploads/' . $filename;
+  $extension = pathinfo($filename, PATHINFO_EXTENSION);
+  $file = $_FILES['file']['tmp_name'];
 
- // destination of the file on the server
- $file = $_FILES['file']['tmp_name'];
- $size = $_FILES['file']['size'];
+  $allowedExtensions = ['zip', 'pdf', 'docx', 'jpg', 'png', 'jpeg'];
+  $maxFileSize = 1000000; // 1 Megabyte
 
- // get the file extension
- 
- 
+  if (!in_array($extension, $allowedExtensions)) {
+      echo "Invalid file extension. Allowed extensions: " . implode(', ', $allowedExtensions);
+  } elseif ($_FILES['file']['size'] > $maxFileSize) {
+      echo "File too large! It should be no larger than 1 Megabyte.";
+  } else {
+      if (move_uploaded_file($file, $destination)) {
+          $user_id = mysqli_real_escape_string($db, $user_id);
+          $pharmacist_id = mysqli_real_escape_string($db, $pharmacist_id);
+          $filename = mysqli_real_escape_string($db, $filename);
+          $pet_owner_name = mysqli_real_escape_string($db, $pet_owner_name);
+          $pharmacist_name = mysqli_real_escape_string($db, $pharmacist_name);
+          $pham_user_id = mysqli_real_escape_string($db, $pham_user_id);
+          $date = mysqli_real_escape_string($db, $date);
+          $time = mysqli_real_escape_string($db, $time);
 
- // the physical file on a temporary uploads directory on the server
- 
+          $sql = "INSERT INTO prescriptions (user_id, pharmacist_id, image, pet_owner_name, pharmacist_name, pham_user_id, prescription_date, prescription_time)
+              VALUES ('$user_id', '$pharmacist_id', '$filename', '$pet_owner_name', '$pharmacist_name', '$pham_user_id', '$date', '$time')";
 
- if (!in_array($extension, ['zip', 'pdf', 'docx','jpg','png','jpeg',])) {
-echo "You file extension must be .zip, .pdf or .docx";
-} elseif ($_FILES['myfile']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
-echo "File too large!";
-} else {
-// move the uploaded (temporary) file to the specified destination
-if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO prescriptions (user_id, pharmacist_id,  image, pet_owner_name, pharmacist_name, pham_user_id, prescription_date	, prescription_time)
-            VALUES ('$user_id', '$pharmacist_id', '$filename',  '$pet_owner_name', '$pharmacist_name', '$pham_user_id', '$date', '$time')";
-
-  if (mysqli_query($db, $sql)) {
-    echo '<script>alert("Added successfully.");</script>';
-    echo '<script>window.location.href = "Allservice.php";</script>';
+          if (mysqli_query($db, $sql)) {
+              echo '<script>alert("Added successfully.");</script>';
+              echo '<script>window.location.href = "Allservice.php";</script>';
+          } else {
+              echo '<script>alert("Failed to insert data into the database.");</script>';
+              echo '<script>window.location.href = "AddProduct.php";</script>';
+          }
+      } else {
+          echo '<script>alert("Failed to upload the image.");</script>';
+          echo '<script>window.location.href = "AddProduct.php";</script>';
+      }
   }
-  else {
-    echo '<script>alert("Failed to upload the image.");</script>';
-    echo '<script>window.location.href = "AddProduct.php";</script>';
-  }
-} else {
-  // File upload failed
-  echo '<script>alert("Failed to upload the image.");</script>';
-  echo '<script>window.location.href = "AddProduct.php";</script>';
 }
-} 
-}
+
 
 
 
