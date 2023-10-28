@@ -14,7 +14,6 @@ if (isset($_POST['submit'])) {
   $Email = mysqli_real_escape_string($db, $_POST['email']);
   $Website = mysqli_real_escape_string($db, $_POST['website']);
   $City = mysqli_real_escape_string($db, $_POST['city']);
-  $Postal_code = mysqli_real_escape_string($db, $_POST['postal_code']);
   $Contact_number = mysqli_real_escape_string($db, $_POST['contact_number']);
   $Latitude = mysqli_real_escape_string($db, $_POST['latitude']);
   $Longitude = mysqli_real_escape_string($db, $_POST['longitude']);
