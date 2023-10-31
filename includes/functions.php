@@ -7,59 +7,64 @@ class Login {
     $error = ''; // Variable To Store Error Message
 
     if (!isset($_POST['submit'])) {
-      if (empty($_POST['login']) || empty($_POST['password'])) {
-        $_SESSION['successMessage'] = "Login Unsuccessful.";
-        echo '<script>alert("Check Your Username or Password!");</script>';
-        echo '<script>window.location.href = "../login.php";</script>';
-        exit();
-      }
+        if (empty($_POST['login']) || empty($_POST['password'])) {
+            $_SESSION['successMessage'] = "Login Unsuccessful.";
+            echo '<script>alert("Check Your Username or Password!");</script>';
+            echo '<script>window.location.href = "../login.php";</script>';
+            exit();
+        }
     } else {
-      include 'connect.php';
-      // Define $username and $password
-      $username = $_POST['login'];
-      $password = ($_POST['password']);
-      // SQL query to fetch information of registered users and find user match.
-      $query = "SELECT username, password, user_type, user_id FROM user WHERE username=? AND password=? LIMIT 1";
-      // To protect against MySQL injection for security purposes
-      $stmt = $conn->prepare($query);
-      $stmt->bind_param("ss", $username, $password);
-      $stmt->execute();
-      $stmt->bind_result($username, $password, $user_type, $user_id);
-      $stmt->store_result();
+        include 'connect.php';
+        // Define $username and $password
+        $username = isset($_POST['login']) ? $_POST['login'] : '';
 
-      if ($stmt->fetch()) { // Fetch the contents of the row
-        $_SESSION['login'] = $username; // Initializing Session
-        $_SESSION['user_type'] = $user_type;
-        $_SESSION['user_id'] = $user_id; // Storing user_id in session
-      }
+        $password = ($_POST['password']);
+        // SQL query to fetch information of registered users and find user match.
+        $query = "SELECT username, password, user_type, user_id FROM user WHERE username=? AND password=? LIMIT 1";
+        // To protect against MySQL injection for security purposes
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $stmt->bind_result($username, $password, $user_type, $user_id);
+        $stmt->store_result();
 
-      mysqli_close($conn); // Closing Connection
+        if ($stmt->fetch()) { // Fetch the contents of the row
+            $_SESSION['login'] = $username; // Initializing Session
+            $_SESSION['user_id'] = $user_id; // Storing user_id in session
+        } else {
+            $_SESSION['successMessage'] = "Login Unsuccessful.";
+            echo '<script>alert("Check Your Username or Password!");</script>';
+            echo '<script>window.location.href = "../login.php";</script>';
+            exit();
+        }
+
+        mysqli_close($conn); // Closing Connection
     }
-  }
+}
 
-  // public function SessionVerify() {
-  //   if (isset($_SESSION['login'])) {
-  //     header("location: includes/checkuser.php"); // Check user session and role
-  //   }
-  // }
 
   public function SessionCheck() {
     global $conn;
-    
     // Storing Session
-    $user_check = $_SESSION['login'];
-
-    // SQL Query To Fetch Complete Information Of User
-    $query = "SELECT * FROM user WHERE username = '$user_check'";
-    $ses_sql = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($ses_sql);
-    $_SESSION["username"] = $row["username"];
-    $_SESSION["user_type"] = $row["user_type"];
-    $_SESSION["password"] = $row["password"];
-    // No need to fetch user_id as it is already stored during login
+    // Check if the 'login' key exists in the $_SESSION array
+    if (isset($_SESSION['login'])) {
+      $user_check = $_SESSION['login'];
+      // SQL Query To Fetch Complete Information Of User
+      $query = "SELECT * FROM user WHERE username = '$user_check'";
+      $ses_sql = mysqli_query($conn, $query);
+      $row = mysqli_fetch_assoc($ses_sql);
+      // Check if the keys exist in $row before using them
+      if (isset($row["username"])) {
+        $_SESSION["username"] = $row["username"];
+      }
+      if (isset($row["user_type"])) {
+        $_SESSION["user_type"] = $row["user_type"];
+      }
+      if (isset($row["password"])) {
+        $_SESSION["password"] = $row["password"];
+      }
+    }
   }
-
-
 
   public function UserType() {
     if ($_SESSION["user_type"] == "Pet Owner") {
@@ -111,13 +116,9 @@ class Login {
         echo '<script>window.location.href = "../login.php";</script>';
        }
       }
-    
+}
 
-    }
-
-
-class UserFunctions{
- 
+class UserFunctions {
   public function UserIDI() {
     $UserIDI = $_SESSION["user_id"];
     echo $UserIDI;
