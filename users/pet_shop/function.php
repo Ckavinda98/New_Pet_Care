@@ -66,44 +66,39 @@ if (isset($_POST['submit_p'])) {
   $UserId = mysqli_real_escape_string($db, $_POST['user_id']);
 
   $filename = $_FILES['file']['name'];
-$destination = 'uploads/' . $filename;// name of the uploaded file
-$extension = pathinfo($filename, PATHINFO_EXTENSION);
+  $destination = 'uploads/' . $filename; // Name of the uploaded file
+  $extension = pathinfo($filename, PATHINFO_EXTENSION);
+  // Destination of the file on the server
+  $file = $_FILES['file']['tmp_name'];
+  $size = $_FILES['file']['size'];
 
- // destination of the file on the server
- $file = $_FILES['file']['tmp_name'];
- $size = $_FILES['file']['size'];
+  // Get the file extension
 
- // get the file extension
- 
- 
+  // The physical file on a temporary uploads directory on the server
 
- // the physical file on a temporary uploads directory on the server
- 
-
- if (!in_array($extension, ['zip', 'pdf', 'docx','jpg','png','jpeg',])) {
-echo "You file extension must be .zip, .pdf or .docx";
-} elseif ($_FILES['myfile']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
-echo "File too large!";
-} else {
-// move the uploaded (temporary) file to the specified destination
-if (move_uploaded_file($file, $destination)) {
-  $sql = "INSERT INTO products (name, description, price, image, shop_id, user_id)
+  if (!in_array($extension, ['zip', 'pdf', 'docx', 'jpg', 'png', 'jpeg'])) {
+    echo "You file extension must be .zip, .pdf, .docx, .jpg, .png, or .jpeg";
+  } elseif ($_FILES['file']['size'] > 1000000) { // File shouldn't be larger than 1 Megabyte
+    echo "File is too large!";
+  } else {
+    // Move the uploaded (temporary) file to the specified destination
+    if (move_uploaded_file($file, $destination)) {
+      $sql = "INSERT INTO products (name, description, price, image, shop_id, user_id)
             VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId', '$UserId')";
 
-  if (mysqli_query($db, $sql)) {
-    echo '<script>alert("Added successfully.");</script>';
-    echo '<script>window.location.href = "AddProduct.php";</script>';
+      if (mysqli_query($db, $sql)) {
+        echo '<script>alert("Added successfully.");</script>';
+        echo '<script>window.location.href = "AddProduct.php";</script>';
+      } else {
+        echo '<script>alert("Failed to add Product.");</script>';
+        echo '<script>window.location.href = "AddProduct.php";</script>';
+      }
+    } else {
+      // File upload failed
+      echo '<script>alert("Failed to upload the image.");</script>';
+      echo '<script>window.location.href = "AddProduct.php";</script>';
+    }
   }
-  else {
-    echo '<script>alert("Failed to add Product.");</script>';
-    echo '<script>window.location.href = "AddProduct.php";</script>';
-  }
-} else {
-  // File upload failed
-  echo '<script>alert("Failed to upload the image.");</script>';
-  echo '<script>window.location.href = "AddProduct.php";</script>';
-}
-} 
 }
 
 
