@@ -83,14 +83,19 @@ if (isset($_POST['submit_p'])) {
   } else {
     // Move the uploaded (temporary) file to the specified destination
     if (move_uploaded_file($file, $destination)) {
-      $sql = "INSERT INTO products (name, description, price, image, shop_id, user_id)
-            VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId', '$UserId')";
+      try {
+        $sql = "INSERT INTO products (name, description, price, image, shop_id, user_id)
+              VALUES ('$Name', '$Description', '$Price', '$filename', '$ShopId', '$UserId')";
 
-      if (mysqli_query($db, $sql)) {
-        echo '<script>alert("Added successfully.");</script>';
-        echo '<script>window.location.href = "AddProduct.php";</script>';
-      } else {
-        echo '<script>alert("Failed to add Product.");</script>';
+        if (mysqli_query($db, $sql)) {
+          echo '<script>alert("Added successfully.");</script>';
+          echo '<script>window.location.href = "AddProduct.php";</script>';
+        } else {
+          echo '<script>alert("Failed to add Product.");</script>';
+          echo '<script>window.location.href = "AddProduct.php";</script>';
+        }
+      } catch (mysqli_sql_exception $ex) {
+        echo '<script>alert("Please add Shop Details First!.");</script>';
         echo '<script>window.location.href = "AddProduct.php";</script>';
       }
     } else {
@@ -100,6 +105,7 @@ if (isset($_POST['submit_p'])) {
     }
   }
 }
+
 
 
 
