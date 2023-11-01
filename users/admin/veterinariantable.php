@@ -47,7 +47,6 @@ function displayUser($result) {
       <th>Veterinarian Name</th>
       <th>Address</th>
       <th>City</th>
-      <th>Postal Code</th>
       <th>Contact Number</th>
       <th>Email</th>
       <th>Website</th>
@@ -65,7 +64,6 @@ function displayUser($result) {
       echo '<td><input type="text" name="username[' . $user["user_id"] . ']" value="' . $user["vet_name"] . '"></td>';
       echo '<td><input type="text" name="address[' . $user["user_id"] . ']" value="' . $user["address"] . '"></td>';
       echo '<td><input type="text" name="city[' . $user["user_id"] . ']" value="' . $user["city"] . '"></td>';
-      echo '<td><input type="text" name="postal_code[' . $user["user_id"] . ']" value="' . $user["postal_code"] . '"></td>';
       echo '<td><input type="text" name="contact_number[' . $user["user_id"] . ']" value="' . $user["contact_number"] . '"></td>';
       echo '<td><input type="email" name="email[' . $user["user_id"] . ']" value="' . $user["email"] . '"></td>';
       echo '<td><input type="text" name="website[' . $user["user_id"] . ']" value="' . $user["website"] . '"></td>';

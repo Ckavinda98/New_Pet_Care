@@ -78,7 +78,7 @@ if (isset($_POST['submit_p'])) {
 
   if (!in_array($extension, ['zip', 'pdf', 'docx', 'jpg', 'png', 'jpeg'])) {
     echo "You file extension must be .zip, .pdf, .docx, .jpg, .png, or .jpeg";
-  } elseif ($_FILES['file']['size'] > 1000000) { // File shouldn't be larger than 1 Megabyte
+  } elseif ($_FILES['file']['size'] > 9000000) { // File shouldn't be larger than 1 Megabyte
     echo "File is too large!";
   } else {
     // Move the uploaded (temporary) file to the specified destination
