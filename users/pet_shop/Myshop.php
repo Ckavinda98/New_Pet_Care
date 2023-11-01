@@ -89,16 +89,8 @@ $user_id = $_SESSION["user_id"];
 	
 
 	<style>
-        main{
-  height: 500px;
-}
 
-body {
-  background-color: #f8f8f8;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+
 
     /* Main container styles */
 .second-main {

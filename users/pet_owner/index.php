@@ -67,158 +67,11 @@ $login->GetUserDetails();
 	<style>
 
 
-    /* Main container styles */
-.second-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  height: 70vh;
-  gap: 20px;
-}
-
-/* Glass styles */
-.glass-3,
-.glass-4 {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-}
-
-/* Dashboard styles */
-.Dashboard {
-  color: #333;
-}
-
-/* Heading styles */
-.Dashboard h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-/* User details styles */
-.glass-3 p {
-  margin-bottom: 10px;
-}
-
-/* Business details styles */
-.glass-4 p {
-  margin-bottom: 10px;
-}
-
-/* Price styles */
-.price {
-  font-weight: bold;
-}
-
-/* Additional styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-    
-    .second-main-product{
-  position: relative;
-  font-family: "Poppins", sans-serif;
-
-  /* background-image: url(images/bgpattern.png);
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* border: 2px solid black; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-}
-
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  
-}
-
-    .card {
-  display: flex;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  justify-content: center;
-  align-items: center;
-  background-color: #9f2485;;
-  padding: 10px;
- 
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.card h2 {
-  font-size: 24px;
-  margin: 0;
-  color: white;
-}
-
-
-
-
-	.glass {
-  
-  
-    background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-
-.glass img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.glass h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.glass p {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.glass p.price {
-  font-weight: bold;
-}
-
-/* Additional styling for the container */
-
-.Dashboard {
-  width: 300px;
-  padding: 20px;
-  margin: 10px;
-  background-color: white;
-}
-
-.price {
-  font-weight: bold;
-  color: red;
-}
-
 	</style>
+ 
+
+
+
 
 </head>
 <body>
@@ -250,27 +103,90 @@ $login->GetUserDetails();
     </div>
 </header>
 <main class="second-main">
-<div class="card">
-  <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-</div>
-  <section class="glass-3">
-    <div class="Dashboard">
-      <!-- Display the user details here -->
-      <?php
-      // Call the GetUserDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $user = $login->GetUserDetails();
-        // Display the user details
-        echo "Username: " . $user["username"] . "<br>";
-        echo "User Type: " . $user["user_type"] . "<br>";
-        // Add any additional user details you want to display
-      }
-      ?>
+  <div class="card">
+    <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
+  </div>
+  <section class="glass">
+		<div class="Dashboard">
+      
+			<center>
+				<h1 style="margin-bottom: 30px;  ">Update Profile Details</h1>
+			</center>
+      <form class="modern-form" action="update_profile.php" method="POST">
+  <?php
+  require 'connect.php';
+  
+  if (isset($_SESSION['login'])) {
+    $user = $login->GetUserDetails();
+  ?>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="user_id" name="user_id" value="<?php echo $user["user_id"]; ?>" required style="display: none;">
+      <input type="text" id="username" name="username" value="<?php echo $user["username"]; ?>" required readonly>
+      <div id="username-availability"></div> <!-- Display username availability status here -->
     </div>
-  </section>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value="<?php echo $user["email"]; ?>" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" value="<?php echo $user["password"]; ?>" required>
+    </div>
+    <div class="form-group full-width">
+      <button type="button" name="submit" class="btn-submit" onclick="updateUser(<?php echo $user["user_id"]; ?>)">Update</button>
+    </div>
+    <?php
+  }
+  ?>
+</form>
+
+<script>
+ function updateUser(userId) {
+  console.log('updateUser function called with userId:', userId);
+  var username = document.getElementsByName('username')[0].value;
+  var email = document.getElementsByName('email')[0].value;
+  var password = document.getElementsByName('password')[0].value;
+  
+
+  // Perform the update using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'update_profile.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      // Handle the response from the server
+      alert(xhr.responseText); // Display a success message or handle any errors
+    }
+  };
+
+  var params =
+    'user_id=' +
+    userId +
+    '&username=' +
+    encodeURIComponent(username) +
+    '&email=' +
+    encodeURIComponent(email) +
+    '&password=' +
+    encodeURIComponent(password);
+
+  xhr.send(params);
+}
+</script>
+
+
+
+
+
+     
+		</div>
+		
+	</section>
+
 
   
 </main>
+
 
 
 

@@ -21,13 +21,13 @@ class Login {
     $_SESSION["password"] = $row["password"];
 
     // Retrieve the business_id from the business_details table
-    $businessIdQuery = "SELECT busniess_id FROM busniess_details WHERE user_id = '{$_SESSION["user_id"]}'";
+    $businessIdQuery = "SELECT shop_id FROM pet_shop WHERE user_id = '{$_SESSION["user_id"]}'";
     $businessIdResult = mysqli_query($conn, $businessIdQuery);
     $businessIdRow = mysqli_fetch_assoc($businessIdResult);
-    $businessId = $businessIdRow["busniess_id"];
+    $businessId = isset($businessIdRow["shop_id"]) ? $businessIdRow["shop_id"] : null;
 
     // Store the business_id in the session
-    $_SESSION["business_id"] = $businessId;
+    $_SESSION["shop_id"] = $businessId;
 
     // Use the retrieved user_id and business_id for further operations
     // Here you can perform any other required actions with the user_id and business_id
@@ -46,12 +46,12 @@ class Login {
     return $user;
   }
 
-  public function GetBusinessDetails() {
+  public function GetPetShopDetails() {
     global $conn;
     // Retrieve the business details based on the stored business_id
-    $businessId = $_SESSION["business_id"];
+    $businessId = $_SESSION["shop_id"];
     // Run the query to fetch business details
-    $businessQuery = "SELECT * FROM busniess_details WHERE busniess_id = '$businessId'";
+    $businessQuery = "SELECT * FROM pet_shop WHERE shop_id = '$businessId'";
     $businessResult = mysqli_query($conn, $businessQuery);
     $business = mysqli_fetch_assoc($businessResult);
 
@@ -71,7 +71,7 @@ $login->SessionCheck();
 $login->GetUserDetails();
 
 // Call the GetBusinessDetails method to display the business details
-$login->GetBusinessDetails();
+$login->GetPetShopDetails();
 
 $user_id = $_SESSION["user_id"];
 ?>
@@ -89,16 +89,7 @@ $user_id = $_SESSION["user_id"];
 	
 
 	<style>
-    main{
-  height: 500px;
-}
 
-body {
-  background-color: #f8f8f8;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
     /* Main container styles */
 .second-main {
@@ -108,66 +99,6 @@ body {
   align-items: center;
   padding: 20px;
   
-}
-
-/* Glass styles */
-.glass-3,
-.glass-4 {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-}
-
-/* Dashboard styles */
-.Dashboard {
-  color: #333;
-}
-
-/* Heading styles */
-.Dashboard h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-/* User details styles */
-.glass-3 p {
-  margin-bottom: 10px;
-}
-
-/* Business details styles */
-.glass-4 p {
-  margin-bottom: 10px;
-}
-
-/* Price styles */
-.price {
-  font-weight: bold;
-}
-
-/* Additional styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-    
-    .second-main-product{
-  position: relative;
-  font-family: "Poppins", sans-serif;
-
-  /* background-image: url(images/bgpattern.png);
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* border: 2px solid black; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
 }
 
 .product-container {
@@ -199,19 +130,6 @@ body {
 
 
 
-	.glass {
-  
-  
-    /* background-color: white; */
-  display: flex;
-  gap: 10%;
-  align-items: center;
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-}
 
 
 .glass img {
@@ -238,17 +156,146 @@ body {
 
 /* Additional styling for the container */
 
+/* important  */
+
+.card {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #9f2485;
+  padding: 10px;
+
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styling for the container */
+
 .Dashboard {
-  width: 300px;
+  width: 600px;
   padding: 20px;
   margin: 10px;
   background-color: white;
 }
 
-.price {
-  font-weight: bold;
-  color: red;
+.glass {
+  margin: 10px;
+
+  min-height: 50vh;
+  width: 80%;
+  background-color: white; /* Set a light background color for the body section */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Increased box shadow with larger values */
+  border-radius: 2rem;
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
+
+main {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  min-height: 20vh;
+  /* background: linear-gradient(to bottom, #faedf0 0%, #eec4cd 60%); */
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+/* Styles for the modern form */
+.modern-form1 {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.modern-form1 .form-group {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  margin-right: 10px; /* Add margin-right for the gap */
+}
+
+.modern-form1 .form-group:last-child {
+  margin-right: 0; /* Remove margin-right for the last form group */
+}
+
+.modern-form1 .form-group.full-width {
+  width: 100%;
+}
+
+.modern-form1 label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modern-form1 input[type="text"],
+.modern-form1 input[type="email"],
+.modern-form1 textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modern-form1 .btn-submit {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+/* important 1 */
+
+/* Styles for the modern form */
+.modern-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.modern-form .form-group {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  margin-right: 10px; /* Add margin-right for the gap */
+}
+
+.modern-form .form-group:last-child {
+  margin-right: 0; /* Remove margin-right for the last form group */
+}
+
+.modern-form .form-group.full-width {
+  width: 100%;
+}
+
+.modern-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modern-form input[type="text"],
+.modern-form input[type="email"],
+.modern-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modern-form .btn-submit {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
 
 	</style>
 
@@ -286,85 +333,227 @@ body {
 <div class="card">
   <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
 </div>
- <div class="glass">
- <section class="glass-3">
-    <div class="Dashboard">
-      <!-- Display the user details here -->
-      <?php
-      // Call the GetUserDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $user = $login->GetUserDetails();
-        // Display the user details
-        echo "Username: " . $user["username"] . "<br>";
-        echo "User Type: " . $user["user_type"] . "<br>";
-        // Add any additional user details you want to display
-      }
-      ?>
+
+ <section class="glass">
+		<div class="Dashboard">
+      
+			<center>
+				<h1 style="margin-bottom: 30px;  ">Update Profile Details</h1>
+			</center>
+      <form class="modern-form1" action="update_profile.php" method="POST">
+  <?php
+  require 'connect.php';
+  
+  if (isset($_SESSION['login'])) {
+    $user = $login->GetUserDetails();
+  ?>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="user_id" name="user_id" value="<?php echo $user["user_id"]; ?>" required required style="display: none;">
+      <input type="text" id="username" name="username" value="<?php echo $user["username"]; ?>" required readonly>
+      <div id="username-availability"></div> <!-- Display username availability status here -->
     </div>
-  </section>
-
-  <section class="glass-4">
-    <div class="Dashboard">
-      <!-- Display the business details here -->
-      <?php
-      // Call the GetBusinessDetails method only if the user is logged in
-      if (isset($_SESSION['login'])) {
-        $business = $login->GetBusinessDetails();
-        // Display the business details
-        echo "Business Name: " . $business["name"] . "<br>";
-        echo "Address: " . $business["address"] . "<br>";
-        // Add any additional business details you want to display
-      }
-      ?>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value="<?php echo $user["email"]; ?>" required>
     </div>
-  </section>
- </div>
-</main>
-
-
-<main class="second-main-product">
-  <div class="card">
-    <h2>My Products</h2>
-  </div>
-
-  <div class="product-container">
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" value="<?php echo $user["password"]; ?>" required>
+    </div>
+    <div class="form-group full-width">
+      <button type="button" name="submit" class="btn-submit" onclick="updateUser(<?php echo $user["user_id"]; ?>)">Update</button>
+    </div>
     <?php
-    include 'connect.php';
+  }
+  ?>
+</form>
 
+<script>
+ function updateUser(userId) {
+  console.log('updateUser function called with userId:', userId);
+  var username = document.getElementsByName('username')[0].value;
+  var email = document.getElementsByName('email')[0].value;
+  var password = document.getElementsByName('password')[0].value;
+  
 
-    // Retrieve the shop_id from the session
-    @$shopId = $_SESSION["shop_id"];
-
-    // Fetch products from the database based on the shop_id
-    $query = "SELECT * FROM products WHERE user_id = '$user_id'";
-    $result = @mysqli_query($conn, $query); // Apply error suppression with @
-
-    // Loop over the products and generate HTML
-    while ($product = mysqli_fetch_assoc($result)) {
-      $name = $product['name'];
-      $description = $product['description'];
-      $price = $product['price'];
-      $image = 'uploads/' . $product['image']; // Modify this line
-
-      // Check if the image file exists
-      if (file_exists($image)) {
-        ?>
-        <section class="glass">
-          <div class="Dashboard">
-            <h2><?php echo $name; ?></h2>
-            <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
-            <p><?php echo $description; ?></p>
-            <p class="price">Price: $<?php echo $price; ?></p>
-          </div>
-        </section>
-        <?php
-      }
+  // Perform the update using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'update_profile.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      // Handle the response from the server
+      alert(xhr.responseText); // Display a success message or handle any errors
     }
+  };
 
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
+  var params =
+    'user_id=' +
+    userId +
+    '&username=' +
+    encodeURIComponent(username) +
+    '&email=' +
+    encodeURIComponent(email) +
+    '&password=' +
+    encodeURIComponent(password);
+
+  xhr.send(params);
+}
+
+
+
+</script>
+
+
+
+
+
+     
+
+		
+	</section>
+ </div>
+
+ <section class="glass">
+		<div class="Dashboard">
+      
+			<center>
+				<h1 style="margin-bottom: 30px;  ">Update Service Details</h1>
+			</center>
+      <form class="modern-form" action="update_shop.php" method="POST" >
+      <?php
+      if (isset($_SESSION['login'])) {
+        $user = $login->GetPetShopDetails();
+      ?>
+  <div class="form-group">
+  <label for="username">Username:</label>
+  <input type="text" id="user_id" name="user_id" value="<?php echo $user["user_id"]; ?>" required style="display: none;">
+  <input type="text" id="Susername" name="Susername" value="<?php echo isset($user["shop_name"]) ? $user["shop_name"] : ''; ?>" <?php echo isset($user["shop_name"]) ? 'required' : ''; ?>>
+
   </div>
+  <div class="form-group">
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" value="<?php echo isset($user["address"]) ? $user["address"] : ''; ?>" <?php echo isset($user["address"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" value="<?php echo isset($user["city"]) ? $user["city"] : ''; ?>" <?php echo isset($user["city"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="postal_code">Postal Code:</label>
+  <input type="text" id="postal_code" name="postal_code" value="<?php echo isset($user["postal_code"]) ? $user["postal_code"] : ''; ?>" <?php echo isset($user["postal_code"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="contact_number">Contact Number:</label>
+  <input type="text" id="contact_number" name="contact_number" value="<?php echo isset($user["contact_number"]) ? $user["contact_number"] : ''; ?>" <?php echo isset($user["contact_number"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="email">Email:</label>
+  <input type="email" id="Semail" name="Semail" value="<?php echo isset($user["email"]) ? $user["email"] : ''; ?>" <?php echo isset($user["email"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="website">Website:</label>
+  <input type="text" id="website" name="website" value="<?php echo isset($user["website"]) ? $user["website"] : ''; ?>">
+</div>
+<div class="form-group">
+  <label for="description">Description:</label>
+  <textarea id="description" name="description"><?php echo isset($user["description"]) ? $user["description"] : ''; ?></textarea>
+</div>
+<div class="form-group">
+  <label for="latitude">Latitude</label>
+  <input type="text" name="latitude" id="latitude" value="<?php echo isset($user["latitude"]) ? $user["latitude"] : ''; ?>" <?php echo isset($user["latitude"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="longitude">Longitude</label>
+  <input type="text" name="longitude" id="longitude" value="<?php echo isset($user["longitude"]) ? $user["longitude"] : ''; ?>" <?php echo isset($user["longitude"]) ? 'required' : ''; ?>>
+</div>
+<div class="form-group">
+  <label for="opening_hours">Available Time:</label>
+  <input type="time" id="opening_time" name="opening_time" value="<?php echo isset($user["opening_time"]) ? $user["opening_time"] : ''; ?>">
+</div>
+<div class="form-group">
+  <label for="opening_hours">Closing Time:</label>
+  <input type="time" id="closing_time" name="closing_time" value="<?php echo isset($user["closing_time"]) ? $user["closing_time"] : ''; ?>">
+</div>
+
+  <div class="form-group full-width">
+  <button type="button" name="submit" class="btn-submit" onclick="updateService(<?php echo $user["user_id"]; ?>)">Update</button>
+  </div>
+  <?php
+       } else {
+        // Handle the case when user data is not available
+        echo "User data is not available. Please add your details.";
+      }
+    
+      ?>
+</form>
+
+<script>
+  function updateService(userId) {
+    console.log('updateService function called with userId:', userId);
+    var username = document.getElementById('Susername').value;
+    var email = document.getElementById('Semail').value;
+    var address = document.getElementById('address').value;
+    var city = document.getElementById('city').value;
+    var postalCode = document.getElementById('postal_code').value;
+    var contactNumber = document.getElementById('contact_number').value;
+    var website = document.getElementById('website').value;
+    var description = document.getElementById('description').value;
+    var latitude = document.getElementById('latitude').value;
+    var longitude = document.getElementById('longitude').value;
+    var openingTime = document.getElementById('opening_time').value;
+    var closingTime = document.getElementById('closing_time').value;
+
+    // Perform the update using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'update_shop.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        // Handle the response from the server
+        alert(xhr.responseText); // Display a success message or handle any errors
+      }
+    };
+
+    var params =
+      'user_id=' +
+      userId +
+      '&username=' +
+      encodeURIComponent(username) +
+      '&email=' +
+      encodeURIComponent(email) +
+      '&address=' +
+      encodeURIComponent(address) +
+      '&city=' +
+      encodeURIComponent(city) +
+      '&postal_code=' +
+      encodeURIComponent(postalCode) +
+      '&contact_number=' +
+      encodeURIComponent(contactNumber) +
+      '&website=' +
+      encodeURIComponent(website) +
+      '&description=' +
+      encodeURIComponent(description) +
+      '&latitude=' +
+      encodeURIComponent(latitude) +
+      '&longitude=' +
+      encodeURIComponent(longitude) +
+      '&opening_time=' +
+      encodeURIComponent(openingTime) +
+      '&closing_time=' +
+      encodeURIComponent(closingTime);
+
+    xhr.send(params);
+  } 
+</script>
+
+
+
+     
+		</div>
+		
+	</section>
 </main>
 
 
