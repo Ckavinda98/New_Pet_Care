@@ -349,6 +349,24 @@ table {
 	</style>
 
 </head>
+<script>
+document.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".navbar .dropdown");
+    for (const dropdown of dropdowns) {
+        if (!dropdown.contains(e.target)) {
+            const content = dropdown.querySelector(".dropdown-content");
+            content.style.display = "none";
+        }
+    }
+});
+
+// Prevent the dropdown from closing when clicking on it
+document.querySelectorAll(".navbar .dropdown-content").forEach(function (content) {
+    content.addEventListener("click", function (e) {
+        e.stopPropagation();
+    });
+});
+</script>
 <body>
 <header>
     <div class="header">
@@ -356,18 +374,23 @@ table {
             <img src="../../images/logo2.png" class="logoimg" width="125px" height="70px" alt="">
         </div>
         <div class="navbar-buttons">
-        <ul class="navbar">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="Allservice.php">All Service</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="MyAppointments.php">My Appointments</a></li>
-                   
-                    <li><a href="MyPrescription.php">My Prescription</a></li>
-                    
-                    
-                    
-                </ul>
-            </nav>
+        <nav>
+    <ul class="navbar">
+        <li><a href="index.php">Home</a></li>
+        <li class="dropdown">
+            <a href="#">All Service</a>
+            <ul class="dropdown-content">
+                <li><a href="petcare.php">Pet Care</a></li>
+                <li><a href="pharmacy.php">Pharmacy</a></li>
+                <li><a href="groomingshop.php">Pet Grooming Shop</a></li>
+                <li><a href="vetservice.php">Vet Service</a></li>
+            </ul>
+        </li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="MyAppointments.php">My Appointments</a></li>
+        <li><a href="MyPrescription.php">My Prescription</a></li>
+    </ul>
+</nav>
             <div class="buttons">
             <ul class="navbar">
                     <!-- <li><a href="register.php">Sing up</a></li> -->

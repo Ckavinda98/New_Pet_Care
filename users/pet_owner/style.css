@@ -10,6 +10,7 @@
   justify-content: space-between;
   padding: 10px;
   background-color: #ffffff;
+  margin-bottom: 100px;
   /* Set a light background color for the body section */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Increased box shadow with larger values */
   /* border-radius: 2rem; */
@@ -453,4 +454,37 @@ main {
   color: white;
   border: none;
   padding: 10px;
+}
+
+/* Style the dropdown menu */
+.navbar li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the dropdown content (hidden by default) */
+.navbar .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the dropdown links */
+.navbar .dropdown-content a {
+  color: #333;
+  padding: 4px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.navbar .dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown content when hovering over the dropdown link */
+.navbar li.dropdown:hover .dropdown-content {
+  display: block;
 }
